@@ -1,4 +1,4 @@
-package ProSale.Controller;
+package ProSale.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

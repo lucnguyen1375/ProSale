@@ -1,0 +1,33 @@
+package ProSale;
+
+import ProSale.model.User;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReadInputDemo {
+    public static void main(String[] args) {
+        try {
+            FileInputStream fis = new FileInputStream("src/main/resources/ProSale/data/userData.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            List<User> list = new ArrayList<>();
+            while(true){
+                //if (ois.available()<=0){break;}
+                User user = (User)ois.readObject();
+                if (user == null){break;}
+                System.out.println(user);
+                list.add(user);
+            }
+            ois.close();
+            fis.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+}

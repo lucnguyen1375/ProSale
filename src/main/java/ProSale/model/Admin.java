@@ -1,4 +1,4 @@
-package ProSale.Model;
+package ProSale.model;
 
 public class Admin extends Person{
     public Admin(String name, int age, String gender, String address, String phone, String email) {

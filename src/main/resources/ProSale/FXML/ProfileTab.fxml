@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProSale.Controller.ProfileTabController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProSale.controller.ProfileTabController">
    <children>
       <ImageView fitHeight="86.0" fitWidth="92.0" layoutX="254.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
       <GridPane layoutX="215.0" layoutY="111.0">

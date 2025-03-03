@@ -1,7 +1,9 @@
-package ProSale.Model;
+package ProSale.model;
 
-public class Person {
-    protected int username;
+import java.io.Serializable;
+
+public class Person implements Serializable {
+    protected String username;
     protected String password;
     protected String name;
     protected int age;
@@ -20,7 +22,7 @@ public class Person {
         this.email = email;
     }
 
-    public int getUsername() {
+    public String getUsername() {
         return username;
     }
 
@@ -46,5 +48,19 @@ public class Person {
 
     public String getEmail() {
         return email;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

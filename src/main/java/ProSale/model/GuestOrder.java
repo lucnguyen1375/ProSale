@@ -1,4 +1,4 @@
-package ProSale.Model;
+package ProSale.model;
 
 import javafx.util.Pair;
 

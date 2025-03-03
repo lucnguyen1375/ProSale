@@ -1,4 +1,4 @@
-package ProSale.Controller;
+package ProSale.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,13 +29,6 @@ public class LoginTabController implements Initializable {
     protected TextField textFieldUserName;
     @FXML
     protected PasswordField textFieldPassword;
-
-    @FXML
-    public void logIn() {
-        System.out.println(textFieldUserName.getText());
-        System.out.println(textFieldPassword.getText());
-
-    }
     @FXML
     private GridPane gridLogIn;
     @FXML

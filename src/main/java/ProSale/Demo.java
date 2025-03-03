@@ -1,7 +1,7 @@
 package ProSale;
 
-import ProSale.Controller.ProfileTabController;
-import ProSale.Model.User;
+import ProSale.controller.ProfileTabController;
+import ProSale.model.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

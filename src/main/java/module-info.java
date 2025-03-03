@@ -7,8 +7,8 @@ module ProSale {
 
     opens ProSale to javafx.fxml;
     exports ProSale;
-    exports ProSale.Controller;
-    exports ProSale.Model;
-    opens ProSale.Controller to javafx.fxml;
-    opens ProSale.Model to javafx.fxml;
+    exports ProSale.controller;
+    exports ProSale.model;
+    opens ProSale.controller to javafx.fxml;
+    opens ProSale.model to javafx.fxml;
 }
