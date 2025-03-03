@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProSale.Controller.LoginTabController">
+   <children>
+      <GridPane fx:id="gridLogIn" layoutX="14.0" layoutY="108.0" prefHeight="91.0" prefWidth="241.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="labelUserName" text="User Name" />
+            <TextField fx:id="textFieldUserName" prefHeight="26.0" prefWidth="115.0" promptText="username" GridPane.columnIndex="1" />
+            <PasswordField fx:id="textFieldPassword" promptText="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="labelPassword" text="Password" GridPane.rowIndex="1" />
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="buttonLogIn" mnemonicParsing="false" onAction="#changeToMainViewTab" prefHeight="26.0" prefWidth="66.0" text="Log In" />
+                  <Button fx:id="buttonSignUp" mnemonicParsing="false" onAction="#changeToSignUpTab" prefHeight="26.0" prefWidth="66.0" text="Sign Up" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+      <Label fx:id="labelHeader" layoutX="68.0" layoutY="33.0" prefHeight="50.0" prefWidth="74.0" text="S2BOOKER" textAlignment="CENTER" AnchorPane.bottomAnchor="317.4" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="458.4" AnchorPane.topAnchor="33.0" />
+   </children>
+</AnchorPane>
