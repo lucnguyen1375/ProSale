@@ -8,18 +8,13 @@ import java.util.List;
 
 public class AppServer {
     private List<User> userList;
-    User user;
+    private User user;
+
     public AppServer() {
         try {
             FileInputStream fis = new FileInputStream("src/main/resources/ProSale/data/userData.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            while(true){
-                //if (ois.available()<=0){break;}
-                User user = (User)ois.readObject();
-                if (user == null) break;
-                System.out.println(user);
-                userList.add(user);
-            }
+            userList = (ArrayList<User>) ois.readObject();
             ois.close();
             fis.close();
         } catch (FileNotFoundException e) {
@@ -33,5 +28,9 @@ public class AppServer {
 
     public List<User> getUserList() {
         return userList;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

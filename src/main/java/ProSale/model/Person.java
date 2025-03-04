@@ -6,16 +6,24 @@ public class Person implements Serializable {
     protected String username;
     protected String password;
     protected String name;
-    protected int age;
     protected String gender;
     protected String address;
     protected String phone;
     protected String email;
 
     public Person() {}
-    public Person(String name, int age, String gender, String address, String phone, String email) {
+    public Person(String name, String gender, String address, String phone, String email) {
         this.name = name;
-        this.age = age;
+        this.gender = gender;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    public Person(String username, String password, String name, String gender, String address, String phone, String email) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
         this.gender = gender;
         this.address = address;
         this.phone = phone;
@@ -25,36 +33,27 @@ public class Person implements Serializable {
     public String getUsername() {
         return username;
     }
-
     public String getName() {
         return name;
     }
-
-    public int getAge() {
-        return age;
-    }
-
     public String getGender() {
         return gender;
     }
-
     public String getAddress() {
         return address;
     }
-
     public String getPhone() {
         return phone;
     }
-
     public String getEmail() {
         return email;
     }
+    public String getPassword() { return password; }
 
     @Override
     public String toString() {
         return "Person{" +
                 "name='" + name + '\'' +
-                ", age=" + age +
                 ", gender='" + gender + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +

@@ -11,13 +11,9 @@ public class ReadInputDemo {
         try {
             FileInputStream fis = new FileInputStream("src/main/resources/ProSale/data/userData.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            List<User> list = new ArrayList<>();
-            while(true){
-                //if (ois.available()<=0){break;}
-                User user = (User)ois.readObject();
-                if (user == null){break;}
+            var resultList = (ArrayList<User>) ois.readObject();
+            for (var user : resultList) {
                 System.out.println(user);
-                list.add(user);
             }
             ois.close();
             fis.close();

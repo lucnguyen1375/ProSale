@@ -6,12 +6,22 @@ public class User extends Person{
 
     public User(){};
 
-    public User(String name, int age, String gender, String address, String phone, String email) {
-        super(name, age, gender, address, phone, email);
+    public User(String name, String gender, String address, String phone, String email) {
+        super(name, gender, address, phone, email);
     }
-
+    public User(String username, String password, String name, String gender, String address, String phone, String email) {
+        super(username, password, name, gender, address, phone, email);
+    }
     @Override
     public String toString() {
-        return super.toString();
+        return "User{" +
+                "name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

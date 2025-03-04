@@ -24,7 +24,6 @@ public class ProfileTabController{
     public void setScene(User user) {
         labelName.setText(String.valueOf(user.getName()));
         labelAddress.setText(String.valueOf(user.getAddress()));
-        labelAge.setText(String.valueOf(user.getAge()));
         labelEmail.setText(String.valueOf(user.getEmail()));
         labelGender.setText(String.valueOf(user.getGender()));
         labelPhone.setText(String.valueOf(user.getPhone()));

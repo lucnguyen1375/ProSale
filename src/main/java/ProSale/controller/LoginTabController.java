@@ -1,5 +1,6 @@
 package ProSale.controller;
 
+import ProSale.AppLaunch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,10 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -22,7 +20,7 @@ public class LoginTabController implements Initializable {
     protected Stage stage;
     protected Scene scene;
     protected Parent root;
-
+    protected UserManager userManager = new UserManager();
     @FXML
     protected Button buttonLogIn, buttonSignUp;
     @FXML
@@ -47,11 +45,21 @@ public class LoginTabController implements Initializable {
     }
 
     public void changeToMainViewTab(ActionEvent event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/MainView.fxml"));
-        Parent parent = loader.load();
-        Scene scene = new Scene(parent);
-        stage.setScene(scene);
+        if (userManager.checkIfAccountRight(textFieldUserName.getText().trim(), textFieldPassword.getText().trim())) {
+
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/MainView.fxml"));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Username or Password is incorrect");
+            alert.showAndWait();
+        }
     }
 
     public void changeToSignUpTab(ActionEvent event) throws IOException {

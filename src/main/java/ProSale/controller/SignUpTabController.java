@@ -1,5 +1,6 @@
 package ProSale.controller;
 
+import ProSale.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,12 +20,12 @@ import java.io.ObjectOutputStream;
 public class SignUpTabController{
     Alert alert;
     ObjectOutputStream oos;
-
+    UserManager userManager = new UserManager();
     @FXML
     private Button btnCancel, btnSignUp;
 
     @FXML
-    private TextField tfAddress, tfBirthday, tfEmail, tfGender, tfName, tfPhone;
+    private TextField tfAddress, tfEmail, tfGender, tfName, tfPhone;
 
     @FXML
     private PasswordField pfPassword, pfConfirmPassword;
@@ -33,10 +34,23 @@ public class SignUpTabController{
     private TextField tfUsername;
 
     public void signUp(ActionEvent event) throws IOException{
+        // Điền đủ thông tin
         if (!tfName.getText().trim().isEmpty() && !pfPassword.getText().trim().isEmpty() && !pfConfirmPassword.getText().trim().isEmpty() && !tfUsername.getText().trim().isEmpty()) {
-            if (pfPassword.getText().trim().equals(pfConfirmPassword.getText().trim())) {
+            // Kiểm tra tài khoản tồn tại chưa
+            if (userManager.checkIfUsernameExists(tfUsername.getText())) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Lỗi");
+                alert.setHeaderText(null);
+                alert.setContentText("Tài khoản đã tồn tại");
+                alert.showAndWait();
+            }
+            // Điền đúng mật khẩu
+            else if (pfPassword.getText().trim().equals(pfConfirmPassword.getText().trim())) {
+                User newUser = new User(tfUsername.getText().trim(), pfPassword.getText().trim(), tfName.getText().trim(), tfGender.getText().trim(), tfAddress.getText().trim(), tfPhone.getText().trim(), tfEmail.getText().trim());
+                userManager.saveUser(newUser);
                 alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setContentText("Đăng ký tài khoản thành công");
+
             }
             else {
                 alert = new Alert(Alert.AlertType.ERROR);

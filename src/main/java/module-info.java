@@ -9,6 +9,7 @@ module ProSale {
     exports ProSale;
     exports ProSale.controller;
     exports ProSale.model;
+    exports ProSale.utilz;
     opens ProSale.controller to javafx.fxml;
     opens ProSale.model to javafx.fxml;
 }
