@@ -1,4 +1,4 @@
-package ProSale.model;
+package ProSale.model.person;
 
 import java.io.Serializable;
 

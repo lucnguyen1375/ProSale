@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="220.0" prefWidth="220.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProSale.controller.ProductPreviewHorizontalController">
-
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="300.0" styleClass="product-box" stylesheets="@../css/ProductPreviewHorizontal.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProSale.controller.ProductPreviewHorizontalController">
+   <children>
+      <VBox alignment="BOTTOM_LEFT" prefHeight="400.0" prefWidth="300.0" styleClass="transparent" stylesheets="@../css/ProductPreviewHorizontal.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="imgProduct" fitHeight="300.0" fitWidth="300.0" onMousePressed="#click" pickOnBounds="true" preserveRatio="true" styleClass="transparent">
+               <image>
+                  <Image url="@../images/proptitLogo.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
+            <Label fx:id="labelProductName" prefHeight="37.0" prefWidth="269.0" styleClass="transparent" stylesheets="@../css/ProductPreviewHorizontal.css" text="name">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelProductPrice" alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="300.0" styleClass="transparent" stylesheets="@../css/ProductPreviewHorizontal.css" text="Giá" textFill="#d06d6d">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

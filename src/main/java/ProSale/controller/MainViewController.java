@@ -1,26 +1,33 @@
 package ProSale.controller;
 
+import ProSale.AppLaunch;
+import ProSale.model.product.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
-
+    private MyListener myListener;
     @FXML
     Button btnSearch;
 
@@ -43,9 +50,12 @@ public class MainViewController implements Initializable {
     ComboBox<String> comboBoxGia, comboBoxChatLieu, comboBoxKichThuoc;
     @FXML
     Button btnPhoBien, btnMoiNhat, btnBanChay;
-
     @FXML
-    Button btnBanPhan, btnGuong, btnGhe, btnTuGiay, btnTuDauGiuong;
+    GridPane gridProduct;
+    @FXML
+    Button btnALLProducts, btnBanPhan, btnGuong, btnGhe, btnTuGiay, btnTuDauGiuong;
+    @FXML
+    ScrollPane scrollPane;
     public void demo(ActionEvent event) {
         System.out.println("lucdz");
     }
@@ -75,11 +85,119 @@ public class MainViewController implements Initializable {
         stage.setScene(scene);
     }
 
+    int column = 0, row = 0;
+
+    public void setGridProduct(Product product) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/ProSale/FXML/ProductPreviewHorizontal.fxml"));
+        AnchorPane anchorPane = loader.load();
+        ProductPreviewHorizontalController controller = loader.getController();
+        controller.setData(product, myListener);
+
+        if(column == 3) {
+            column = 0;
+            row++;
+        }
+        gridProduct.add(anchorPane, column++, row);
+        GridPane.setMargin(anchorPane, new Insets(10));
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         paneHome.setVisible(true);
         paneProduct.setVisible(false);
         paneLienHe.setVisible(false);
+        myListener = new MyListener() {
+            @Override
+            public void onClickListener(Product product) {
+                System.out.println("lucdz");
+            }
+        };
+
+        try {
+            for(Product product : AppLaunch.server.getProductList()) {
+                setGridProduct(product);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    public void btnALlProductsOnAction(ActionEvent event) {
+        column = 0; row = 0;
+        gridProduct.getChildren().clear();
+        try {
+            for(Product product : AppLaunch.server.getProductList()) {
+                setGridProduct(product);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void btnBanPhanOnAction(ActionEvent event) {
+        column = 0; row = 0;
+        gridProduct.getChildren().clear();
+        try {
+            for(Product product : AppLaunch.server.getProductList()) {
+                if (product instanceof BanPhan == false) continue;
+                setGridProduct(product);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void btnGuongOnAction(ActionEvent event) {
+        column = 0; row = 0;
+        gridProduct.getChildren().clear();
+        try {
+            for(Product product : AppLaunch.server.getProductList()) {
+                if (product instanceof Guong == false) continue;
+                setGridProduct(product);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void btnGheOnAction(ActionEvent event) {
+        column = 0; row = 0;
+        gridProduct.getChildren().clear();
+        try {
+            for(Product product : AppLaunch.server.getProductList()) {
+                if (product instanceof Ghe == false) continue;
+                setGridProduct(product);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void btnTuGiayOnAction(ActionEvent event) {
+        column = 0; row = 0;
+        gridProduct.getChildren().clear();
+        try {
+            for(Product product : AppLaunch.server.getProductList()) {
+                if (product instanceof TuGiay == false) continue;
+                setGridProduct(product);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void btnTuDauGiuongOnAction(ActionEvent event) {
+        column = 0; row = 0;
+        gridProduct.getChildren().clear();
+        try {
+            for(Product product : AppLaunch.server.getProductList()) {
+                if (product instanceof TuDauGiuong == false) continue;
+                setGridProduct(product);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

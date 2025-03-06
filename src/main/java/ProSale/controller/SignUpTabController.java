@@ -1,6 +1,6 @@
 package ProSale.controller;
 
-import ProSale.model.User;
+import ProSale.model.person.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

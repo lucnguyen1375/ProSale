@@ -1,7 +1,7 @@
 package ProSale.controller;
 
 import ProSale.AppLaunch;
-import ProSale.model.User;
+import ProSale.model.person.User;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -42,7 +42,7 @@ public class UserManager {
     public void saveUser(User user) {
         AppLaunch.server.getUserList().add(user);
         try {
-            FileOutputStream fis = new FileOutputStream("src/main/resources/ProSale/data/userData.txt");
+            FileOutputStream fis = new FileOutputStream("src/main/resources/ProSale/data/user.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fis);
             oos.writeObject(AppLaunch.server.getUserList());
             oos.close();

@@ -1,6 +1,6 @@
 package ProSale;
 
-import ProSale.model.User;
+import ProSale.model.person.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

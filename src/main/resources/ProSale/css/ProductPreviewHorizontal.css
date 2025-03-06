@@ -1,0 +1,10 @@
+.product-box{
+
+}
+
+.transparent{
+    -fx-background-color: transparent;
+}
+.image{
+    -fx-background-radius: 100;
+}
