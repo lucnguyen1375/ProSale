@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AppLaunch extends Application {
@@ -18,9 +17,6 @@ public class AppLaunch extends Application {
     @Override
     public void start(Stage stage){
         server = new AppServer();
-        for(User user : server.getUserList()){
-            System.out.println(user);
-        }
         try{
             //FXMLLoader fxmlLoader = new FXMLLoader(AppLaunch.class.getResource("FXML/LoginTab.fxml"));
             Parent root = FXMLLoader.load(getClass().getResource("FXML/LoginTab.fxml"));

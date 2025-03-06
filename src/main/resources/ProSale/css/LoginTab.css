@@ -1,0 +1,25 @@
+.login-box{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 25;
+}
+
+.login-button{
+    -fx-background-color: #D3D3D3;
+    -fx-background-radius: 100;
+}
+.left-bar{
+    -fx-background-color: #564b4b;
+    /*-fx-background-radius: 20;*/
+    -fx-border-width: 2px;
+    /*-fx-border-color: #567c9a;*/
+    /*-fx-border-radius: 20;*/
+}
+
+.text-field{
+    -fx-background-radius: 50;
+}
+
+.dangky-button{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}

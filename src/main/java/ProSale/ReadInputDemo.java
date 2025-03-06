@@ -4,7 +4,6 @@ import ProSale.model.User;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ReadInputDemo {
     public static void main(String[] args) {

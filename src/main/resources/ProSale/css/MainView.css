@@ -1,0 +1,36 @@
+.search-button{
+    -fx-background-color: #564b4b;
+    -fx-background-radius: 100;
+    -fx-text-fill: white;
+}
+
+.search-textfield{
+    -fx-background-color: null;
+    -fx-prompt-text-fill: #564b4b;
+    -fx-text-fill: #564b4b;
+}
+.search-box{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+}
+
+.icon-button {
+    -fx-background-image: "";
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;  /* Vị trí icon bên trái */
+    -fx-background-size: 20px 20px;        /* Kích thước icon */
+    -fx-padding: 5px 5px 5px 30px;         /* Đệm để tránh icon đè lên text */
+}
+
+.profile-button{
+    -fx-background-image: "src/main/resources/ProSale/icons/profile.png";
+    -fx-background-radius:100;
+}
+
+.menu-button{
+    -fx-background-color: null;
+}
+
+.menu-bar {
+    -fx-orientation: vertical;
+}

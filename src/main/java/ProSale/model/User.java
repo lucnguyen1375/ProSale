@@ -1,8 +1,6 @@
 package ProSale.model;
 
-import java.io.Serializable;
-
-public class User extends Person{
+public class User extends Person {
 
     public User(){};
 

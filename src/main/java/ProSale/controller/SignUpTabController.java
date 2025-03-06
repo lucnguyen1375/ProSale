@@ -38,11 +38,10 @@ public class SignUpTabController{
         if (!tfName.getText().trim().isEmpty() && !pfPassword.getText().trim().isEmpty() && !pfConfirmPassword.getText().trim().isEmpty() && !tfUsername.getText().trim().isEmpty()) {
             // Kiểm tra tài khoản tồn tại chưa
             if (userManager.checkIfUsernameExists(tfUsername.getText())) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Lỗi");
                 alert.setHeaderText(null);
                 alert.setContentText("Tài khoản đã tồn tại");
-                alert.showAndWait();
             }
             // Điền đúng mật khẩu
             else if (pfPassword.getText().trim().equals(pfConfirmPassword.getText().trim())) {
@@ -50,7 +49,6 @@ public class SignUpTabController{
                 userManager.saveUser(newUser);
                 alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setContentText("Đăng ký tài khoản thành công");
-
             }
             else {
                 alert = new Alert(Alert.AlertType.ERROR);
@@ -59,7 +57,7 @@ public class SignUpTabController{
         }
         else{
             alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Vui lòng điền đủ thông tin (có dấu *)");
+            alert.setContentText("Vui lòng điền đủ thông tin bắt buộc");
         }
         alert.showAndWait();
     }
