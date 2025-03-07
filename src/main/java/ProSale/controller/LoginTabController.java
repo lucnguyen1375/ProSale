@@ -1,5 +1,7 @@
 package ProSale.controller;
 
+import ProSale.AppLaunch;
+import ProSale.model.person.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,6 +42,12 @@ public class LoginTabController implements Initializable {
 
     public void changeToMainViewTab(ActionEvent event) throws IOException {
         if (userManager.checkIfAccountRight(tfUsername.getText().trim(), pfPassword.getText().trim())) {
+            for(User user : AppLaunch.server.getUserList()){
+                if (user.getUsername().equals(tfUsername.getText().trim()) && user.getPassword().equals(pfPassword.getText().trim())) {
+                    AppLaunch.server.setUserUsing(user);
+                    break;
+                }
+            }
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/MainView.fxml"));
             Parent parent = loader.load();
@@ -48,9 +56,9 @@ public class LoginTabController implements Initializable {
         }
         else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
+            alert.setTitle("Lỗi");
             alert.setHeaderText(null);
-            alert.setContentText("Username or Password is incorrect");
+            alert.setContentText("Tài khoản hoặc mật khẩu không đúng");
             alert.showAndWait();
         }
     }

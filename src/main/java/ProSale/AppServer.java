@@ -9,7 +9,7 @@ import java.util.List;
 
 public class AppServer {
     private List<User> userList;
-    private User user;
+    private User userUsing;
     private List<Product> productList;
     public AppServer() {
         try {
@@ -39,7 +39,9 @@ public class AppServer {
         return productList;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserUsing(User userUsing) {
+        this.userUsing = userUsing;
     }
+
+    public User getUserUsing() {return userUsing;}
 }

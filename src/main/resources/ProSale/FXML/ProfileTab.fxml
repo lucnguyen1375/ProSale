@@ -67,7 +67,7 @@
             <Separator orientation="VERTICAL" prefHeight="200.0" />
             <AnchorPane prefHeight="720.0" prefWidth="1030.0">
                <children>
-                  <VBox fx:id="paneHoSo" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox fx:id="paneHoSo" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Label text="Hồ sơ">
                            <font>
@@ -93,7 +93,7 @@
                               <Insets left="300.0" right="350.0" />
                            </VBox.margin>
                            <children>
-                              <Label prefHeight="30.0" prefWidth="240.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <Label fx:id="labelEmail" prefHeight="30.0" prefWidth="240.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>
@@ -101,7 +101,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="10.0" layoutY="21.0" prefHeight="30.0" prefWidth="253.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                              <Label fx:id="labelPhone" layoutX="10.0" layoutY="21.0" prefHeight="30.0" prefWidth="253.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>
@@ -109,7 +109,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="10.0" layoutY="21.0" prefHeight="30.0" prefWidth="269.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <Label fx:id="labelAddress" layoutX="10.0" layoutY="21.0" prefHeight="30.0" prefWidth="269.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>
@@ -117,7 +117,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="10.0" layoutY="21.0" prefHeight="30.0" prefWidth="220.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <Label fx:id="labelGender" layoutX="10.0" layoutY="21.0" prefHeight="30.0" prefWidth="220.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>
@@ -130,7 +130,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="10.0" layoutY="21.0" prefHeight="30.0" prefWidth="210.0" text="Label" GridPane.columnIndex="1">
+                              <Label fx:id="labelName" layoutX="10.0" layoutY="21.0" prefHeight="30.0" prefWidth="210.0" text="Label" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>
@@ -167,7 +167,7 @@
                         </Button>
                      </children>
                   </VBox>
-                  <AnchorPane fx:id="paneDonHang" layoutX="-33.0" prefHeight="720.0" prefWidth="1057.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="paneDonHang" layoutX="-33.0" prefHeight="720.0" prefWidth="1057.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <VBox layoutX="365.0" prefHeight="723.0" prefWidth="592.0" AnchorPane.rightAnchor="373.0">
                            <children>

@@ -11,8 +11,19 @@ public class Product implements Serializable {
     protected String size;
     protected String description;
     protected int quantity;
+//    protected int saleQuantity;
+//
+//
+//    public void setSaleQuantity(int saleQuantity) {
+//        this.saleQuantity = saleQuantity;
+//    }
+//
+//    public int getSaleQuantity() {
+//        return saleQuantity;
+//    }
 
     public Product() {}
+
     public Product(String name, int price, String type, String material, String size, String description, int quantity) {
         this.name = name;
         this.price = price;

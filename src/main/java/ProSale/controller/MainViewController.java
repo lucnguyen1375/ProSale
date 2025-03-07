@@ -56,9 +56,6 @@ public class MainViewController implements Initializable {
     Button btnALLProducts, btnBanPhan, btnGuong, btnGhe, btnTuGiay, btnTuDauGiuong;
     @FXML
     ScrollPane scrollPane;
-    public void demo(ActionEvent event) {
-        System.out.println("lucdz");
-    }
     public void changeToHome(ActionEvent event) {
         paneHome.setVisible(true);
         paneProduct.setVisible(false);
@@ -111,6 +108,17 @@ public class MainViewController implements Initializable {
             @Override
             public void onClickListener(Product product) {
                 System.out.println("lucdz");
+//                ProductDetailTabController productDetailTabController = new ProductDetailTabController();
+//                productDetailTabController.setProduct(product);
+//                try {
+//                    Stage stage = new Stage();
+//                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/ProfileTab.fxml"));
+//                    Parent parent = loader.load();
+//                    Scene scene = new Scene(parent);
+//                    stage.setScene(scene);
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
             }
         };
 
