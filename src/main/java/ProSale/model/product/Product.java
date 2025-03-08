@@ -31,6 +31,7 @@ public class Product implements Serializable {
         this.material = material;
         this.size = size;
         this.description = description;
+        this.quantity = quantity;
     }
 
     public void setName(String name) {

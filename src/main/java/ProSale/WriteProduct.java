@@ -3,7 +3,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import ProSale.model.person.User;
 import ProSale.model.product.*;
 
 public class WriteProduct {

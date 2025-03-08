@@ -21,15 +21,15 @@ import java.util.ResourceBundle;
 
 public class ProfileTabController implements Initializable {
     @FXML
-    Button btnHoso, btnDonHang;
+    private Button btnHoso, btnDonHang;
     @FXML
-    VBox paneHoSo;
+    private VBox paneHoSo;
     @FXML
-    AnchorPane paneDonHang;
+    private AnchorPane paneDonHang;
     @FXML
-    Button btTroVe, btnDangXuat;
+    private Button btTroVe, btnDangXuat;
     @FXML
-    Label labelName, labelEmail, labelPhone, labelGender, labelAddress;
+    private Label labelName, labelEmail, labelPhone, labelGender, labelAddress;
     private User userUsing;
 
     private void setUserUsing(){

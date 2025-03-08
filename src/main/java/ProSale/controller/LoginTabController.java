@@ -70,4 +70,16 @@ public class LoginTabController implements Initializable {
         Scene scene = new Scene(parent);
         stage.setScene(scene);
     }
+
+    @FXML
+    Button btnDemo;
+
+    public void btnDemoOnAction(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/SignUpTab.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

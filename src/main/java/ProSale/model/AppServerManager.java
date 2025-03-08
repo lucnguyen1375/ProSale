@@ -5,9 +5,9 @@ public class AppServerManager {
 //        try {
 //            FileInputStream fis = new FileInputStream("src/main/resources/ProSale/data/userData.txt");
 //            ObjectInputStream ois = new ObjectInputStream(fis);
-//            List<User> list = new ArrayList<>();
+//            List<UserWithOrder> list = new ArrayList<>();
 //            while(true){
-//                User user = (User)ois.readObject();
+//                UserWithOrder user = (UserWithOrder)ois.readObject();
 //                if (user == null) break;
 //                System.out.println(user);
 //                list.add(user);

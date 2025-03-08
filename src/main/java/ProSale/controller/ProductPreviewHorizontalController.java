@@ -9,6 +9,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
+import java.text.DecimalFormat;
+
 
 public class ProductPreviewHorizontalController {
     @FXML
@@ -33,12 +35,13 @@ public class ProductPreviewHorizontalController {
     private void click(MouseEvent event) {
         myListener.onClickListener(product);
     }
+    DecimalFormat df = new DecimalFormat("#,###");
 
     public void setData(Product product, MyListener myListener) {
         this.product = product;
         this.myListener = myListener;
         labelProductName.setText(product.getName());
-        labelProductPrice.setText(String.valueOf(product.getPrice()) + " VND");
+        labelProductPrice.setText(df.format(product.getPrice()) + " VND");
         Image image = new Image(getClass().getResourceAsStream(product.getSrcImg()));
         imgProduct.setImage(image);
     }

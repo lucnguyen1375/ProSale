@@ -1,51 +1,55 @@
 package ProSale.controller;
 
-
 import ProSale.model.product.Product;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.text.DecimalFormat;
 
-public class ProductDetailTabController
-//                                implements Initializable
-{
+public class ProductDetailTabController {
 
-    @FXML
-    private Label labelName;
     @FXML
     private Label labelDescription;
-
+    @FXML
+    private Label labelPrice;
     @FXML
     private Label labelMaterial;
 
     @FXML
-    private Label labelPrice;
+    private Label labelName;
 
     @FXML
     private Label labelQuantity;
 
     @FXML
     private Label labelSize;
-
     @FXML
-    private Label labelType;
+    private ImageView imageProduct;
 
-    public static Product product;
+    Image image;
+    private Product product;
+    DecimalFormat df = new DecimalFormat("#,###");
+
     public void setProduct(Product product) {
         this.product = product;
+        labelName.setText(product.getName());
+        labelDescription.setText(product.getDescription());
+        labelMaterial.setText(product.getMaterial());
+        labelQuantity.setText(String.valueOf(product.getQuantity()));
+        labelSize.setText(product.getSize());
+        labelPrice.setText(df.format(product.getPrice()) + " VND");
+        image = new Image(getClass().getResourceAsStream(product.getSrcImg()));
+        imageProduct.setImage(image);
     }
-//    @Override
-//    public void initialize(URL url, ResourceBundle resourceBundle) {
+//    public void setLabel(Product product){
 //        labelName.setText(product.getName());
 //        labelDescription.setText(product.getDescription());
 //        labelMaterial.setText(product.getMaterial());
-//        labelPrice.setText(String.valueOf(product.getPrice()));
 //        labelQuantity.setText(String.valueOf(product.getQuantity()));
-//        labelSize.setText(product.getSize());
-//        labelType.setText(product.getType());
+//        labelSize.setText(String.valueOf(product.getSize()));
+//        labelPrice.setText(String.valueOf(product.getPrice()) + "VND");
 //
 //    }
 }

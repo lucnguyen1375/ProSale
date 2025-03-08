@@ -29,33 +29,33 @@ import java.util.ResourceBundle;
 public class MainViewController implements Initializable {
     private MyListener myListener;
     @FXML
-    Button btnSearch;
+    private Button btnSearch;
 
     @FXML
-    TextField tfSearch;
+    private TextField tfSearch;
 
     @FXML
-    HBox searchHbox;
+    private HBox searchHbox;
 
     @FXML
-    Button btnProfile, btnGioHang;
+    private Button btnProfile, btnGioHang;
 
     @FXML
-    Button btnHome, btnProduct, btnLienHe;
+    private Button btnHome, btnProduct, btnLienHe;
     @FXML
-    AnchorPane paneHome, paneLienHe;
+    private AnchorPane paneHome, paneLienHe;
     @FXML
-    HBox paneProduct;
+    private HBox paneProduct;
     @FXML
-    ComboBox<String> comboBoxGia, comboBoxChatLieu, comboBoxKichThuoc;
+    private ComboBox<String> comboBoxGia, comboBoxChatLieu, comboBoxKichThuoc;
     @FXML
-    Button btnPhoBien, btnMoiNhat, btnBanChay;
+    private Button btnPhoBien, btnMoiNhat, btnBanChay;
     @FXML
-    GridPane gridProduct;
+    private GridPane gridProduct;
     @FXML
-    Button btnALLProducts, btnBanPhan, btnGuong, btnGhe, btnTuGiay, btnTuDauGiuong;
+    private Button btnALLProducts, btnBanPhan, btnGuong, btnGhe, btnTuGiay, btnTuDauGiuong;
     @FXML
-    ScrollPane scrollPane;
+    private ScrollPane scrollPane;
     public void changeToHome(ActionEvent event) {
         paneHome.setVisible(true);
         paneProduct.setVisible(false);
@@ -107,18 +107,19 @@ public class MainViewController implements Initializable {
         myListener = new MyListener() {
             @Override
             public void onClickListener(Product product) {
-                System.out.println("lucdz");
-//                ProductDetailTabController productDetailTabController = new ProductDetailTabController();
-//                productDetailTabController.setProduct(product);
-//                try {
-//                    Stage stage = new Stage();
-//                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/ProfileTab.fxml"));
-//                    Parent parent = loader.load();
-//                    Scene scene = new Scene(parent);
-//                    stage.setScene(scene);
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
+                System.out.println(product);
+                try {
+                    Stage stage = new Stage();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/ProductDetail.fxml"));
+                    Parent parent = loader.load();
+                    Scene scene = new Scene(parent);
+                    ProductDetailTabController productDetailTabController = loader.getController();
+                    productDetailTabController.setProduct(product);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         };
 

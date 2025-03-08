@@ -86,6 +86,7 @@
                   </HBox>
                   <VBox alignment="BOTTOM_CENTER" prefHeight="530.0" prefWidth="494.0">
                      <children>
+                        <Button fx:id="btnDemo" mnemonicParsing="false" onAction="#btnDemoOnAction" text="Demo" />
                         <Label alignment="CENTER" prefHeight="29.0" prefWidth="123.0" text="Chưa có tài khoản?" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Cambria" size="15.0" />
