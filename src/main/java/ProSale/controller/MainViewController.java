@@ -113,9 +113,11 @@ public class MainViewController implements Initializable {
         paneProduct.setVisible(false);
         paneLienHe.setVisible(false);
         myListener = new MyListener() {
+
             @Override
             public void onClickListener(Product product) {
                 System.out.println(product);
+
                 try {
                     Stage stage = new Stage();
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/ProductDetail.fxml"));

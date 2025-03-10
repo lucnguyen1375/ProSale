@@ -23,7 +23,8 @@ public class ProductPreviewHorizontalController {
     private Label labelProductPrice;
     @FXML
     private AnchorPane pane;
-
+    @FXML
+    private Label labelQuantity;
     public void paneOnAction(ActionEvent event) {
         System.out.println("lucdz");
     }
@@ -40,6 +41,7 @@ public class ProductPreviewHorizontalController {
         this.product = product;
         this.myListener = myListener;
         labelProductName.setText(product.getName());
+        labelQuantity.setText(String.valueOf(product.getQuantity()));
         labelProductPrice.setText(new DecimalFormat("#,###").format(product.getPrice()) + " VND");
         Image image = new Image(getClass().getResourceAsStream(product.getSrcImg()));
         imgProduct.setImage(image);

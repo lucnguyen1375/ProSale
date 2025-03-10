@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -25,6 +26,12 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
+            <HBox prefHeight="28.0" prefWidth="300.0">
+               <children>
+                  <Label text="Số lượng:" />
+                  <Label fx:id="labelQuantity" text="Label" />
+               </children>
+            </HBox>
             <Label fx:id="labelProductPrice" alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="300.0" styleClass="transparent" stylesheets="@../css/ProductPreviewHorizontal.css" text="Giá" textFill="#d06d6d">
                <font>
                   <Font size="20.0" />

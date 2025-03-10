@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="100.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProSale.controller.GioHangItemController">
    <children>
-      <HBox alignment="CENTER_RIGHT" layoutX="14.0" layoutY="25.0" prefHeight="100.0" prefWidth="980.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER_RIGHT" layoutX="14.0" layoutY="25.0" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="980.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
          <children>
             <CheckBox fx:id="checkBox" mnemonicParsing="false">
                <HBox.margin>
@@ -23,10 +23,10 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <Label fx:id="labelPrice" maxWidth="125.0" minWidth="125.0" prefHeight="20.0" prefWidth="186.0" text="Đơn giá" />
-            <Label fx:id="labelQuantity" maxWidth="125.0" minWidth="125.0" prefHeight="20.0" prefWidth="125.0" text="Số lượng" />
-            <Label fx:id="labelTotalPrice" maxWidth="125.0" minWidth="125.0" prefHeight="20.0" prefWidth="125.0" text="Giá tiền" />
-            <Button fx:id="btnDelete" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="50.0" text="Xóa">
+            <Label fx:id="labelPrice" alignment="CENTER" maxWidth="125.0" minWidth="125.0" prefHeight="20.0" prefWidth="186.0" text="Đơn giá" />
+            <Label fx:id="labelQuantity" alignment="CENTER" maxWidth="125.0" minWidth="125.0" prefHeight="20.0" prefWidth="125.0" text="Số lượng" />
+            <Label fx:id="labelTotalPrice" alignment="CENTER" maxWidth="125.0" minWidth="125.0" prefHeight="20.0" prefWidth="125.0" text="Giá tiền" />
+            <Button fx:id="btnDelete" maxWidth="100.0" minWidth="75.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="75.0" text="Xóa">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>s
