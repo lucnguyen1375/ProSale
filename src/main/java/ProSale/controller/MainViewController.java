@@ -56,6 +56,10 @@ public class MainViewController implements Initializable {
     private Button btnALLProducts, btnBanPhan, btnGuong, btnGhe, btnTuGiay, btnTuDauGiuong;
     @FXML
     private ScrollPane scrollPane;
+
+    @FXML
+    private Stage stage;
+
     public void changeToHome(ActionEvent event) {
         paneHome.setVisible(true);
         paneProduct.setVisible(false);
@@ -119,7 +123,7 @@ public class MainViewController implements Initializable {
                 System.out.println(product);
 
                 try {
-                    Stage stage = new Stage();
+                    Stage stage = (Stage)paneProduct.getScene().getWindow();
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/ProductDetail.fxml"));
                     Parent parent = loader.load();
                     Scene scene = new Scene(parent);
@@ -219,4 +223,7 @@ public class MainViewController implements Initializable {
         }
     }
 
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 }

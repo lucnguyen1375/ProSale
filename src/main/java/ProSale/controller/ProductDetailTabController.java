@@ -3,20 +3,27 @@ package ProSale.controller;
 import ProSale.model.product.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class ProductDetailTabController implements Initializable {
-    @FXML
 
+    private Stage mainViewStage;
+    @FXML
     private Label labelDescription;
     @FXML
     private Label labelPrice;
@@ -79,9 +86,16 @@ public class ProductDetailTabController implements Initializable {
         tfQuantity.setText(String.valueOf(Integer.parseInt(tfQuantity.getText()) - 1));
     }
     @FXML
-    public void btnAddOnAction(ActionEvent event) {
+    public void btnAddOnAction(ActionEvent event) throws IOException {
         productManager.addProductQuantity(product, Integer.parseInt(tfQuantity.getText()));
         setProduct(product);
+    }
 
+    public void btnBackOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/MainView.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
     }
 }

@@ -3,6 +3,8 @@ package ProSale.controller;
 import ProSale.model.product.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -14,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class GioHangItemController {
@@ -39,6 +42,8 @@ public class GioHangItemController {
     @FXML
     private Label labelTotalPrice;
 
+    @FXML
+    private Stage stage;
     private VBox parentVBox;  // Tham chiếu đến VBox cha
     private AnchorPane pane;     // Tham chiếu đến chính hàng này
 
@@ -58,8 +63,14 @@ public class GioHangItemController {
         labelTotalPrice.setText(new DecimalFormat("#,###").format(product.getPrice() * product.getQuantity()) + " VND");
     }
 
-    public void delete(ActionEvent actionEvent) {
-        parentVBox.getChildren().remove(pane);
-        System.out.println("Đã xóa " + product.getName());
+    public void delete(ActionEvent actionEvent) throws IOException {
+//        parentVBox.getChildren().remove(pane);
+//        System.out.println("Đã xóa " + product.getName());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/MainView.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
     }
+
+    public void setStage(Stage stage) {}
 }

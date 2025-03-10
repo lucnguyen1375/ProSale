@@ -1,5 +1,6 @@
 package ProSale.controller;
 
+import ProSale.manager.IOSystem;
 import ProSale.model.product.Product;
 
 public class ProductManager {
@@ -7,7 +8,4 @@ public class ProductManager {
         product.setQuantity(product.getQuantity() + quantity);
     }
 
-    public void saveProduct(Product product) {
-
-    }
 }

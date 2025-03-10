@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DonHangController implements Initializable {
-
+    private Stage thisStage;
     @FXML
     private Button btnDonHang;
 
