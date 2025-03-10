@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -112,6 +114,41 @@
                               </Label>
                            </children>
                         </GridPane>
+                        <Separator prefWidth="200.0" />
+                        <AnchorPane maxHeight="100.0" maxWidth="500.0" minHeight="75.0" minWidth="500.0" prefHeight="100.0" prefWidth="100.0">
+                           <children>
+                              <AnchorPane fx:id="paneAdmin" maxHeight="100.0" maxWidth="500.0" minHeight="75.0" minWidth="500.0" prefHeight="85.0" prefWidth="500.0">
+                                 <children>
+                                    <VBox prefHeight="86.0" prefWidth="500.0">
+                                       <children>
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label prefHeight="27.0" prefWidth="120.0" text="Thêm sản phẩm" />
+                                                <Button fx:id="btnDecrease" mnemonicParsing="false" onAction="#btnDecreaseOnAction" prefHeight="25.0" prefWidth="25.0" text="-" />
+                                                <TextField fx:id="tfQuantity" prefHeight="26.0" prefWidth="54.0" text="0">
+                                                   <HBox.margin>
+                                                      <Insets left="2.0" right="2.0" />
+                                                   </HBox.margin>
+                                                </TextField>
+                                                <Button fx:id="btnIncrease" mnemonicParsing="false" onAction="#btnIncreaseOnAction" prefHeight="25.0" prefWidth="25.0" text="+" />
+                                                <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#btnAddOnAction" text="Thêm">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <Button fx:id="btnEdit" mnemonicParsing="false" text="Chỉnh sửa sản phẩm" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="paneUser" maxHeight="100.0" maxWidth="500.0" minHeight="75.0" minWidth="500.0" prefHeight="85.0" prefWidth="500.0" visible="false" />
+                           </children>
+                        </AnchorPane>
                      </children>
                      <padding>
                         <Insets left="50.0" />

@@ -10,9 +10,9 @@ public class WriteProduct {
     public static void main(String[] args) throws Exception{
         List<User> users = new ArrayList<>();
         IDManager idManager = new IDManager();
-        FileOutputStream fos = new FileOutputStream("src/main/resources/ProSale/data/id.txt");
+        FileOutputStream fos = new FileOutputStream("src/main/resources/ProSale/data/user.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(idManager);
+        oos.writeObject(users);
         oos.close();
         fos.close();
     }

@@ -1,5 +1,6 @@
 package ProSale;
 
+import ProSale.controller.ProductManager;
 import ProSale.manager.IOSystem;
 import ProSale.model.person.User;
 import ProSale.model.product.Product;
@@ -14,7 +15,6 @@ public class AppServer {
     private List<User> userList;
     private User userUsing;
     private List<Product> productList;
-
     public AppServer() {
     }
 
