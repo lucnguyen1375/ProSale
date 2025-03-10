@@ -29,11 +29,13 @@ public class ProfileTabController implements Initializable {
     @FXML
     private Button btTroVe, btnDangXuat;
     @FXML
-    private Label labelName, labelEmail, labelPhone, labelGender, labelAddress;
+    private Label labelName, labelID, labelEmail, labelPhone, labelGender, labelAddress;
+
     private User userUsing;
 
     private void setUserUsing(){
         userUsing = AppLaunch.server.getUserUsing();
+        labelID.setText(String.valueOf(userUsing.getId()));
         labelName.setText(userUsing.getName());
         labelEmail.setText(userUsing.getEmail());
         labelPhone.setText(userUsing.getPhone());

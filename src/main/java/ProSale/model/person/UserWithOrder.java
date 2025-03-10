@@ -8,7 +8,6 @@ import ProSale.model.order.*;
 public class UserWithOrder extends Person implements Serializable {
     private List<Order> orderList;
     private Order gioHang;
-
     public UserWithOrder(){};
 
     public UserWithOrder(String name, String gender, String address, String phone, String email) {
@@ -33,6 +32,6 @@ public class UserWithOrder extends Person implements Serializable {
     }
     public List<Order> getOrderList() { return orderList; }
     public void setOrderList(List<Order> orderList) { this.orderList = orderList; }
-    public Order getGioHang() { return gioHang; }
+    public Order getGioHang() { return gioHang;}
     public void setGioHang(Order gioHang) { this.gioHang = gioHang; }
 }

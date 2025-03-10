@@ -60,6 +60,6 @@ public class GioHangItemController {
 
     public void delete(ActionEvent actionEvent) {
         parentVBox.getChildren().remove(pane);
-        System.out.println("Đã xóa" + product.getName());
+        System.out.println("Đã xóa " + product.getName());
     }
 }

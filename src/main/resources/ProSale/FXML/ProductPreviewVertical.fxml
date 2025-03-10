@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ProSale.controller.ProductPreviewVerticalController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="100.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProSale.controller.ProductPreviewVerticalController">
+   <children>
+      <HBox alignment="CENTER_RIGHT" layoutX="14.0" layoutY="25.0" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="980.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="imageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="labelName" prefHeight="18.0" prefWidth="535.0" text="Sản phẩm">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Chất liệu">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelQuantity" alignment="CENTER" maxWidth="125.0" minWidth="125.0" prefHeight="20.0" prefWidth="125.0" text="Số lượng">
+               <font>
+                  <Font size="22.0" />
+               </font></Label>
+            <Label fx:id="labelTotalPrice" alignment="CENTER" maxWidth="125.0" minWidth="125.0" prefHeight="20.0" prefWidth="125.0" text="Giá tiền">
+               <font>
+                  <Font size="22.0" />
+               </font></Label>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>

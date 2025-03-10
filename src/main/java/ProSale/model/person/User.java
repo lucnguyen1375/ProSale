@@ -14,7 +14,8 @@ public class User extends Person implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", gender='" + gender + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +

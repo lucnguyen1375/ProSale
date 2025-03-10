@@ -3,24 +3,17 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import ProSale.model.order.Order;
-import ProSale.model.order.OrderItem;
-import ProSale.model.person.UserWithOrder;
-import ProSale.model.product.*;
+import ProSale.manager.IDManager;
+import ProSale.model.person.User;
 
 public class WriteProduct {
-    public static void main(String[] args) {
-        Product product = new Product();
-        try {
-            FileOutputStream fos = new FileOutputStream("src/main/resources/ProSale/data/demo.txt");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(product);
-            oos.close();
-            fos.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public static void main(String[] args) throws Exception{
+        List<User> users = new ArrayList<>();
+        IDManager idManager = new IDManager();
+        FileOutputStream fos = new FileOutputStream("src/main/resources/ProSale/data/id.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(idManager);
+        oos.close();
+        fos.close();
     }
 }

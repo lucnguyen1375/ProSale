@@ -1,4 +1,4 @@
-package ProSale.controller;
+package ProSale.manager;
 
 import ProSale.AppLaunch;
 import ProSale.model.person.User;

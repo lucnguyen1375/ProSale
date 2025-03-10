@@ -1,4 +1,4 @@
-package ProSale.controller;
+package ProSale.manager;
 
 public class AdminManager {
 }

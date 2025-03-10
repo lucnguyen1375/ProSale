@@ -1,5 +1,7 @@
 package ProSale.controller;
 
+import ProSale.manager.IOSystem;
+import ProSale.manager.UserManager;
 import ProSale.model.person.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,6 +51,11 @@ public class SignUpTabController{
                 userManager.saveUser(newUser);
                 alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setContentText("Đăng ký tài khoản thành công");
+                try {
+                    IOSystem.saveIDData();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             }
             else {
                 alert = new Alert(Alert.AlertType.ERROR);

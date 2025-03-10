@@ -1,5 +1,6 @@
 package ProSale;
 
+import ProSale.manager.IOSystem;
 import ProSale.model.person.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,11 @@ public class AppLaunch extends Application {
     @Override
     public void start(Stage stage){
         server = new AppServer();
+        try {
+            IOSystem.loadData(server);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         try{
             Parent root = FXMLLoader.load(getClass().getResource("FXML/LoginTab.fxml"));
             Scene scene = new Scene(root);

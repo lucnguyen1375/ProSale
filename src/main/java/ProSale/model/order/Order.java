@@ -1,14 +1,27 @@
 package ProSale.model.order;
 
+import ProSale.AppLaunch;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Order implements Serializable {
     private List<OrderItem> orderItemsList;
+    private int orderID;
+    private String orderDate;
+    private String orderStatus;
+    private int customerID;
 
     public Order() {
         orderItemsList = new ArrayList<OrderItem>();
+        orderID = AppLaunch.server.getIdManager().getCURRENT_ORDER_ID();
+        orderStatus = "Chờ xác nhận";
+    }
+
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
     @Override

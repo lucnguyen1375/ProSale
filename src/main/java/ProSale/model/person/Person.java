@@ -1,5 +1,7 @@
 package ProSale.model.person;
 
+import ProSale.AppLaunch;
+
 import java.io.Serializable;
 
 public class Person implements Serializable {
@@ -10,6 +12,7 @@ public class Person implements Serializable {
     protected String address;
     protected String phone;
     protected String email;
+    protected int id;
 
     public Person() {}
     public Person(String name, String gender, String address, String phone, String email) {
@@ -20,7 +23,9 @@ public class Person implements Serializable {
         this.email = email;
     }
 
-    public Person(String username, String password, String name, String gender, String address, String phone, String email) {
+    public Person(String username, String password, String name, String gender,
+                  String address, String phone, String email) {
+        id = AppLaunch.server.getIdManager().getCURRENT_USER_ID();
         this.username = username;
         this.password = password;
         this.name = name;
@@ -49,11 +54,13 @@ public class Person implements Serializable {
         return email;
     }
     public String getPassword() { return password; }
+    public int getId() { return id; }
 
     @Override
     public String toString() {
         return "Person{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", gender='" + gender + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +

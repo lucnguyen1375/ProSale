@@ -1,25 +1,19 @@
 package ProSale;
 
-import ProSale.model.person.User;
-import ProSale.model.person.UserWithOrder;
-import ProSale.model.product.BanPhan;
-import ProSale.model.product.Product;
-import ProSale.model.product.TuGiay;
+import ProSale.manager.IDManager;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ReadProduct {
-    public static User user;
+    public static IDManager idManager;
     public static void main(String[] args) {
         try {
-            FileInputStream fis = new FileInputStream("src/main/resources/ProSale/data/demo.txt");
+            FileInputStream fis = new FileInputStream("src/main/resources/ProSale/data/id.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            user = (User)ois.readObject();
+            idManager = (IDManager) ois.readObject();
+            System.out.println(idManager);
             ois.close();
             fis.close();
-
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -27,7 +21,7 @@ public class ReadProduct {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(user);
+
     }
 
 

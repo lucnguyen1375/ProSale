@@ -82,6 +82,7 @@ public class MainViewController implements Initializable {
         stage.setScene(scene);
     }
 
+
     public void changeToDonHang(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/DonHang.fxml"));
@@ -113,7 +114,6 @@ public class MainViewController implements Initializable {
         paneProduct.setVisible(false);
         paneLienHe.setVisible(false);
         myListener = new MyListener() {
-
             @Override
             public void onClickListener(Product product) {
                 System.out.println(product);
