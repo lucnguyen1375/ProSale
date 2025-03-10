@@ -35,13 +35,12 @@ public class ProductPreviewHorizontalController {
     private void click(MouseEvent event) {
         myListener.onClickListener(product);
     }
-    DecimalFormat df = new DecimalFormat("#,###");
 
     public void setData(Product product, MyListener myListener) {
         this.product = product;
         this.myListener = myListener;
         labelProductName.setText(product.getName());
-        labelProductPrice.setText(df.format(product.getPrice()) + " VND");
+        labelProductPrice.setText(new DecimalFormat("#,###").format(product.getPrice()) + " VND");
         Image image = new Image(getClass().getResourceAsStream(product.getSrcImg()));
         imgProduct.setImage(image);
     }

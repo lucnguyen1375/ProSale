@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProSale.controller.ProfileTabController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProSale.controller.ProfileTabController">
    <children>
       <HBox layoutX="139.0" layoutY="121.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -28,15 +18,15 @@
                      </image></ImageView>
                   <Button fx:id="btnHoSo" mnemonicParsing="false" onAction="#btnHosoOnAction" prefHeight="100.0" prefWidth="250.0" text="Hồ sơ">
                      <font>
-                        <Font name="Cambria" size="12.0" />
+                        <Font name="Cambria" size="22.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="btnDonHang" mnemonicParsing="false" onAction="#btnDonHangOnAction" prefHeight="100.0" prefWidth="250.0" text="Đơn hàng">
+                  <Button fx:id="btnDonHang" mnemonicParsing="false" onAction="#btnDonHangOnAction" prefHeight="100.0" prefWidth="250.0" text="Lịch sử mua hàng">
                      <font>
-                        <Font name="Cambria" size="12.0" />
+                        <Font name="Cambria" size="22.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="15.0" />
@@ -167,20 +157,23 @@
                         </Button>
                      </children>
                   </VBox>
-                  <AnchorPane fx:id="paneDonHang" layoutX="-33.0" prefHeight="720.0" prefWidth="1057.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="paneDonHang" layoutX="-33.0" prefHeight="720.0" prefWidth="1057.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <VBox layoutX="365.0" prefHeight="723.0" prefWidth="592.0" AnchorPane.rightAnchor="373.0">
+                        <VBox layoutX="365.0" prefHeight="723.0" prefWidth="738.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
                            <children>
                               <Label text="Đơn hàng của bạn">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TreeTableView prefHeight="688.0" prefWidth="541.0">
+                              <TreeTableView prefHeight="688.0" prefWidth="638.0">
                                 <columns>
                                   <TreeTableColumn prefWidth="75.0" text="C1" />
                                   <TreeTableColumn prefWidth="75.0" text="C2" />
                                 </columns>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
                               </TreeTableView>
                            </children>
                         </VBox>

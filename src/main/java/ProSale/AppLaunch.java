@@ -11,14 +11,12 @@ import java.util.List;
 
 public class AppLaunch extends Application {
     public static AppServer server;
-    List<User> users;
     public static void main(String[] args) {launch(args);}
 
     @Override
     public void start(Stage stage){
         server = new AppServer();
         try{
-            //FXMLLoader fxmlLoader = new FXMLLoader(AppLaunch.class.getResource("FXML/LoginTab.fxml"));
             Parent root = FXMLLoader.load(getClass().getResource("FXML/LoginTab.fxml"));
             Scene scene = new Scene(root);
             stage.setTitle("ProSale");

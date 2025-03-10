@@ -51,7 +51,7 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="706.0">
                            <children>
-                               <Button fx:id="btnGioHang" maxWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="profile-button" stylesheets="@../css/MainView.css">
+                               <Button fx:id="btnDonHang" maxWidth="50.0" mnemonicParsing="false" onAction="#changeToDonHang" prefHeight="50.0" prefWidth="50.0" styleClass="profile-button" stylesheets="@../css/MainView.css">
                                    <graphic>
                                        <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                                            <image>

@@ -1,11 +1,13 @@
 package ProSale.model.person;
 
-import ProSale.model.UserOrder;
-
 import java.io.Serializable;
+import java.util.List;
+
+import ProSale.model.order.*;
 
 public class UserWithOrder extends Person implements Serializable {
-    private UserOrder order;
+    private List<Order> orderList;
+    private Order gioHang;
 
     public UserWithOrder(){};
 
@@ -25,7 +27,12 @@ public class UserWithOrder extends Person implements Serializable {
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", order=" + order +
+                ", orderList=" + orderList +
+                ", gioHang=" + gioHang +
                 '}';
     }
+    public List<Order> getOrderList() { return orderList; }
+    public void setOrderList(List<Order> orderList) { this.orderList = orderList; }
+    public Order getGioHang() { return gioHang; }
+    public void setGioHang(Order gioHang) { this.gioHang = gioHang; }
 }
