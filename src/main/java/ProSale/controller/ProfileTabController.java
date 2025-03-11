@@ -1,6 +1,7 @@
 package ProSale.controller;
 
 import ProSale.AppLaunch;
+import ProSale.model.person.Person;
 import ProSale.model.person.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,21 +32,21 @@ public class ProfileTabController implements Initializable {
     @FXML
     private Label labelName, labelID, labelEmail, labelPhone, labelGender, labelAddress;
 
-    private User userUsing;
+    private Person personUsing;
 
-    private void setUserUsing(){
-        userUsing = AppLaunch.server.getUserUsing();
-        labelID.setText(String.valueOf(userUsing.getId()));
-        labelName.setText(userUsing.getName());
-        labelEmail.setText(userUsing.getEmail());
-        labelPhone.setText(userUsing.getPhone());
-        labelGender.setText(userUsing.getGender());
-        labelAddress.setText(userUsing.getAddress());
+    private void setPersonUsing(){
+        personUsing = AppLaunch.server.getPersonUsing();
+        labelID.setText(String.valueOf(personUsing.getId()));
+        labelName.setText(personUsing.getName());
+        labelEmail.setText(personUsing.getEmail());
+        labelPhone.setText(personUsing.getPhone());
+        labelGender.setText(personUsing.getGender());
+        labelAddress.setText(personUsing.getAddress());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setUserUsing();
+        setPersonUsing();
         paneHoSo.setVisible(true);
         paneDonHang.setVisible(false);
     }

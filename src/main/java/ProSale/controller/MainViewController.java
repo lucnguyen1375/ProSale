@@ -123,14 +123,17 @@ public class MainViewController implements Initializable {
                 System.out.println(product);
 
                 try {
-                    Stage stage = (Stage)paneProduct.getScene().getWindow();
+                    Stage stage = new Stage();
+                    Stage thisStage = (Stage)paneProduct.getScene().getWindow();
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/ProductDetail.fxml"));
                     Parent parent = loader.load();
                     Scene scene = new Scene(parent);
                     ProductDetailTabController productDetailTabController = loader.getController();
                     productDetailTabController.setProduct(product);
+                    productDetailTabController.setMainViewStage(thisStage);
                     stage.setScene(scene);
                     stage.show();
+                    thisStage.hide();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -144,6 +147,12 @@ public class MainViewController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setProductViewFirst(){
+        paneProduct.setVisible(true);
+        paneLienHe.setVisible(false);
+        paneHome.setVisible(false);
     }
 
     public void btnALlProductsOnAction(ActionEvent event) {

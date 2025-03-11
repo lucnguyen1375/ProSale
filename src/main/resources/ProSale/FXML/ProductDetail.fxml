@@ -117,7 +117,7 @@
                         <Separator prefWidth="200.0" />
                         <AnchorPane maxHeight="100.0" maxWidth="500.0" minHeight="75.0" minWidth="500.0" prefHeight="100.0" prefWidth="100.0">
                            <children>
-                              <AnchorPane fx:id="paneAdmin" maxHeight="100.0" maxWidth="500.0" minHeight="75.0" minWidth="500.0" prefHeight="85.0" prefWidth="500.0">
+                              <AnchorPane fx:id="paneAdmin" maxHeight="100.0" maxWidth="500.0" minHeight="75.0" minWidth="500.0" prefHeight="85.0" prefWidth="500.0" visible="false">
                                  <children>
                                     <VBox prefHeight="86.0" prefWidth="500.0">
                                        <children>
@@ -146,7 +146,34 @@
                                     </VBox>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="paneUser" maxHeight="100.0" maxWidth="500.0" minHeight="75.0" minWidth="500.0" prefHeight="85.0" prefWidth="500.0" visible="false" />
+                              <AnchorPane fx:id="paneUser" maxHeight="100.0" maxWidth="500.0" minHeight="75.0" minWidth="500.0" prefHeight="85.0" prefWidth="500.0">
+                                 <children>
+                                    <VBox prefHeight="86.0" prefWidth="500.0">
+                                       <children>
+                                          <HBox prefHeight="67.0" prefWidth="500.0">
+                                             <children>
+                                                <Label prefHeight="27.0" prefWidth="120.0" text="Thêm sản phẩm" />
+                                                <Button fx:id="btnDecrease1" mnemonicParsing="false" onAction="#btnDecrease1OnAction" prefHeight="25.0" prefWidth="25.0" text="-" />
+                                                <TextField fx:id="tfQuantity1" prefHeight="26.0" prefWidth="54.0" text="0">
+                                                   <HBox.margin>
+                                                      <Insets left="2.0" right="2.0" />
+                                                   </HBox.margin>
+                                                </TextField>
+                                                <Button fx:id="btnIncrease1" mnemonicParsing="false" onAction="#btnIncrease1OnAction" prefHeight="25.0" prefWidth="25.0" text="+" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Button fx:id="btnAddToGioHang" mnemonicParsing="false" onAction="#btnAddToGioHangOnAction" prefHeight="38.0" prefWidth="160.0" text="Thêm vào giỏ hàng" />
+                                                <Button fx:id="btnBuy" mnemonicParsing="false" prefHeight="37.0" prefWidth="118.0" text="Mua hàng" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children></AnchorPane>
                            </children>
                         </AnchorPane>
                         <Button fx:id="btnBack" mnemonicParsing="false" onAction="#btnBackOnAction" text="Trở về">

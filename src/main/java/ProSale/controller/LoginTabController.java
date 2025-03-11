@@ -1,7 +1,9 @@
 package ProSale.controller;
 
 import ProSale.AppLaunch;
+import ProSale.manager.PersonManager;
 import ProSale.manager.UserManager;
+import ProSale.model.person.Person;
 import ProSale.model.person.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +24,7 @@ public class LoginTabController implements Initializable {
     protected Scene scene;
     protected Parent root;
     protected UserManager userManager = new UserManager();
+    protected PersonManager personManager = new PersonManager();
     @FXML
     protected Button btnLogin, btnSignUp;
     @FXML
@@ -42,10 +45,10 @@ public class LoginTabController implements Initializable {
     }
 
     public void changeToMainViewTab(ActionEvent event) throws IOException {
-        if (userManager.checkIfAccountRight(tfUsername.getText().trim(), pfPassword.getText().trim())) {
-            for(User user : AppLaunch.server.getUserList()){
-                if (user.getUsername().equals(tfUsername.getText().trim()) && user.getPassword().equals(pfPassword.getText().trim())) {
-                    AppLaunch.server.setUserUsing(user);
+        if (personManager.checkIfAccountRight(tfUsername.getText().trim(), pfPassword.getText().trim())) {
+            for(Person person : AppLaunch.server.getPersonList()){
+                if (person.getUsername().equals(tfUsername.getText().trim()) && person.getPassword().equals(pfPassword.getText().trim())) {
+                    AppLaunch.server.setPersonUsing(person);
                     break;
                 }
             }

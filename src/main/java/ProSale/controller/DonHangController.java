@@ -1,6 +1,9 @@
 package ProSale.controller;
 
 import ProSale.AppLaunch;
+import ProSale.model.order.GioHang;
+import ProSale.model.order.OrderItem;
+import ProSale.model.person.User;
 import ProSale.model.product.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,14 +45,16 @@ public class DonHangController implements Initializable {
     @FXML
     private VBox vboxGioHang;
 
-    public void setVboxGioHang(Product product) throws Exception{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(DonHangController.class.getResource("/ProSale/FXML/GioHangItem.fxml"));
-        AnchorPane pane = loader.load();
-        GioHangItemController controller = loader.getController();
-        controller.setData(product);
-        controller.initData(vboxGioHang, pane);
-        vboxGioHang.getChildren().add(pane);
+    public void setVboxGioHang(GioHang gioHang) throws Exception{
+        for(OrderItem orderItem : gioHang.getOrderItemsList()){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(DonHangController.class.getResource("/ProSale/FXML/GioHangItem.fxml"));
+            AnchorPane pane = loader.load();
+            GioHangItemController controller = loader.getController();
+            controller.setOrderItem(orderItem);
+            controller.initData(vboxGioHang, pane);
+            vboxGioHang.getChildren().add(pane);
+        }
     }
 
     @Override
@@ -57,13 +62,8 @@ public class DonHangController implements Initializable {
         paneGioHang.setVisible(true);
         paneDonHang.setVisible(false);
 
-        try{
-           for(Product product: AppLaunch.server.getProductList())
-                setVboxGioHang(product);
-           for(Product product: AppLaunch.server.getProductList())
-                setVboxGioHang(product);
-           for(Product product: AppLaunch.server.getProductList())
-                setVboxGioHang(product);
+        try {
+            setVboxGioHang(((User)AppLaunch.server.getPersonUsing()).getGioHang());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

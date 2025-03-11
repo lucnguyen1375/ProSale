@@ -1,5 +1,12 @@
 package ProSale.controller;
 
+import ProSale.AppLaunch;
+import ProSale.manager.IOSystem;
+import ProSale.manager.ProductManager;
+import ProSale.model.order.Order;
+import ProSale.model.order.OrderItem;
+import ProSale.model.person.Admin;
+import ProSale.model.person.User;
 import ProSale.model.product.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,7 +30,9 @@ import java.util.ResourceBundle;
 
 public class ProductDetailTabController implements Initializable {
 
-    private Stage mainViewStage;
+    private Stage previousStage;
+    @FXML
+    private Button btnBack;
     @FXML
     private Label labelDescription;
     @FXML
@@ -45,14 +55,32 @@ public class ProductDetailTabController implements Initializable {
     @FXML
     private Button btnIncrease, btnDecrease;
     @FXML
+    private TextField tfQuantity1;
+    @FXML
+    private Button btnIncrease1, btnDecrease1;
+    @FXML
     private Button btnEdit, btnAdd;
+    @FXML
+    private AnchorPane paneAdmin, paneUser;
+    @FXML
+    private Button btnAddToGioHang, btnBuy;
     private ProductManager productManager;
     Image image;
     private Product product;
     DecimalFormat df = new DecimalFormat("#,###");
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (AppLaunch.server.getPersonUsing() instanceof Admin) {
+            paneAdmin.setVisible(true);
+            paneUser.setVisible(false);
+            System.out.println("Admin");
+        }
+        else {
+            paneAdmin.setVisible(false);
+            paneUser.setVisible(true);
+        }
         productManager = new ProductManager();
         tfQuantity.setTextFormatter(new javafx.scene.control.TextFormatter<String>(change -> {
             String newText = change.getControlNewText();
@@ -89,6 +117,7 @@ public class ProductDetailTabController implements Initializable {
     public void btnAddOnAction(ActionEvent event) throws IOException {
         productManager.addProductQuantity(product, Integer.parseInt(tfQuantity.getText()));
         setProduct(product);
+        tfQuantity.setText("0");
     }
 
     public void btnBackOnAction(ActionEvent event) throws IOException {
@@ -96,6 +125,51 @@ public class ProductDetailTabController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/MainView.fxml"));
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
-        stage.setScene(scene);
+        MainViewController controller = loader.getController();
+        controller.setProductViewFirst();
+        previousStage.setScene(scene);
+        previousStage.show();
+        stage.close();
+        try {
+            IOSystem.saveProductData();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void setMainViewStage(Stage stage) {
+        this.previousStage = stage;
+    }
+
+
+    @FXML
+    public void btnIncrease1OnAction(ActionEvent event) {
+        tfQuantity1.setText(String.valueOf(Integer.parseInt(tfQuantity1.getText()) + 1));
+    }
+    @FXML
+    public void btnDecrease1OnAction(ActionEvent event) {
+        tfQuantity1.setText(String.valueOf(Integer.parseInt(tfQuantity1.getText()) - 1));
+    }
+    public void btnAddToGioHangOnAction(ActionEvent event) throws IOException {
+        if (Integer.parseInt(tfQuantity1.getText()) == 0) return;
+        for(OrderItem orderItem : ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList())
+        {
+            if (product.getName().equals(orderItem.getProduct().getName())) {
+                orderItem.setQuantity(orderItem.getQuantity() + Integer.parseInt(tfQuantity1.getText()));
+                try {
+                    IOSystem.savePersonData();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                System.out.println("Trung");
+                return;
+            }
+        }
+        ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList().add(new OrderItem(product, Integer.parseInt(tfQuantity1.getText())));
+        try {
+            IOSystem.savePersonData();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

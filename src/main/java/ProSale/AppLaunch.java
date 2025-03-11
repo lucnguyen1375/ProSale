@@ -22,6 +22,7 @@ public class AppLaunch extends Application {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        System.out.println(server.getPersonList());
         try{
             Parent root = FXMLLoader.load(getClass().getResource("FXML/LoginTab.fxml"));
             Scene scene = new Scene(root);

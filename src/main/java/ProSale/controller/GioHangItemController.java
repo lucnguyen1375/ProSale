@@ -1,5 +1,10 @@
 package ProSale.controller;
 
+import ProSale.AppLaunch;
+import ProSale.manager.IOSystem;
+import ProSale.model.order.GioHang;
+import ProSale.model.order.OrderItem;
+import ProSale.model.person.User;
 import ProSale.model.product.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,23 +58,35 @@ public class GioHangItemController {
         this.pane = pane;
     }
     private Product product;
-    public void setData(Product product) {
-        this.product = product;
+    private GioHang gioHang;
+    private OrderItem orderItem;
+    public void setGioHang(GioHang gioHang) {
+        this.gioHang = gioHang;
+    }
+    public void setOrderItem(OrderItem orderItem) {
+        this.orderItem = orderItem;
+        product = orderItem.getProduct();
         Image image = new Image(getClass().getResourceAsStream(product.getSrcImg()));
         imageView.setImage(image);
         labelName.setText(product.getName());
         labelPrice.setText(new DecimalFormat("#,###").format(product.getPrice()) + " VND");
-        labelQuantity.setText(String.valueOf(product.getQuantity()));
-        labelTotalPrice.setText(new DecimalFormat("#,###").format(product.getPrice() * product.getQuantity()) + " VND");
+        labelQuantity.setText(String.valueOf(orderItem.getQuantity()));
+        labelTotalPrice.setText(new DecimalFormat("#,###").format(product.getPrice() * orderItem.getQuantity()) + " VND");
     }
 
     public void delete(ActionEvent actionEvent) throws IOException {
-//        parentVBox.getChildren().remove(pane);
-//        System.out.println("Đã xóa " + product.getName());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/MainView.fxml"));
-        Parent parent = loader.load();
-        Scene scene = new Scene(parent);
-        stage.setScene(scene);
+        parentVBox.getChildren().remove(pane);
+        ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList().remove(orderItem);
+        try {
+            IOSystem.savePersonData();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("Đã xóa " + product.getName());
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/MainView.fxml"));
+//        Parent parent = loader.load();
+//        Scene scene = new Scene(parent);
+//        stage.setScene(scene);
     }
 
     public void setStage(Stage stage) {}

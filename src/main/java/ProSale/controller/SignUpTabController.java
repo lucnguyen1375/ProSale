@@ -1,7 +1,9 @@
 package ProSale.controller;
 
 import ProSale.manager.IOSystem;
+import ProSale.manager.PersonManager;
 import ProSale.manager.UserManager;
+import ProSale.model.person.Person;
 import ProSale.model.person.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +25,7 @@ public class SignUpTabController{
     Alert alert;
     ObjectOutputStream oos;
     UserManager userManager = new UserManager();
+    PersonManager personManager = new PersonManager();
     @FXML
     private Button btnCancel, btnSignUp;
 
@@ -39,7 +42,7 @@ public class SignUpTabController{
         // Điền đủ thông tin
         if (!tfName.getText().trim().isEmpty() && !pfPassword.getText().trim().isEmpty() && !pfConfirmPassword.getText().trim().isEmpty() && !tfUsername.getText().trim().isEmpty()) {
             // Kiểm tra tài khoản tồn tại chưa
-            if (userManager.checkIfUsernameExists(tfUsername.getText())) {
+            if (personManager.checkIfUsernameExists(tfUsername.getText())) {
                 alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Lỗi");
                 alert.setHeaderText(null);
@@ -47,8 +50,8 @@ public class SignUpTabController{
             }
             // Điền đúng mật khẩu
             else if (pfPassword.getText().trim().equals(pfConfirmPassword.getText().trim())) {
-                User newUser = new User(tfUsername.getText().trim(), pfPassword.getText().trim(), tfName.getText().trim(), tfGender.getText().trim(), tfAddress.getText().trim(), tfPhone.getText().trim(), tfEmail.getText().trim());
-                userManager.saveUser(newUser);
+                User user = new User(tfUsername.getText().trim(), pfPassword.getText().trim(), tfName.getText().trim(), tfGender.getText().trim(), tfAddress.getText().trim(), tfPhone.getText().trim(), tfEmail.getText().trim());
+                personManager.savePerson(user);
                 alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setContentText("Đăng ký tài khoản thành công");
                 try {
