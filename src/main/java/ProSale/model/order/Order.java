@@ -13,11 +13,13 @@ public class Order implements Serializable {
     private String orderDate;
     private String orderStatus;
     private int customerID;
-
+//    private int orderPhone;
+//    private int customerAddress;
     public Order() {
         orderItemsList = new ArrayList<OrderItem>();
         orderID = AppLaunch.server.getIdManager().getCURRENT_ORDER_ID();
         orderStatus = "Chờ xác nhận";
+        customerID = AppLaunch.server.getPersonUsing().getId();
     }
 
     public void setCustomerID(int customerID) {

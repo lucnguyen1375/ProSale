@@ -17,6 +17,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -114,147 +115,6 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox fx:id="paneProduct" layoutX="7.0" prefHeight="607.0" prefWidth="724.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <VBox prefHeight="602.0" prefWidth="219.0">
-                           <children>
-                              <VBox prefHeight="601.0" prefWidth="220.0">
-                                 <children>
-                                    <Label prefHeight="37.0" prefWidth="219.0" text="Danh mục">
-                                       <VBox.margin>
-                                          <Insets left="15.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <Separator prefWidth="200.0">
-                                       <opaqueInsets>
-                                          <Insets left="15.0" right="15.0" />
-                                       </opaqueInsets>
-                                       <VBox.margin>
-                                          <Insets left="10.0" right="15.0" />
-                                       </VBox.margin>
-                                    </Separator>
-                                    <Button fx:id="btnAllProducts" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="60.0" mnemonicParsing="false" onAction="#btnALlProductsOnAction" prefHeight="50.0" prefWidth="220.0" styleClass="menu-button" stylesheets="@../css/MainView.css" text="Tất cả sản phẩm">
-                                       <font>
-                                          <Font name="Cambria" size="16.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets left="10.0" />
-                                       </VBox.margin>
-                                    </Button>
-                                    <Button fx:id="btnBanPhan" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnBanPhanOnAction" prefHeight="50.0" prefWidth="220.0" styleClass="menu-button" stylesheets="@../css/MainView.css" text="Bàn phấn">
-                                       <VBox.margin>
-                                          <Insets left="10.0" top="10.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font name="Cambria" size="16.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="btnGuong" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnGuongOnAction" prefHeight="50.0" prefWidth="220.0" styleClass="menu-button" stylesheets="@../css/MainView.css" text="Gương">
-                                       <VBox.margin>
-                                          <Insets left="10.0" top="10.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font name="Cambria" size="16.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="btnGhe" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnGheOnAction" prefHeight="50.0" prefWidth="220.0" styleClass="menu-button" stylesheets="@../css/MainView.css" text="Ghế">
-                                       <VBox.margin>
-                                          <Insets left="10.0" top="10.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font name="Cambria" size="16.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="btnTuGiay" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnTuGiayOnAction" prefHeight="50.0" prefWidth="220.0" styleClass="menu-button" stylesheets="@../css/MainView.css" text="Tủ giày">
-                                       <VBox.margin>
-                                          <Insets left="10.0" top="10.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font name="Cambria" size="16.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="btnTuDauGiuong" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnTuDauGiuongOnAction" prefHeight="50.0" prefWidth="220.0" styleClass="menu-button" stylesheets="@../css/MainView.css" text="Tủ đầu giường">
-                                       <VBox.margin>
-                                          <Insets left="10.0" top="10.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font name="Cambria" size="16.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets left="10.0" />
-                                 </VBox.margin>
-                              </VBox>
-                           </children>
-                        </VBox>
-                        <Separator orientation="VERTICAL" prefHeight="200.0" />
-                        <VBox prefHeight="602.0" prefWidth="1053.0">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="1053.0">
-                                 <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="63.0" prefWidth="111.0" text="Sắp xếp theo">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font></Label>
-                                    <Button fx:id="btnPhoBien" mnemonicParsing="false" text="Phổ biến">
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin></Button>
-                                    <Button fx:id="btnMoiNhat" mnemonicParsing="false" text="Mới nhất">
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin></Button>
-                                    <Button fx:id="btnBanChay" mnemonicParsing="false" text="Bán chạy">
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin></Button>
-                                    <ComboBox fx:id="comboGia" editable="true" prefWidth="150.0" promptText="Giá">
-                                       <items>
-                                          <FXCollections fx:factory="observableArrayList">
-                                             <String fx:value="Từ thấp tới cao" />
-                                             <String fx:value="Từ cao tới thấp" />
-                                          </FXCollections>
-                                       </items>
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </ComboBox>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="1053.0">
-                                 <children>
-                                    <Label alignment="CENTER" prefHeight="42.0" prefWidth="98.0" text="Phân loại" />
-                                    <ComboBox fx:id="comboBoxChatLieu" prefWidth="150.0" promptText="Chất liệu" />
-                                    <ComboBox fx:id="comboBoxKichThuoc" prefWidth="150.0" promptText="Kích thước" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="532.0" prefWidth="1053.0">
-                                 <children>
-                                    <ScrollPane fx:id="scrollPane" prefHeight="532.0" prefWidth="1013.0" vbarPolicy="ALWAYS">
-                                       <content>
-                                          <GridPane fx:id="gridProduct">
-                                             <rowConstraints>
-                                                <RowConstraints />
-                                             </rowConstraints>
-                                             <columnConstraints>
-                                                <ColumnConstraints />
-                                             </columnConstraints>
-                                             <padding>
-                                                <Insets left="10.0" />
-                                             </padding>
-                                          </GridPane>
-                                       </content>
-                                    </ScrollPane>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
                   <AnchorPane fx:id="paneHome" prefHeight="200.0" prefWidth="200.0" visible="false">
                      <children>
                         <ImageView fitHeight="626.0" fitWidth="1190.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.9217529296875" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="0.0">
@@ -265,6 +125,163 @@
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="paneLienHe" prefHeight="601.0" prefWidth="1280.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <StackPane alignment="BOTTOM_RIGHT" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <HBox fx:id="paneProduct" prefHeight="607.0" prefWidth="724.0">
+                           <children>
+                              <VBox prefHeight="602.0" prefWidth="219.0">
+                                 <children>
+                                    <VBox prefHeight="601.0" prefWidth="220.0">
+                                       <children>
+                                          <Label prefHeight="37.0" prefWidth="219.0" text="Danh mục">
+                                             <VBox.margin>
+                                                <Insets left="15.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Separator prefWidth="200.0">
+                                             <opaqueInsets>
+                                                <Insets left="15.0" right="15.0" />
+                                             </opaqueInsets>
+                                             <VBox.margin>
+                                                <Insets left="10.0" right="15.0" />
+                                             </VBox.margin>
+                                          </Separator>
+                                          <Button fx:id="btnAllProducts" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="60.0" mnemonicParsing="false" onAction="#btnALlProductsOnAction" prefHeight="50.0" prefWidth="220.0" styleClass="menu-button" stylesheets="@../css/MainView.css" text="Tất cả sản phẩm">
+                                             <font>
+                                                <Font name="Cambria" size="16.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets left="10.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                          <Button fx:id="btnBanPhan" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnBanPhanOnAction" prefHeight="50.0" prefWidth="220.0" styleClass="menu-button" stylesheets="@../css/MainView.css" text="Bàn phấn">
+                                             <VBox.margin>
+                                                <Insets left="10.0" top="10.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Cambria" size="16.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="btnGuong" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnGuongOnAction" prefHeight="50.0" prefWidth="220.0" styleClass="menu-button" stylesheets="@../css/MainView.css" text="Gương">
+                                             <VBox.margin>
+                                                <Insets left="10.0" top="10.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Cambria" size="16.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="btnGhe" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnGheOnAction" prefHeight="50.0" prefWidth="220.0" styleClass="menu-button" stylesheets="@../css/MainView.css" text="Ghế">
+                                             <VBox.margin>
+                                                <Insets left="10.0" top="10.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Cambria" size="16.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="btnTuGiay" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnTuGiayOnAction" prefHeight="50.0" prefWidth="220.0" styleClass="menu-button" stylesheets="@../css/MainView.css" text="Tủ giày">
+                                             <VBox.margin>
+                                                <Insets left="10.0" top="10.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Cambria" size="16.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="btnTuDauGiuong" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnTuDauGiuongOnAction" prefHeight="50.0" prefWidth="220.0" styleClass="menu-button" stylesheets="@../css/MainView.css" text="Tủ đầu giường">
+                                             <VBox.margin>
+                                                <Insets left="10.0" top="10.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Cambria" size="16.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                              <VBox prefHeight="602.0" prefWidth="1053.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="1053.0">
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="63.0" prefWidth="111.0" text="Sắp xếp theo">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="btnPhoBien" mnemonicParsing="false" text="Phổ biến">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button fx:id="btnMoiNhat" mnemonicParsing="false" text="Mới nhất">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button fx:id="btnBanChay" mnemonicParsing="false" text="Bán chạy">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <ComboBox fx:id="comboGia" editable="true" prefWidth="150.0" promptText="Giá">
+                                             <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                   <String fx:value="Từ thấp tới cao" />
+                                                   <String fx:value="Từ cao tới thấp" />
+                                                </FXCollections>
+                                             </items>
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </ComboBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="1053.0">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="42.0" prefWidth="98.0" text="Phân loại" />
+                                          <ComboBox fx:id="comboBoxChatLieu" prefWidth="150.0" promptText="Chất liệu" />
+                                          <ComboBox fx:id="comboBoxKichThuoc" prefWidth="150.0" promptText="Kích thước" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="532.0" prefWidth="1053.0">
+                                       <children>
+                                          <ScrollPane fx:id="scrollPane" prefHeight="532.0" prefWidth="1013.0" vbarPolicy="ALWAYS">
+                                             <content>
+                                                <GridPane fx:id="gridProduct">
+                                                   <rowConstraints>
+                                                      <RowConstraints />
+                                                   </rowConstraints>
+                                                   <columnConstraints>
+                                                      <ColumnConstraints />
+                                                   </columnConstraints>
+                                                   <padding>
+                                                      <Insets left="10.0" />
+                                                   </padding>
+                                                </GridPane>
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="profile-button" stylesheets="@../css/MainView.css" text="+">
+                           <StackPane.margin>
+                              <Insets bottom="20.0" right="40.0" />
+                           </StackPane.margin>
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </StackPane>
                </children>
             </AnchorPane>
          </center>

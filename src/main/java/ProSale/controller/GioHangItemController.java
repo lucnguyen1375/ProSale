@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.List;
 
 public class GioHangItemController {
 
@@ -52,17 +53,21 @@ public class GioHangItemController {
     private VBox parentVBox;  // Tham chiếu đến VBox cha
     private AnchorPane pane;     // Tham chiếu đến chính hàng này
 
+    private List<OrderItem> list;
+    private Integer tienHang;
+    private Label labelTienHang;
+
     // Hàm này được gọi từ MainApp để khởi tạo các tham chiếu
-    public void initData(VBox parentVBox, AnchorPane pane) {
+    public void initData(VBox parentVBox, AnchorPane pane, List<OrderItem> list, Label labelTienHang) {
         this.parentVBox = parentVBox;
         this.pane = pane;
+        this.list = list;
+        this.labelTienHang = labelTienHang;
     }
     private Product product;
     private GioHang gioHang;
     private OrderItem orderItem;
-    public void setGioHang(GioHang gioHang) {
-        this.gioHang = gioHang;
-    }
+
     public void setOrderItem(OrderItem orderItem) {
         this.orderItem = orderItem;
         product = orderItem.getProduct();
@@ -74,8 +79,35 @@ public class GioHangItemController {
         labelTotalPrice.setText(new DecimalFormat("#,###").format(product.getPrice() * orderItem.getQuantity()) + " VND");
     }
 
+    public void setCheckBox() {
+        if (checkBox.isSelected()) {
+            list.add(orderItem);
+        }
+        else{
+            list.remove(orderItem);
+        }
+        int total = 0;
+        for(OrderItem orderItem : list){
+            total += orderItem.getProduct().getPrice() * orderItem.getQuantity();
+        }
+        labelTienHang.setText(new DecimalFormat("#,###").format(total) + " VND");
+    }
+
     public void delete(ActionEvent actionEvent) throws IOException {
         parentVBox.getChildren().remove(pane);
+        for (OrderItem oi : list) {
+            if (oi.getProduct().getName().equals(orderItem.getProduct().getName())) {
+                list.remove(oi);
+                break;
+            }
+        }
+        int total = 0;
+        for(OrderItem orderItem : list){
+            total += orderItem.getProduct().getPrice() * orderItem.getQuantity();
+        }
+        labelTienHang.setText(new DecimalFormat("#,###").format(total) + " VND");
+
+
         ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList().remove(orderItem);
         try {
             IOSystem.savePersonData();

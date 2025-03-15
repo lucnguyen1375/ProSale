@@ -113,9 +113,31 @@
                               </ScrollPane>
                            </children>
                         </VBox>
+                        <HBox alignment="CENTER_LEFT" maxWidth="980.0" prefHeight="100.0" prefWidth="980.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <Label prefHeight="27.0" prefWidth="185.0" text="Tổng tiền hàng">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelTienHang" prefHeight="27.0" prefWidth="301.0" text="Tiền">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btnBuy" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#btnBuyOnAction" text="Đặt hàng">
+                                 <HBox.margin>
+                                    <Insets left="250.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="paneDonHang" prefHeight="200.0" prefWidth="200.0" visible="false" />
+                  <AnchorPane fx:id="paneDonHang" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </children>

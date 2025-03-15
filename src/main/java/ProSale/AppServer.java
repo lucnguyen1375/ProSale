@@ -1,6 +1,7 @@
 package ProSale;
 
 import ProSale.manager.IOSystem;
+import ProSale.model.order.Order;
 import ProSale.model.person.Person;
 import ProSale.model.person.User;
 import ProSale.model.product.Product;
@@ -13,7 +14,7 @@ public class AppServer {
     private List<User> userList;
     private User userUsing;
     private Person personUsing;
-
+    private List<Order> orderList;
     public Person getPersonUsing() {
         return personUsing;
     }

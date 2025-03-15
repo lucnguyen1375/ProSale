@@ -3,7 +3,6 @@ package ProSale.controller;
 import ProSale.AppLaunch;
 import ProSale.manager.IOSystem;
 import ProSale.manager.ProductManager;
-import ProSale.model.order.Order;
 import ProSale.model.order.OrderItem;
 import ProSale.model.person.Admin;
 import ProSale.model.person.User;
@@ -15,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -26,6 +26,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProductDetailTabController implements Initializable {
@@ -151,7 +153,14 @@ public class ProductDetailTabController implements Initializable {
         tfQuantity1.setText(String.valueOf(Integer.parseInt(tfQuantity1.getText()) - 1));
     }
     public void btnAddToGioHangOnAction(ActionEvent event) throws IOException {
-        if (Integer.parseInt(tfQuantity1.getText()) == 0) return;
+        if (Integer.parseInt(tfQuantity1.getText()) == 0)
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText(null);
+            alert.setContentText("Vui lòng nhập số lượng sản phẩm");
+            alert.showAndWait();
+        }
         for(OrderItem orderItem : ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList())
         {
             if (product.getName().equals(orderItem.getProduct().getName())) {
@@ -171,5 +180,32 @@ public class ProductDetailTabController implements Initializable {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void btnBuyOnAction(ActionEvent event) throws IOException {
+        if (Integer.parseInt(tfQuantity1.getText()) == 0)
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText(null);
+            alert.setContentText("Vui lòng nhập số lượng sản phẩm");
+            alert.showAndWait();
+            return;
+        }
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/MuaHang.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        MuaHangController controller = loader.getController();
+        List<OrderItem> list = new ArrayList<OrderItem>();
+        OrderItem orderItem = new OrderItem(product, Integer.parseInt(tfQuantity1.getText()));
+        list.add(orderItem);
+        try {
+            controller.setPreScene(((Node)event.getSource()).getScene());
+            controller.setData(list);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        stage.setScene(scene);
     }
 }

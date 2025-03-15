@@ -13,7 +13,7 @@ public class Product implements Serializable {
     protected String size;
     protected String description;
     protected int quantity;
-
+//    protected int saleQuantity;
     public Product() {}
 
     public Product(String name, int price, String type, String material, String size, String description, int quantity) {
@@ -24,6 +24,7 @@ public class Product implements Serializable {
         this.size = size;
         this.description = description;
         this.quantity = quantity;
+//        this.saleQuantity = 0;
     }
 
     public void setName(String name) {
@@ -53,6 +54,14 @@ public class Product implements Serializable {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+//    public int getSaleQuantity() {
+//        return saleQuantity;
+//    }
+//
+//    public void setSaleQuantity(int saleQuantity) {
+//        this.saleQuantity = saleQuantity;
+//    }
 
     public void setDescription(String description) {
         this.description = description;
@@ -88,6 +97,20 @@ public class Product implements Serializable {
 
     public String getSrcImg() {
         return srcImg;
+    }
+
+//    public void incrementSaleQuantity(int n) {
+//        this.saleQuantity += n;
+//    }
+//    public void decrementSaleQuantity(int n) {
+//        this.saleQuantity -= n;
+//    }
+
+    public void incrementQuantity(int n) {
+        this.quantity += n;
+    }
+    public void decrementQuantity(int n) {
+        this.quantity -= n;
     }
 
     @Override

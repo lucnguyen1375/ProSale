@@ -168,7 +168,7 @@
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
                                                 <Button fx:id="btnAddToGioHang" mnemonicParsing="false" onAction="#btnAddToGioHangOnAction" prefHeight="38.0" prefWidth="160.0" text="Thêm vào giỏ hàng" />
-                                                <Button fx:id="btnBuy" mnemonicParsing="false" prefHeight="37.0" prefWidth="118.0" text="Mua hàng" />
+                                                <Button fx:id="btnBuy" mnemonicParsing="false" onAction="#btnBuyOnAction" prefHeight="37.0" prefWidth="118.0" text="Mua hàng" />
                                              </children>
                                           </HBox>
                                        </children>
