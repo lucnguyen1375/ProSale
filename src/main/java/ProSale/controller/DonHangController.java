@@ -2,6 +2,7 @@ package ProSale.controller;
 
 import ProSale.AppLaunch;
 import ProSale.model.order.GioHang;
+import ProSale.model.order.Order;
 import ProSale.model.order.OrderItem;
 import ProSale.model.person.User;
 import ProSale.model.product.Product;
@@ -48,13 +49,12 @@ public class DonHangController implements Initializable {
     private AnchorPane paneNoiDung;
 
     @FXML
-    private VBox vboxGioHang;
+    private VBox vboxGioHang, vboxDonHang;
 
     @FXML
     private Label labelTienHang;
     @FXML
     private Button btnBuy;
-
 
     Integer tienHang;
     private List<OrderItem> list = new ArrayList<>();
@@ -71,17 +71,32 @@ public class DonHangController implements Initializable {
         }
     }
 
+    public void setVboxDonHang(List<Order> listOrder) throws Exception{
+        for(Order order : listOrder){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(DonHangController.class.getResource("/ProSale/FXML/DonHangItem.fxml"));
+            AnchorPane pane = loader.load();
+            DonHangItemController controller = loader.getController();
+            controller.setVboxItem(order);
+            vboxDonHang.getChildren().add(pane);
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         paneGioHang.setVisible(true);
         paneDonHang.setVisible(false);
         tienHang = 0;
         labelTienHang.setText("0");
+        list = new ArrayList<>();
         try {
             setVboxGioHang(((User)AppLaunch.server.getPersonUsing()).getGioHang());
+            //setVboxDonHang(((User)AppLaunch.server.getPersonUsing()).getOrderList());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+
     }
 
     public void changeToMainView(ActionEvent event) throws IOException {
@@ -116,4 +131,13 @@ public class DonHangController implements Initializable {
         stage.setScene(scene);
     }
 
+    public void btnGioHangOnAction(ActionEvent event) throws IOException {
+        paneGioHang.setVisible(true);
+        paneDonHang.setVisible(false);
+    }
+
+    public void btnDonHangOnAction(ActionEvent event) throws IOException {
+        paneDonHang.setVisible(true);
+        paneGioHang.setVisible(false);
+    }
 }

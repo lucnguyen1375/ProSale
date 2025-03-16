@@ -1,6 +1,7 @@
 package ProSale.controller;
 
 import ProSale.AppLaunch;
+import ProSale.model.person.Admin;
 import ProSale.model.product.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,10 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -45,7 +43,7 @@ public class MainViewController implements Initializable {
     @FXML
     private AnchorPane paneHome, paneLienHe;
     @FXML
-    private HBox paneProduct;
+    private StackPane paneProduct;
     @FXML
     private ComboBox<String> comboBoxGia, comboBoxChatLieu, comboBoxKichThuoc;
     @FXML
@@ -59,6 +57,9 @@ public class MainViewController implements Initializable {
 
     @FXML
     private Stage stage;
+
+    @FXML
+    private Button btnAdd, btnGioHang;
 
     public void changeToHome(ActionEvent event) {
         paneHome.setVisible(true);
@@ -117,6 +118,12 @@ public class MainViewController implements Initializable {
         paneHome.setVisible(true);
         paneProduct.setVisible(false);
         paneLienHe.setVisible(false);
+        if (AppLaunch.server.getPersonUsing() instanceof Admin){
+            btnAdd.setVisible(true);
+            btnGioHang.setVisible(false);
+        }else {
+            btnAdd.setVisible(false);
+        }
         myListener = new MyListener() {
             @Override
             public void onClickListener(Product product) {
@@ -230,6 +237,14 @@ public class MainViewController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void btnAddOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/AddProduct.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
     }
 
     public void setStage(Stage stage) {

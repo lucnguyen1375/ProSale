@@ -1,7 +1,11 @@
 package ProSale.controller;
 
 import ProSale.AppLaunch;
+import ProSale.manager.IOSystem;
+import ProSale.model.order.Order;
 import ProSale.model.order.OrderItem;
+import ProSale.model.person.User;
+import ProSale.model.product.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -79,7 +83,7 @@ public class MuaHangController implements Initializable {
         stage.show();
     }
 
-    public void btnBuyOnAction(ActionEvent actionEvent) {
+    public void btnBuyOnAction(ActionEvent actionEvent) throws Exception {
         if (tfUserName.getText().equals("") || tfUserAddress.getText().equals("") || tfUserPhone.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -88,6 +92,41 @@ public class MuaHangController implements Initializable {
             alert.showAndWait();
             return;
         }
+        else{
+            for(OrderItem orderItem : list) {
+                if (orderItem.getProduct().getQuantity() < orderItem.getQuantity()) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("ProSale");
+                    alert.setHeaderText("Ôi không!");
+                    alert.setContentText("Sản phẩm " + orderItem.getProduct().getName()+ " không còn đủ số lượng");
+                    alert.showAndWait();
+                    return;
+                }
+            }
+            for(OrderItem orderItem : list) {
+                Product product = orderItem.getProduct();
+                product.setQuantity(product.getQuantity() - orderItem.getQuantity());
+            }
+            Order order = new Order(list);
+            ((User)AppLaunch.server.getPersonUsing()).getOrderList().add(order);
 
+            try {
+                IOSystem.savePersonData();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("ProSale");
+            alert.setHeaderText("Xác nhận");
+            alert.setContentText("Đã đặt hàng thành công");
+            alert.showAndWait();
+            for(Order order1 : ((User)AppLaunch.server.getPersonUsing()).getOrderList()){
+                for(OrderItem oi : order1.getOrderItemsList()){
+                    System.out.println(oi.getProduct().getName() + "      " + oi.getQuantity());
+                }
+                System.out.println("-----------------");
+            }
+            System.out.println("*********************");
+        }
     }
 }

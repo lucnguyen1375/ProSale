@@ -3,10 +3,12 @@ package ProSale.controller;
 import ProSale.AppLaunch;
 import ProSale.manager.IOSystem;
 import ProSale.manager.ProductManager;
+import ProSale.model.order.Order;
 import ProSale.model.order.OrderItem;
 import ProSale.model.person.Admin;
 import ProSale.model.person.User;
 import ProSale.model.product.Product;
+import ProSale.utilz.FormatterFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,10 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -84,13 +83,16 @@ public class ProductDetailTabController implements Initializable {
             paneUser.setVisible(true);
         }
         productManager = new ProductManager();
-        tfQuantity.setTextFormatter(new javafx.scene.control.TextFormatter<String>(change -> {
-            String newText = change.getControlNewText();
-            if (newText.matches("\\d*")) { // Chỉ cho phép ký tự là số
-                return change;  // Cho phép thay đổi nếu là số
-            }
-            return null; // Từ chối nếu không phải là số
-        }));
+//        tfQuantity.setTextFormatter(new javafx.scene.control.TextFormatter<String>(change -> {
+//            String newText = change.getControlNewText();
+//            if (newText.matches("\\d*")) { // Chỉ cho phép ký tự là số
+//                return change;  // Cho phép thay đổi nếu là số
+//            }
+//            return null; // Từ chối nếu không phải là số
+//        }));
+        tfQuantity.setTextFormatter(FormatterFactory.createIntegerFormatter());
+        tfQuantity1.setTextFormatter(FormatterFactory.createIntegerFormatter());
+
     }
     public void setProduct(Product product) {
         this.product = product;
@@ -163,18 +165,31 @@ public class ProductDetailTabController implements Initializable {
         }
         for(OrderItem orderItem : ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList())
         {
-            if (product.getName().equals(orderItem.getProduct().getName())) {
+//            if (product.getName().equals(orderItem.getProduct().getName())) {
+            if (product == orderItem.getProduct()) {
                 orderItem.setQuantity(orderItem.getQuantity() + Integer.parseInt(tfQuantity1.getText()));
                 try {
                     IOSystem.savePersonData();
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
-                System.out.println("Trung");
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("ProSale");
+                alert.setHeaderText("Xác nhận");
+                alert.setContentText("Đã thêm vào giỏ hàng thành công.");
+                alert.showAndWait();
+//                System.out.println("Trung");
                 return;
             }
         }
-        ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList().add(new OrderItem(product, Integer.parseInt(tfQuantity1.getText())));
+        OrderItem orderItem = new OrderItem(product, Integer.parseInt(tfQuantity1.getText()));
+        ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList().add(orderItem);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("ProSale");
+        alert.setHeaderText("Xác nhận");
+        alert.setContentText("Đã thêm vào giỏ hàng thành công.");
+        alert.showAndWait();
+
         try {
             IOSystem.savePersonData();
         } catch (Exception e) {

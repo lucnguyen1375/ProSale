@@ -10,16 +10,20 @@ import java.util.List;
 public class Order implements Serializable {
     private List<OrderItem> orderItemsList;
     private int orderID;
-    private String orderDate;
+    private Date orderDate;
     private String orderStatus;
     private int customerID;
 //    private int orderPhone;
 //    private int customerAddress;
-    public Order() {
-        orderItemsList = new ArrayList<OrderItem>();
+    public Order(List<OrderItem> orderItemsList) {
+        this.orderItemsList = orderItemsList;
         orderID = AppLaunch.server.getIdManager().getCURRENT_ORDER_ID();
         orderStatus = "Chờ xác nhận";
         customerID = AppLaunch.server.getPersonUsing().getId();
+        orderDate = new Date();
+    }
+    public Order() {
+        orderItemsList = new ArrayList<OrderItem>();
     }
 
     public void setCustomerID(int customerID) {

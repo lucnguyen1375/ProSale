@@ -1,14 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ProSale.controller.AddProductController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProSale.controller.AddProductController">
+   <children>
+      <HBox layoutY="6.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="300.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="80.0" prefWidth="214.0" text="ProSale" textFill="#c35959">
+                     <font>
+                        <Font name="Cambria Bold" size="44.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imageProduct" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/proptitLogo.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Button fx:id="btnAddImage" mnemonicParsing="false" text="Chọn ảnh">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </VBox>
+            <AnchorPane prefHeight="720.0" prefWidth="802.0">
+               <children>
+                  <VBox layoutX="87.0" layoutY="48.8" prefHeight="629.0" prefWidth="630.0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="49.0">
+                     <children>
+                        <Label prefHeight="66.0" prefWidth="394.0" text="Tên sản phẩm mới">
+                           <font>
+                              <Font name="System Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfName" prefHeight="42.0" prefWidth="579.0" promptText="Tên sản phẩm">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Separator prefWidth="200.0" />
+                        <GridPane prefHeight="342.0" prefWidth="558.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.80006408691406" minWidth="10.0" prefWidth="88.80004119873047" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="427.2000076293945" minWidth="10.0" prefWidth="410.3999588012695" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label layoutX="10.0" layoutY="27.0" prefHeight="72.0" prefWidth="202.0" text="Giá" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="27.0" prefHeight="102.0" prefWidth="270.0" text="Mô tả" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="27.0" prefHeight="89.0" prefWidth="223.0" text="Chất liệu" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="27.0" prefHeight="69.0" prefWidth="176.0" text="Kích thước" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="72.0" prefWidth="202.0" text="Số lượng" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="tfPrice" prefHeight="30.0" prefWidth="355.0" promptText="Giá sản phẩm (VND)" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="tfSize" prefHeight="30.0" promptText="Kích thước sản phẩm" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="tfMaterial" prefHeight="30.0" promptText="Chất liệu sản phẩm" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="tfQuantity" prefHeight="30.0" promptText="Số lượng sản phẩm" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="tfDescription" prefHeight="30.0" promptText="Mô tả" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Label layoutX="10.0" layoutY="68.0" prefHeight="72.0" prefWidth="202.0" text="Loại sản phẩm">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Label>
+                               <ComboBox fx:id="comboBoxType" prefHeight="30.0" prefWidth="430.0" promptText="Chọn loại sản phẩm" GridPane.columnIndex="1">
+                                   <items>
+                                       <FXCollections fx:factory="observableArrayList">
+                                           <String fx:value="Bàn phấn" />
+                                           <String fx:value="Ghế" />
+                                           <String fx:value="Gương" />
+                                           <String fx:value="Tủ giày" />
+                                           <String fx:value="Tủ đầu giường" />
+                                       </FXCollections>
+                                   </items>
+                               </ComboBox>
+                           </children>
+                        </GridPane>
+                        <Separator prefWidth="200.0" />
+                        <AnchorPane maxHeight="100.0" maxWidth="582.0" minHeight="75.0" minWidth="394.0" prefHeight="100.0" prefWidth="582.0">
+                           <children>
+                              <AnchorPane fx:id="paneUser" maxHeight="100.0" maxWidth="580.0" minHeight="75.0" minWidth="500.0" prefHeight="86.0" prefWidth="580.0">
+                                 <children>
+                                    <Button fx:id="btnAddProduct" layoutX="364.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnAddProductOnAction" prefHeight="46.0" prefWidth="216.0" text="Thêm sản phẩm">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <Button fx:id="btnBack" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="26.0" prefWidth="74.0" text="Trở về">
+                           <VBox.margin>
+                              <Insets left="510.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>

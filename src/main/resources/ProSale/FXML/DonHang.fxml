@@ -15,14 +15,14 @@
    <children>
       <HBox layoutX="188.0" layoutY="156.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="720.0" prefWidth="300.0">
+            <VBox alignment="TOP_CENTER" minWidth="300.0" prefHeight="720.0" prefWidth="300.0">
                <children>
                   <Label alignment="CENTER" prefHeight="125.0" prefWidth="299.0" text="ProSale" textFill="#c35959">
                      <font>
                         <Font name="Cambria Bold" size="44.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnGioHang" mnemonicParsing="false" prefHeight="100.0" prefWidth="300.0" text="Giỏ hàng">
+                  <Button fx:id="btnGioHang" mnemonicParsing="false" onAction="#btnGioHangOnAction" prefHeight="100.0" prefWidth="300.0" text="Giỏ hàng">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -30,7 +30,7 @@
                         <Insets left="5.0" right="5.0" top="50.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="btnDonHang" mnemonicParsing="false" prefHeight="100.0" prefWidth="300.0" text="Đơn hàng">
+                  <Button fx:id="btnDonHang" mnemonicParsing="false" onAction="#btnDonHangOnAction" prefHeight="100.0" prefWidth="300.0" text="Đơn hàng">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -55,7 +55,7 @@
             </Separator>
             <AnchorPane fx:id="paneNoiDung" prefHeight="720.0" prefWidth="980.0">
                <children>
-                  <AnchorPane fx:id="paneGioHang" prefHeight="720.0" prefWidth="980.0">
+                  <AnchorPane fx:id="paneGioHang" prefHeight="720.0" prefWidth="980.0" visible="false">
                      <children>
                         <VBox prefHeight="78.0" prefWidth="980.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
@@ -137,7 +137,58 @@
                         </HBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="paneDonHang" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <AnchorPane fx:id="paneDonHang" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox layoutX="135.0" layoutY="-9.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="980.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="Tất cả" />
+                                    <Button layoutX="10.0" layoutY="16.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="Chờ vận chuyển">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button layoutX="160.0" layoutY="16.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="Đã vận chuyển">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button layoutX="311.0" layoutY="16.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="Chưa thanh toán">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button layoutX="461.0" layoutY="16.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="Đã thanh toán">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button layoutX="612.0" layoutY="16.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="Đã hoàn thành">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button layoutX="762.0" layoutY="16.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="Đã hủy">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="683.0" prefWidth="980.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="678.0" prefWidth="966.0">
+                                       <children>
+                                          <VBox fx:id="vboxDonHang" layoutX="102.0" layoutY="183.0" prefHeight="3.0" prefWidth="6.0" AnchorPane.bottomAnchor="670.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="955.0" AnchorPane.topAnchor="5.0" />
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
