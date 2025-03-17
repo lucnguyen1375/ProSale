@@ -18,6 +18,7 @@ public class AppLaunch extends Application {
     public void start(Stage stage) throws Exception {
         server = new AppServer();
         IOSystem.loadData(server);
+        server.setProductMap();
         System.out.println(server.getPersonList());
         try{
             Parent root = FXMLLoader.load(getClass().getResource("FXML/LoginTab.fxml"));

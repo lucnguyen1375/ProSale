@@ -20,8 +20,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
@@ -139,7 +137,7 @@ public class MainViewController implements Initializable {
                     Scene scene = new Scene(parent);
                     ProductDetailTabController productDetailTabController = loader.getController();
                     productDetailTabController.setProduct(product);
-                    productDetailTabController.setMainViewStage(thisStage);
+                    productDetailTabController.setPreviousStage(thisStage);
                     stage.setScene(scene);
                     stage.show();
                     thisStage.hide();

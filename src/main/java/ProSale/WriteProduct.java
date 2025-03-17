@@ -42,6 +42,7 @@ public class WriteProduct {
         FileOutputStream fos = new FileOutputStream("src/main/resources/ProSale/data/person.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(personList);
+//        oos.writeObject(list);
         oos.close();
         fos.close();
     }

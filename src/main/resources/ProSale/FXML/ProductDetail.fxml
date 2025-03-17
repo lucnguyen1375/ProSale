@@ -48,6 +48,12 @@
                               <Font name="System Bold" size="26.0" />
                            </font>
                         </Label>
+                        <HBox prefHeight="33.0" prefWidth="579.0">
+                           <children>
+                              <Label text="Mã sản phẩm: " />
+                              <Label fx:id="labelProductID" text="Label" />
+                           </children>
+                        </HBox>
                         <Separator prefWidth="200.0" />
                         <GridPane prefHeight="341.0" prefWidth="455.0">
                           <columnConstraints>

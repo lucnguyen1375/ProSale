@@ -3,7 +3,6 @@ package ProSale.controller;
 import ProSale.AppLaunch;
 import ProSale.manager.IOSystem;
 import ProSale.manager.ProductManager;
-import ProSale.model.order.Order;
 import ProSale.model.order.OrderItem;
 import ProSale.model.person.Admin;
 import ProSale.model.person.User;
@@ -35,20 +34,9 @@ public class ProductDetailTabController implements Initializable {
     @FXML
     private Button btnBack;
     @FXML
-    private Label labelDescription;
-    @FXML
-    private Label labelPrice;
-    @FXML
-    private Label labelMaterial;
+    private Label labelProductID, labelDescription, labelPrice,
+            labelMaterial, labelName, labelQuantity, labelSize;
 
-    @FXML
-    private Label labelName;
-
-    @FXML
-    private Label labelQuantity;
-
-    @FXML
-    private Label labelSize;
     @FXML
     private ImageView imageProduct;
     @FXML
@@ -94,11 +82,11 @@ public class ProductDetailTabController implements Initializable {
         tfQuantity1.setTextFormatter(FormatterFactory.createIntegerFormatter());
 
     }
+
     public void setProduct(Product product) {
         this.product = product;
         labelName.setText(product.getName());
-//        labelName.textProperty().bind(product.getName());
-        //labelDescription.textProperty().bind(product.getDescription());
+        labelProductID.setText(String.valueOf(product.getId()));
         labelDescription.setText(product.getDescription());
         labelMaterial.setText(product.getMaterial());
         labelQuantity.setText(String.valueOf(product.getQuantity()));
@@ -141,10 +129,9 @@ public class ProductDetailTabController implements Initializable {
         }
     }
 
-    public void setMainViewStage(Stage stage) {
+    public void setPreviousStage(Stage stage) {
         this.previousStage = stage;
     }
-
 
     @FXML
     public void btnIncrease1OnAction(ActionEvent event) {
@@ -154,6 +141,7 @@ public class ProductDetailTabController implements Initializable {
     public void btnDecrease1OnAction(ActionEvent event) {
         tfQuantity1.setText(String.valueOf(Integer.parseInt(tfQuantity1.getText()) - 1));
     }
+
     public void btnAddToGioHangOnAction(ActionEvent event) throws IOException {
         if (Integer.parseInt(tfQuantity1.getText()) == 0)
         {
@@ -163,27 +151,35 @@ public class ProductDetailTabController implements Initializable {
             alert.setContentText("Vui lòng nhập số lượng sản phẩm");
             alert.showAndWait();
         }
-        for(OrderItem orderItem : ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList())
-        {
-//            if (product.getName().equals(orderItem.getProduct().getName())) {
-            if (product == orderItem.getProduct()) {
+
+        Boolean productInGioHang = false;
+
+        for(OrderItem orderItem : ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList()) {
+            if (orderItem.getProductID() == product.getId()) {
                 orderItem.setQuantity(orderItem.getQuantity() + Integer.parseInt(tfQuantity1.getText()));
-                try {
-                    IOSystem.savePersonData();
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("ProSale");
-                alert.setHeaderText("Trùng khớp");
-                alert.setContentText("Đã thêm vào giỏ hàng thành công.");
-                alert.showAndWait();
-//                System.out.println("Trung");
-                return;
+                productInGioHang = true;
             }
         }
-        OrderItem orderItem = new OrderItem(product, Integer.parseInt(tfQuantity1.getText()));
-        ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList().add(orderItem);
+//            if (product.getName().equals(orderItem.getProduct().getName())) {
+//            if (product == orderItem.getProduct()) {
+//                orderItem.setQuantity(orderItem.getQuantity() + Integer.parseInt(tfQuantity1.getText()));
+//                try {
+//                    IOSystem.savePersonData();
+//                } catch (Exception e) {
+//                    throw new RuntimeException(e);
+//                }
+//                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//                alert.setTitle("ProSale");
+//                alert.setHeaderText("Trùng khớp");
+//                alert.setContentText("Đã thêm vào giỏ hàng thành công.");
+//                alert.showAndWait();
+//                return;
+//            }
+//        }
+        if (productInGioHang == false) {
+            OrderItem orderItem = new OrderItem(product.getId(), Integer.parseInt(tfQuantity1.getText()));
+            ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList().add(orderItem);
+        }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("ProSale");
         alert.setHeaderText("Xác nhận");
@@ -213,7 +209,7 @@ public class ProductDetailTabController implements Initializable {
         Scene scene = new Scene(parent);
         MuaHangController controller = loader.getController();
         List<OrderItem> list = new ArrayList<OrderItem>();
-        OrderItem orderItem = new OrderItem(product, Integer.parseInt(tfQuantity1.getText()));
+        OrderItem orderItem = new OrderItem(product.getId(), Integer.parseInt(tfQuantity1.getText()));
         list.add(orderItem);
         try {
             controller.setPreScene(((Node)event.getSource()).getScene());

@@ -13,8 +13,9 @@ public class Order implements Serializable {
     private Date orderDate;
     private String orderStatus;
     private int customerID;
-//    private int orderPhone;
-//    private int customerAddress;
+    private int orderPhone;
+    private int orderAddress;
+
     public Order(List<OrderItem> orderItemsList) throws Exception{
         this.orderItemsList = orderItemsList;
         orderID = AppLaunch.server.getIdManager().getCURRENT_ORDER_ID();
@@ -32,7 +33,11 @@ public class Order implements Serializable {
 
     @Override
     public String toString() {
-        return "Order [orderItemsList=" + orderItemsList + "]";
+        return "Order [orderItemsList=" + orderItemsList + "]"
+                + ", orderID=" + orderID + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus
+                + ", customerID=" + customerID + "]"
+                + ", orderPhone=" + orderPhone + "]"
+                + ", customerAddress=" + orderAddress + "]";
     }
 
     public List<OrderItem> getOrderItemsList() { return orderItemsList; }

@@ -7,14 +7,19 @@ import ProSale.model.person.User;
 import ProSale.model.product.Product;
 import ProSale.manager.IDManager;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AppServer {
     private IDManager idManager;
-    private List<User> userList;
-    private User userUsing;
     private Person personUsing;
     private List<Order> orderList;
+    private List<Product> productList;
+    private List<Person> personList;
+    private Map<Integer, Product> productMap;
+
+
     public Person getPersonUsing() {
         return personUsing;
     }
@@ -23,18 +28,20 @@ public class AppServer {
         this.personUsing = personUsing;
     }
 
-    private List<Product> productList;
-    private List<Person> personList;
 
-    public AppServer() {
+    public AppServer() {}
+
+    public void setProductMap() {
+        this.productMap = new HashMap<Integer, Product>();
+        for (Product product : this.productList) {
+            this.productMap.put(product.getId(), product);
+        }
     }
 
-    public void setUserUsing(User userUsing) {
-        this.userUsing = userUsing;
+    public Map<Integer, Product> getProductMap() {
+        return productMap;
     }
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
-    }
+
     public void setIdManager(IDManager idManager) {
         this.idManager = idManager;
     }
@@ -42,11 +49,8 @@ public class AppServer {
         this.productList = productList;
     }
     public void setPersonList(List<Person> personList) {this.personList = personList;}
-    public List<User> getUserList() {
-        return userList;
-    }
+
     public List<Product> getProductList() {return productList;}
-    public User getUserUsing() {return userUsing;}
     public IDManager getIdManager() {
         return idManager;
     }

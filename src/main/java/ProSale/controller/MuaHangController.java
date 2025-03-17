@@ -94,19 +94,21 @@ public class MuaHangController implements Initializable {
         }
         else{
             for(OrderItem orderItem : list) {
-                if (orderItem.getProduct().getQuantity() < orderItem.getQuantity()) {
+                Product product = AppLaunch.server.getProductMap().get(orderItem.getProductID());
+                if (product.getQuantity() < orderItem.getQuantity()) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("ProSale");
                     alert.setHeaderText("Ôi không!");
-                    alert.setContentText("Sản phẩm " + orderItem.getProduct().getName()+ " không còn đủ số lượng");
+                    alert.setContentText("Sản phẩm " + product.getName()+ " không còn đủ số lượng");
                     alert.showAndWait();
                     return;
                 }
             }
             for(OrderItem orderItem : list) {
-//                Product product = orderItem.getProduct();
-                orderItem.getProduct().setQuantity(orderItem.getProduct().getQuantity() - orderItem.getQuantity());
+                Product product = AppLaunch.server.getProductMap().get(orderItem.getProductID());
+                product.setQuantity(product.getQuantity() - orderItem.getQuantity());
             }
+
             Order order = new Order(list);
             ((User)AppLaunch.server.getPersonUsing()).getOrderList().add(order);
 
@@ -122,7 +124,8 @@ public class MuaHangController implements Initializable {
             alert.showAndWait();
             for(Order order1 : ((User)AppLaunch.server.getPersonUsing()).getOrderList()){
                 for(OrderItem oi : order1.getOrderItemsList()){
-                    System.out.println(oi.getProduct().getName() + "      " + oi.getQuantity());
+                    Product product = AppLaunch.server.getProductMap().get(oi.getProductID());
+                    System.out.println(product.getName() + "      " + oi.getQuantity());
                 }
                 System.out.println("-----------------");
             }

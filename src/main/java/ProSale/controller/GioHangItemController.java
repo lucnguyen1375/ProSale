@@ -8,16 +8,12 @@ import ProSale.model.person.User;
 import ProSale.model.product.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -70,7 +66,7 @@ public class GioHangItemController {
 
     public void setOrderItem(OrderItem orderItem) {
         this.orderItem = orderItem;
-        product = orderItem.getProduct();
+        this.product = AppLaunch.server.getProductMap().get(orderItem.getProductID());
         Image image = new Image(getClass().getResourceAsStream(product.getSrcImg()));
         imageView.setImage(image);
         labelName.setText(product.getName());
@@ -88,7 +84,7 @@ public class GioHangItemController {
         }
         int total = 0;
         for(OrderItem orderItem : list){
-            total += orderItem.getProduct().getPrice() * orderItem.getQuantity();
+            total += product.getPrice() * orderItem.getQuantity();
         }
         labelTienHang.setText(new DecimalFormat("#,###").format(total) + " VND");
     }
@@ -96,14 +92,14 @@ public class GioHangItemController {
     public void delete(ActionEvent actionEvent) throws IOException {
         parentVBox.getChildren().remove(pane);
         for (OrderItem oi : list) {
-            if (oi.getProduct().getName().equals(orderItem.getProduct().getName())) {
+            if (oi.getProductID() == product.getId()) {
                 list.remove(oi);
                 break;
             }
         }
         int total = 0;
         for(OrderItem orderItem : list){
-            total += orderItem.getProduct().getPrice() * orderItem.getQuantity();
+            total += product.getPrice() * orderItem.getQuantity();
         }
         labelTienHang.setText(new DecimalFormat("#,###").format(total) + " VND");
 

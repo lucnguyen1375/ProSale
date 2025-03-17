@@ -2,13 +2,13 @@ package ProSale.model.order;
 
 import java.io.Serializable;
 
-public class OrderItem implements Serializable {
+public class OrderItemDemo implements Serializable {
     private int productID;
     private int quantity;
 
-    public OrderItem(){}
+    public OrderItemDemo(){}
 
-    public OrderItem(int productID, int quantity) {
+    public OrderItemDemo(int productID, int quantity) {
         this.productID = productID;
         this.quantity = quantity;
     }
@@ -18,11 +18,11 @@ public class OrderItem implements Serializable {
         return "OrderItem{" + "productID=" + productID + ", quantity=" + quantity + '}';
     }
 
-    public int getProductID() {
+    public int getProduct() {
         return productID;
     }
 
-    public void setProductID(int productID) {
+    public void setProduct(int productID) {
         this.productID = productID;
     }
 
