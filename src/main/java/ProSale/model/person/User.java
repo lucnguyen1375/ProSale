@@ -16,7 +16,7 @@ public class User extends Person implements Serializable {
     public User(String name, String gender, String address, String phone, String email) {
         super(name, gender, address, phone, email);
     }
-    public User(String username, String password, String name, String gender, String address, String phone, String email) {
+    public User(String username, String password, String name, String gender, String address, String phone, String email) throws Exception{
         super(username, password, name, gender, address, phone, email);
         gioHang = new GioHang();
         orderList = new ArrayList<Order>();

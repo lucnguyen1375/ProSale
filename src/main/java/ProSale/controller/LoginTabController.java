@@ -2,9 +2,7 @@ package ProSale.controller;
 
 import ProSale.AppLaunch;
 import ProSale.manager.PersonManager;
-import ProSale.manager.UserManager;
 import ProSale.model.person.Person;
-import ProSale.model.person.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,15 +15,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class LoginTabController implements Initializable {
     protected Stage stage;
     protected Scene scene;
     protected Parent root;
-    protected UserManager userManager = new UserManager();
     protected PersonManager personManager = new PersonManager();
     @FXML
     protected Button btnLogin, btnSignUp;

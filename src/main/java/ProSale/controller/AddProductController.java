@@ -85,8 +85,13 @@ public class AddProductController {
             alert.showAndWait();
         }
         else{
-            Product product = new Product(tfName.getText(), Integer.parseInt(tfPrice.getText()),"",
-            tfMaterial.getText(), tfSize.getText(), tfDescription.getText(), Integer.parseInt(tfQuantity.getText()));
+            Product product = null;
+            try {
+                product = new Product(tfName.getText(), Integer.parseInt(tfPrice.getText()),"",
+                tfMaterial.getText(), tfSize.getText(), tfDescription.getText(), Integer.parseInt(tfQuantity.getText()));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
             product.setSrcImg(imageProduct.getImage().getUrl());
             System.out.println(product.getSrcImg());
 //            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/ProductDetail.fxml"));

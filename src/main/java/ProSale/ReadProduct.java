@@ -11,14 +11,15 @@ import java.util.List;
 
 public class ReadProduct {
     public static List<Product> list;
+    public static List<Person> list1;
     public static IDManager idManager;
     public static void main(String[] args) {
         list = new ArrayList<Product>();
         try {
-            FileInputStream fis = new FileInputStream("src/main/resources/ProSale/data/product.txt");
+            FileInputStream fis = new FileInputStream("src/main/resources/ProSale/data/person.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            list = (ArrayList<Product>) ois.readObject();
-            System.out.println(list);
+            list1 = (ArrayList<Person>) ois.readObject();
+            System.out.println(list1);
             ois.close();
             fis.close();
         } catch (FileNotFoundException e) {

@@ -39,9 +39,9 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </VBox>
-            <AnchorPane prefHeight="720.0" prefWidth="802.0">
+            <AnchorPane prefHeight="720.0" prefWidth="781.0">
                <children>
-                  <VBox layoutX="87.0" layoutY="72.0" prefHeight="577.0" prefWidth="629.0" AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="72.0">
+                  <VBox layoutX="138.0" layoutY="72.0" prefHeight="577.0" prefWidth="629.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="72.0">
                      <children>
                         <Label fx:id="labelName" prefHeight="73.0" prefWidth="394.0" text="Label">
                            <font>
@@ -167,8 +167,8 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                <Button fx:id="btnAddToGioHang" mnemonicParsing="false" onAction="#btnAddToGioHangOnAction" prefHeight="38.0" prefWidth="160.0" text="Thêm vào giỏ hàng" />
-                                                <Button fx:id="btnBuy" mnemonicParsing="false" onAction="#btnBuyOnAction" prefHeight="37.0" prefWidth="118.0" text="Mua hàng" />
+                                                <Button fx:id="btnAddToGioHang" mnemonicParsing="false" onAction="#btnAddToGioHangOnAction" prefHeight="40.0" prefWidth="160.0" text="Thêm vào giỏ hàng" />
+                                                <Button fx:id="btnBuy" mnemonicParsing="false" onAction="#btnBuyOnAction" prefHeight="40.0" prefWidth="118.0" text="Mua hàng" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -176,11 +176,15 @@
                                  </children></AnchorPane>
                            </children>
                         </AnchorPane>
-                        <Button fx:id="btnBack" mnemonicParsing="false" onAction="#btnBackOnAction" text="Trở về">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="82.0" prefWidth="498.0">
+                           <children>
+                              <Button fx:id="btnGioHang" mnemonicParsing="false" onAction="#btnGioHangOnAction" prefHeight="25.0" prefWidth="121.0" text="Đi đến giỏ hàng" />
+                              <Button fx:id="btnBack" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="25.0" prefWidth="78.0" text="Trở về" />
+                           </children>
                            <VBox.margin>
-                              <Insets left="400.0" />
+                              <Insets right="20.0" />
                            </VBox.margin>
-                        </Button>
+                        </HBox>
                      </children>
                      <padding>
                         <Insets left="50.0" />

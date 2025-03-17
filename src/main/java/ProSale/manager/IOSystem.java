@@ -23,13 +23,6 @@ public class IOSystem {
         oos.close();
         fos.close();
     }
-    public static void saveUserData() throws Exception {
-        fos = new FileOutputStream("src/main/resources/ProSale/data/user.txt");
-        oos = new ObjectOutputStream(fos);
-        oos.writeObject(AppLaunch.server.getUserList());
-        oos.close();
-        fos.close();
-    }
 
     public static void saveProductData() throws Exception {
         fos = new FileOutputStream("src/main/resources/ProSale/data/product.txt");
@@ -48,13 +41,13 @@ public class IOSystem {
     }
 
     public static void loadData(AppServer server) throws Exception {
-        fis = new FileInputStream("src/main/resources/ProSale/data/person.txt");
-        ois = new ObjectInputStream(fis);
-        server.setPersonList((ArrayList<Person>)ois.readObject());
-
         fis = new FileInputStream("src/main/resources/ProSale/data/product.txt");
         ois = new ObjectInputStream(fis);
         server.setProductList((ArrayList<Product>)ois.readObject());
+
+        fis = new FileInputStream("src/main/resources/ProSale/data/person.txt");
+        ois = new ObjectInputStream(fis);
+        server.setPersonList((ArrayList<Person>)ois.readObject());
 
         fis = new FileInputStream("src/main/resources/ProSale/data/id.txt");
         ois = new ObjectInputStream(fis);

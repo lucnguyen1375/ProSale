@@ -104,8 +104,8 @@ public class MuaHangController implements Initializable {
                 }
             }
             for(OrderItem orderItem : list) {
-                Product product = orderItem.getProduct();
-                product.setQuantity(product.getQuantity() - orderItem.getQuantity());
+//                Product product = orderItem.getProduct();
+                orderItem.getProduct().setQuantity(orderItem.getProduct().getQuantity() - orderItem.getQuantity());
             }
             Order order = new Order(list);
             ((User)AppLaunch.server.getPersonUsing()).getOrderList().add(order);

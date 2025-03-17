@@ -93,6 +93,8 @@ public class MainViewController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/DonHang.fxml"));
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
+        DonHangController controller = loader.getController();
+        controller.setPreScene(((Node)event.getSource()).getScene());
         stage.setScene(scene);
     }
 

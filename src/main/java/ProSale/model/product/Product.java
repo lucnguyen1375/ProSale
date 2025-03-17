@@ -1,10 +1,12 @@
 package ProSale.model.product;
 
+import ProSale.AppLaunch;
 import javafx.beans.value.ObservableValue;
 
 import java.io.Serializable;
 
 public class Product implements Serializable {
+    protected int id;
     protected String name;
     protected String srcImg;
     protected int price;
@@ -13,10 +15,13 @@ public class Product implements Serializable {
     protected String size;
     protected String description;
     protected int quantity;
-//    protected int saleQuantity;
+    protected int saleQuantity;
+
+
     public Product() {}
 
-    public Product(String name, int price, String type, String material, String size, String description, int quantity) {
+    public Product(String name, int price, String type, String material, String size, String description, int quantity) throws Exception{
+//        this.id = AppLaunch.server.getIdManager().getCURRENT_PRODUCT_ID();
         this.name = name;
         this.price = price;
         this.type = type;
@@ -24,7 +29,7 @@ public class Product implements Serializable {
         this.size = size;
         this.description = description;
         this.quantity = quantity;
-//        this.saleQuantity = 0;
+        this.saleQuantity = 0;
     }
 
     public void setName(String name) {
@@ -55,13 +60,21 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
-//    public int getSaleQuantity() {
-//        return saleQuantity;
-//    }
-//
-//    public void setSaleQuantity(int saleQuantity) {
-//        this.saleQuantity = saleQuantity;
-//    }
+    public int getSaleQuantity() {
+        return saleQuantity;
+    }
+
+    public void setSaleQuantity(int saleQuantity) {
+        this.saleQuantity = saleQuantity;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setDescription(String description) {
         this.description = description;
@@ -116,7 +129,8 @@ public class Product implements Serializable {
     @Override
     public String toString() {
         return "Product{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", srcImg='" + srcImg + '\'' +
                 ", price=" + price +
                 ", type='" + type + '\'' +
@@ -124,6 +138,7 @@ public class Product implements Serializable {
                 ", size='" + size + '\'' +
                 ", description='" + description + '\'' +
                 ", quantity=" + quantity +
+                ", saleQuantity=" + saleQuantity +
                 '}';
     }
 }

@@ -2,8 +2,6 @@ package ProSale.controller;
 
 import ProSale.manager.IOSystem;
 import ProSale.manager.PersonManager;
-import ProSale.manager.UserManager;
-import ProSale.model.person.Person;
 import ProSale.model.person.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,7 +22,6 @@ import java.io.ObjectOutputStream;
 public class SignUpTabController{
     Alert alert;
     ObjectOutputStream oos;
-    UserManager userManager = new UserManager();
     PersonManager personManager = new PersonManager();
     @FXML
     private Button btnCancel, btnSignUp;
@@ -38,11 +35,17 @@ public class SignUpTabController{
     @FXML
     private TextField tfUsername;
 
-    public void signUp(ActionEvent event) throws IOException{
+    public void signUp(ActionEvent event) throws Exception{
         // Điền đủ thông tin
         if (!tfName.getText().trim().isEmpty() && !pfPassword.getText().trim().isEmpty() && !pfConfirmPassword.getText().trim().isEmpty() && !tfUsername.getText().trim().isEmpty()) {
+            if (tfUsername.getText().trim().contains(" ") || pfPassword.getText().trim().contains(" ")) {
+                alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("ProSale");
+                alert.setHeaderText("Lỗi");
+                alert.setContentText("Tài khoản và mật khẩu không chưa dấu cách.");
+            }
             // Kiểm tra tài khoản tồn tại chưa
-            if (personManager.checkIfUsernameExists(tfUsername.getText())) {
+            else if (personManager.checkIfUsernameExists(tfUsername.getText())) {
                 alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Lỗi");
                 alert.setHeaderText(null);

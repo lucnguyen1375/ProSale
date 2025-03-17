@@ -64,7 +64,7 @@ public class ProductDetailTabController implements Initializable {
     @FXML
     private AnchorPane paneAdmin, paneUser;
     @FXML
-    private Button btnAddToGioHang, btnBuy;
+    private Button btnAddToGioHang, btnBuy, btnGioHang;
     private ProductManager productManager;
     Image image;
     private Product product;
@@ -175,7 +175,7 @@ public class ProductDetailTabController implements Initializable {
                 }
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("ProSale");
-                alert.setHeaderText("Xác nhận");
+                alert.setHeaderText("Trùng khớp");
                 alert.setContentText("Đã thêm vào giỏ hàng thành công.");
                 alert.showAndWait();
 //                System.out.println("Trung");
@@ -221,6 +221,16 @@ public class ProductDetailTabController implements Initializable {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        stage.setScene(scene);
+    }
+
+    public void btnGioHangOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/DonHang.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        DonHangController controller = loader.getController();
+        controller.setPreScene(((Node)event.getSource()).getScene());
         stage.setScene(scene);
     }
 }

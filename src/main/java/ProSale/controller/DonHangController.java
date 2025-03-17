@@ -55,6 +55,8 @@ public class DonHangController implements Initializable {
     private Label labelTienHang;
     @FXML
     private Button btnBuy;
+    @FXML
+    private Scene preScene;
 
     Integer tienHang;
     private List<OrderItem> list = new ArrayList<>();
@@ -99,12 +101,10 @@ public class DonHangController implements Initializable {
 
     }
 
-    public void changeToMainView(ActionEvent event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/MainView.fxml"));
-        Parent parent = loader.load();
-        Scene scene = new Scene(parent);
-        stage.setScene(scene);
+    public void btnBackOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnTroVe.getScene().getWindow();
+        stage.setScene(preScene);
+        stage.show();
     }
 
     public void btnBuyOnAction(ActionEvent event) throws IOException {
@@ -139,5 +139,9 @@ public class DonHangController implements Initializable {
     public void btnDonHangOnAction(ActionEvent event) throws IOException {
         paneDonHang.setVisible(true);
         paneGioHang.setVisible(false);
+    }
+
+    public void setPreScene(Scene scene){
+        this.preScene = scene;
     }
 }
