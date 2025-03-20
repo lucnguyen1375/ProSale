@@ -145,12 +145,10 @@ public class MuaHangController implements Initializable {
             Order order = new Order(list);
             ((User)AppLaunch.server.getPersonUsing()).getOrderList().add(order.getOrderID());
             AppLaunch.server.getOrderMap().put(order.getOrderID(), order);
+            AppLaunch.server.getOrderList().add(order);
+            IOSystem.saveData();
 
-            try {
-                IOSystem.savePersonData();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("ProSale");
             alert.setHeaderText("Xác nhận");

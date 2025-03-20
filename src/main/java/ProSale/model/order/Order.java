@@ -81,11 +81,15 @@ public class Order implements Serializable {
 
     @Override
     public String toString() {
-        return "Order [orderItemsList=" + orderItemsList + "]"
-                + ", orderID=" + orderID + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus
-                + ", customerID=" + customerID + "]"
-                + ", orderPhone=" + orderPhone + "]"
-                + ", customerAddress=" + orderAddress + "]";
+        return "Order{" +
+                "orderItemsList=" + orderItemsList +
+                ", orderID=" + orderID +
+                ", orderDate=" + orderDate +
+                ", orderStatus='" + orderStatus + '\'' +
+                ", customerID=" + customerID +
+                ", orderPhone=" + orderPhone +
+                ", orderAddress=" + orderAddress +
+                '}';
     }
 
     public List<OrderItem> getOrderItemsList() { return orderItemsList; }

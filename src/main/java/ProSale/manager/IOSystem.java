@@ -41,6 +41,21 @@ public class IOSystem {
         fos.close();
     }
 
+    public static void saveOrderData() throws Exception {
+        fos = new FileOutputStream("src/main/resources/ProSale/data/order.txt");
+        oos = new ObjectOutputStream(fos);
+        oos.writeObject(AppLaunch.server.getOrderList());
+        oos.close();
+        fos.close();
+    }
+
+    public static void saveData() throws Exception {
+        savePersonData();
+        saveProductData();
+        saveIDData();
+        saveOrderData();
+    }
+
     public static void loadData(AppServer server) throws Exception {
         fis = new FileInputStream("src/main/resources/ProSale/data/product.txt");
         ois = new ObjectInputStream(fis);

@@ -21,7 +21,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelOrderStatus" alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="849.0" text="Trạng thái đơn hàng">
+                  <Label fx:id="labelOrderStatus" alignment="CENTER_RIGHT" prefHeight="42.0" text="Trạng thái đơn hàng">
                      <padding>
                         <Insets right="20.0" />
                      </padding>
@@ -31,7 +31,7 @@
                   </Label>
                </children>
             </HBox>
-            <VBox fx:id="vboxItem" prefHeight="2.0" prefWidth="950.0" />
+            <VBox fx:id="vboxItem" prefHeight="2.0" />
          </children>
       </VBox>
    </children>

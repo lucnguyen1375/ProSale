@@ -1,9 +1,7 @@
 package ProSale;
 
-import ProSale.manager.IOSystem;
 import ProSale.model.order.Order;
 import ProSale.model.person.Person;
-import ProSale.model.person.User;
 import ProSale.model.product.Product;
 import ProSale.manager.IDManager;
 

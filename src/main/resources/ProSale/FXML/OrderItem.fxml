@@ -17,7 +17,7 @@
                   <Image url="@../images/proptitLogo.png" />
                </image>
             </ImageView>
-            <VBox prefHeight="100.0" prefWidth="794.0">
+            <VBox prefHeight="100.0" prefWidth="716.0">
                <children>
                   <Label fx:id="labelName" text="Tên sản phẩm">
                      <VBox.margin>
@@ -41,8 +41,11 @@
             </VBox>
             <AnchorPane minWidth="100.0" prefHeight="100.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="labelPrice" layoutX="36.0" layoutY="42.0" text="Giá tiền" />
+                  <Label fx:id="labelPrice" layoutX="36.0" layoutY="42.0" prefHeight="17.0" text="Giá tiền" AnchorPane.rightAnchor="0.0" />
                </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
             </AnchorPane>
          </children>
       </HBox>

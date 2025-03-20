@@ -40,11 +40,11 @@ public class ProductDetailTabController implements Initializable {
     @FXML
     private ImageView imageProduct;
     @FXML
-    private TextField tfQuantity;
+    private TextField tfQuantityAdd;
     @FXML
     private Button btnIncrease, btnDecrease;
     @FXML
-    private TextField tfQuantity1;
+    private TextField tfQuantityBuy;
     @FXML
     private Button btnIncrease1, btnDecrease1;
     @FXML
@@ -71,15 +71,15 @@ public class ProductDetailTabController implements Initializable {
             paneUser.setVisible(true);
         }
         productManager = new ProductManager();
-//        tfQuantity.setTextFormatter(new javafx.scene.control.TextFormatter<String>(change -> {
+//        tfQuantityAdd.setTextFormatter(new javafx.scene.control.TextFormatter<String>(change -> {
 //            String newText = change.getControlNewText();
 //            if (newText.matches("\\d*")) { // Chỉ cho phép ký tự là số
 //                return change;  // Cho phép thay đổi nếu là số
 //            }
 //            return null; // Từ chối nếu không phải là số
 //        }));
-        tfQuantity.setTextFormatter(FormatterFactory.createIntegerFormatter());
-        tfQuantity1.setTextFormatter(FormatterFactory.createIntegerFormatter());
+        tfQuantityAdd.setTextFormatter(FormatterFactory.createIntegerFormatter());
+        tfQuantityBuy.setTextFormatter(FormatterFactory.createIntegerFormatter());
 
     }
 
@@ -98,18 +98,18 @@ public class ProductDetailTabController implements Initializable {
 
 
     @FXML
-    public void btnIncreaseOnAction(ActionEvent event) {
-        tfQuantity.setText(String.valueOf(Integer.parseInt(tfQuantity.getText()) + 1));
+    public void btnIncreaseAddOnAction(ActionEvent event) {
+        tfQuantityAdd.setText(String.valueOf(Integer.parseInt(tfQuantityAdd.getText()) + 1));
     }
     @FXML
-    public void btnDecreaseOnAction(ActionEvent event) {
-        tfQuantity.setText(String.valueOf(Integer.parseInt(tfQuantity.getText()) - 1));
+    public void btnDecreaseAddOnAction(ActionEvent event) {
+        tfQuantityAdd.setText(String.valueOf(Integer.parseInt(tfQuantityAdd.getText()) - 1));
     }
     @FXML
     public void btnAddOnAction(ActionEvent event) throws IOException {
-        productManager.addProductQuantity(product, Integer.parseInt(tfQuantity.getText()));
+        productManager.addProductQuantity(product, Integer.parseInt(tfQuantityAdd.getText()));
         setProduct(product);
-        tfQuantity.setText("0");
+        tfQuantityAdd.setText("0");
     }
 
     public void btnBackOnAction(ActionEvent event) throws IOException {
@@ -134,16 +134,16 @@ public class ProductDetailTabController implements Initializable {
     }
 
     @FXML
-    public void btnIncrease1OnAction(ActionEvent event) {
-        tfQuantity1.setText(String.valueOf(Integer.parseInt(tfQuantity1.getText()) + 1));
+    public void btnIncreaseBuyOnAction(ActionEvent event) {
+        tfQuantityBuy.setText(String.valueOf(Integer.parseInt(tfQuantityBuy.getText()) + 1));
     }
     @FXML
-    public void btnDecrease1OnAction(ActionEvent event) {
-        tfQuantity1.setText(String.valueOf(Integer.parseInt(tfQuantity1.getText()) - 1));
+    public void btnDecreaseBuyOnAction(ActionEvent event) {
+        tfQuantityBuy.setText(String.valueOf(Integer.parseInt(tfQuantityBuy.getText()) - 1));
     }
 
     public void btnAddToGioHangOnAction(ActionEvent event) throws Exception {
-        if (Integer.parseInt(tfQuantity1.getText()) == 0)
+        if (Integer.parseInt(tfQuantityBuy.getText()) == 0)
         {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
@@ -156,16 +156,16 @@ public class ProductDetailTabController implements Initializable {
 
         for(OrderItem orderItem : ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList()) {
             if (orderItem.getProductID() == product.getId()) {
-                orderItem.setQuantity(orderItem.getQuantity() + Integer.parseInt(tfQuantity1.getText()));
+                orderItem.setQuantity(orderItem.getQuantity() + Integer.parseInt(tfQuantityBuy.getText()));
                 productInGioHang = true;
             }
         }
 
         if (productInGioHang == false) {
-            OrderItem orderItem = new OrderItem(product.getId(), Integer.parseInt(tfQuantity1.getText()));
+            OrderItem orderItem = new OrderItem(product.getId(), Integer.parseInt(tfQuantityBuy.getText()));
             ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList().add(orderItem);
         }
-        tfQuantity1.setText("0");
+        tfQuantityBuy.setText("0");
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("ProSale");
         alert.setHeaderText("Xác nhận");
@@ -176,7 +176,7 @@ public class ProductDetailTabController implements Initializable {
     }
 
     public void btnBuyOnAction(ActionEvent event) throws Exception {
-        if (Integer.parseInt(tfQuantity1.getText()) == 0)
+        if (Integer.parseInt(tfQuantityBuy.getText()) == 0)
         {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
@@ -185,21 +185,22 @@ public class ProductDetailTabController implements Initializable {
             alert.showAndWait();
             return;
         }
-        tfQuantity1.setText("0");
+
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/MuaHang.fxml"));
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
         MuaHangController controller = loader.getController();
         List<OrderItem> list = new ArrayList<OrderItem>();
-        OrderItem orderItem = new OrderItem(product.getId(), Integer.parseInt(tfQuantity1.getText()));
+        OrderItem orderItem = new OrderItem(product.getId(), Integer.parseInt(tfQuantityBuy.getText()));
+        System.out.println(tfQuantityBuy.getText());
         list.add(orderItem);
-
         controller.setPreScene(((Node)event.getSource()).getScene());
         controller.setPrevScene("ProductDetail");
         controller.setData(list);
 
         stage.setScene(scene);
+        tfQuantityBuy.setText("0");
     }
 
     public void btnGioHangOnAction(ActionEvent event) throws IOException {

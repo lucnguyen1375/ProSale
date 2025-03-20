@@ -120,7 +120,7 @@ public class MainViewController implements Initializable {
         paneLienHe.setVisible(false);
         if (AppLaunch.server.getPersonUsing() instanceof Admin){
             btnAdd.setVisible(true);
-            btnGioHang.setVisible(false);
+            //btnGioHang.setVisible(false);
         }else {
             btnAdd.setVisible(false);
         }
@@ -162,6 +162,20 @@ public class MainViewController implements Initializable {
         paneHome.setVisible(false);
     }
 
+    public void changeToAdminTab(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/AdminTab.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+    }
+
+    public void btnGioHangOnAction(ActionEvent event) throws IOException {
+        if (AppLaunch.server.getPersonUsing() instanceof Admin){
+            changeToAdminTab(event);
+        }
+        else changeToDonHang(event);
+    }
     public void btnALlProductsOnAction(ActionEvent event) {
         column = 0; row = 0;
         gridProduct.getChildren().clear();
