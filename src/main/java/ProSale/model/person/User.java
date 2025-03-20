@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User extends Person implements Serializable {
-    private List<Order> orderList;
+    private List<Integer> orderList;
     private GioHang gioHang;
 
     public User(){};
@@ -19,14 +19,14 @@ public class User extends Person implements Serializable {
     public User(String username, String password, String name, String gender, String address, String phone, String email) throws Exception{
         super(username, password, name, gender, address, phone, email);
         gioHang = new GioHang();
-        orderList = new ArrayList<Order>();
+        orderList = new ArrayList<Integer>();
     }
 
-    public void setOrderList(List<Order> orderList) { this.orderList = orderList; }
+    public void setOrderList(List<Integer> orderList) { this.orderList = orderList; }
     public void setGioHang(GioHang gioHang) { this.gioHang = gioHang; }
 
     public GioHang getGioHang() { return gioHang;}
-    public List<Order> getOrderList() { return orderList; }
+    public List<Integer> getOrderList() { return orderList; }
 
     @Override
     public String toString() {

@@ -142,7 +142,7 @@ public class ProductDetailTabController implements Initializable {
         tfQuantity1.setText(String.valueOf(Integer.parseInt(tfQuantity1.getText()) - 1));
     }
 
-    public void btnAddToGioHangOnAction(ActionEvent event) throws IOException {
+    public void btnAddToGioHangOnAction(ActionEvent event) throws Exception {
         if (Integer.parseInt(tfQuantity1.getText()) == 0)
         {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -160,40 +160,22 @@ public class ProductDetailTabController implements Initializable {
                 productInGioHang = true;
             }
         }
-//            if (product.getName().equals(orderItem.getProduct().getName())) {
-//            if (product == orderItem.getProduct()) {
-//                orderItem.setQuantity(orderItem.getQuantity() + Integer.parseInt(tfQuantity1.getText()));
-//                try {
-//                    IOSystem.savePersonData();
-//                } catch (Exception e) {
-//                    throw new RuntimeException(e);
-//                }
-//                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//                alert.setTitle("ProSale");
-//                alert.setHeaderText("Trùng khớp");
-//                alert.setContentText("Đã thêm vào giỏ hàng thành công.");
-//                alert.showAndWait();
-//                return;
-//            }
-//        }
+
         if (productInGioHang == false) {
             OrderItem orderItem = new OrderItem(product.getId(), Integer.parseInt(tfQuantity1.getText()));
             ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList().add(orderItem);
         }
+        tfQuantity1.setText("0");
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("ProSale");
         alert.setHeaderText("Xác nhận");
         alert.setContentText("Đã thêm vào giỏ hàng thành công.");
         alert.showAndWait();
 
-        try {
-            IOSystem.savePersonData();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        IOSystem.savePersonData();
     }
 
-    public void btnBuyOnAction(ActionEvent event) throws IOException {
+    public void btnBuyOnAction(ActionEvent event) throws Exception {
         if (Integer.parseInt(tfQuantity1.getText()) == 0)
         {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -203,6 +185,7 @@ public class ProductDetailTabController implements Initializable {
             alert.showAndWait();
             return;
         }
+        tfQuantity1.setText("0");
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/MuaHang.fxml"));
         Parent parent = loader.load();
@@ -211,12 +194,11 @@ public class ProductDetailTabController implements Initializable {
         List<OrderItem> list = new ArrayList<OrderItem>();
         OrderItem orderItem = new OrderItem(product.getId(), Integer.parseInt(tfQuantity1.getText()));
         list.add(orderItem);
-        try {
-            controller.setPreScene(((Node)event.getSource()).getScene());
-            controller.setData(list);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
+        controller.setPreScene(((Node)event.getSource()).getScene());
+        controller.setPrevScene("ProductDetail");
+        controller.setData(list);
+
         stage.setScene(scene);
     }
 
@@ -228,5 +210,11 @@ public class ProductDetailTabController implements Initializable {
         DonHangController controller = loader.getController();
         controller.setPreScene(((Node)event.getSource()).getScene());
         stage.setScene(scene);
+    }
+
+    public void reload() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/ProductDetail.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
     }
 }

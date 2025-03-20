@@ -73,8 +73,9 @@ public class DonHangController implements Initializable {
         }
     }
 
-    public void setVboxDonHang(List<Order> listOrder) throws Exception{
-        for(Order order : listOrder){
+    public void setVboxDonHang(List<Integer> listOrder) throws Exception{
+        for(Integer integer : listOrder){
+            Order order = AppLaunch.server.getOrderMap().get(integer);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(DonHangController.class.getResource("/ProSale/FXML/DonHangItem.fxml"));
             AnchorPane pane = loader.load();
@@ -83,6 +84,8 @@ public class DonHangController implements Initializable {
             vboxDonHang.getChildren().add(pane);
         }
     }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -93,7 +96,7 @@ public class DonHangController implements Initializable {
         list = new ArrayList<>();
         try {
             setVboxGioHang(((User)AppLaunch.server.getPersonUsing()).getGioHang());
-            //setVboxDonHang(((User)AppLaunch.server.getPersonUsing()).getOrderList());
+            setVboxDonHang(((User)AppLaunch.server.getPersonUsing()).getOrderList());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -124,6 +127,7 @@ public class DonHangController implements Initializable {
         MuaHangController controller = loader.getController();
         try {
             controller.setPreScene(((Node)event.getSource()).getScene());
+            controller.setPrevScene("DonHang");
             controller.setData(list);
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -1,21 +1,38 @@
 package ProSale;
 
+import ProSale.manager.IOSystem;
+import ProSale.model.order.Order;
+import ProSale.model.order.OrderItem;
 import ProSale.model.product.BanPhan;
 import ProSale.model.product.Product;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Demo {
+public class Demo extends Application {
+    public static AppServer server;
+    public static void main(String[] args) {launch(args);}
 
-
-    public static void main(String[] args) throws Exception {
-        Map<Integer, Product> map = new HashMap<Integer, Product>();
-        BanPhan banphan = new BanPhan("Bàn phấn 80 1 tầng Xám", 1400000, "80 1 tầng", "Gỗ Hương Xám", "0.8 m", "Hàng đẹp, chất lượng", 12);
-        banphan.setSrcImg("/ProSale/images/product/banPhan/banPhan_80_1T_Xam.jpg");
-        banphan.setId(1);
-        map.put(banphan.getId(), banphan);
-        int i = 1;
-        System.out.println(map.get(i));
+    @Override
+    public void start(Stage stage) throws Exception {
+        server = new AppServer();
+        IOSystem.loadData(server);
+        server.setProductMap();
+        System.out.println(server.getPersonList());
+        Parent root = FXMLLoader.load(getClass().getResource("FXML/DonHangItem.fxml"));
+        OrderItem orderItem = new OrderItem(1,1);
+        OrderItem orderItem2 = new OrderItem(2,2);
+        Order order = new Order();
+        order.getOrderItemsList().add(orderItem);
+        order.getOrderItemsList().add(orderItem2);
+        Scene scene = new Scene(root);
+        stage.setTitle("ProSale");
+        stage.setScene(scene);
+        stage.show();
     }
 }

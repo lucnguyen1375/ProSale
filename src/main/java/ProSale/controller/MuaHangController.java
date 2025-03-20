@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -49,10 +50,16 @@ public class MuaHangController implements Initializable {
 
     @FXML
     private Scene preScene;
+
     List<OrderItem> list;
 
+    String prevScene;
     public void setPreScene(Scene preScene) {
         this.preScene = preScene;
+    }
+
+    public void setPrevScene(String prevScene) {
+        this.prevScene = prevScene;
     }
 
     public void setData(List<OrderItem> list) throws Exception {
@@ -77,12 +84,37 @@ public class MuaHangController implements Initializable {
         list = new ArrayList<OrderItem>();
     }
 
-    public void btnBackOnAction(ActionEvent actionEvent) {
+    public void btnBackOnAction(ActionEvent actionEvent) throws Exception {
         Stage stage = (Stage) btnBack.getScene().getWindow();
         stage.setScene(preScene);
         stage.show();
+
+//        Stage stage = (Stage) btnBack.getScene().getWindow();
+//        if (prevScene.equals("DonHang")){
+//            changeToDonHang();
+//        }
+//        else if (prevScene.equals("ProductDetail")){
+//            changeToProductDetail();
+//        }
     }
 
+    public void changeToDonHang() throws Exception {
+        Stage stage = (Stage) btnBack.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/MainView.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+    }
+
+    public void changeToProductDetail() throws Exception {
+        Stage stage = (Stage) btnBack.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/ProductDetail.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        ProductDetailTabController controller = loader.getController();
+        controller.setProduct(AppLaunch.server.getProductMap().get(list.get(0).getProductID()));
+        stage.setScene(scene);
+    }
     public void btnBuyOnAction(ActionEvent actionEvent) throws Exception {
         if (tfUserName.getText().equals("") || tfUserAddress.getText().equals("") || tfUserPhone.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -104,13 +136,15 @@ public class MuaHangController implements Initializable {
                     return;
                 }
             }
+
             for(OrderItem orderItem : list) {
                 Product product = AppLaunch.server.getProductMap().get(orderItem.getProductID());
                 product.setQuantity(product.getQuantity() - orderItem.getQuantity());
             }
 
             Order order = new Order(list);
-            ((User)AppLaunch.server.getPersonUsing()).getOrderList().add(order);
+            ((User)AppLaunch.server.getPersonUsing()).getOrderList().add(order.getOrderID());
+            AppLaunch.server.getOrderMap().put(order.getOrderID(), order);
 
             try {
                 IOSystem.savePersonData();
@@ -122,7 +156,8 @@ public class MuaHangController implements Initializable {
             alert.setHeaderText("Xác nhận");
             alert.setContentText("Đã đặt hàng thành công");
             alert.showAndWait();
-            for(Order order1 : ((User)AppLaunch.server.getPersonUsing()).getOrderList()){
+            for(Integer integer : ((User)AppLaunch.server.getPersonUsing()).getOrderList()){
+                Order order1 = AppLaunch.server.getOrderMap().get(integer);
                 for(OrderItem oi : order1.getOrderItemsList()){
                     Product product = AppLaunch.server.getProductMap().get(oi.getProductID());
                     System.out.println(product.getName() + "      " + oi.getQuantity());

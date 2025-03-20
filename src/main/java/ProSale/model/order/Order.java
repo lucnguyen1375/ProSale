@@ -31,6 +31,54 @@ public class Order implements Serializable {
         this.customerID = customerID;
     }
 
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
+    }
+
+    public void setOrderItemsList(List<OrderItem> orderItemsList) {
+        this.orderItemsList = orderItemsList;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public int getCustomerID() {
+        return customerID;
+    }
+
+    public int getOrderPhone() {
+        return orderPhone;
+    }
+
+    public void setOrderPhone(int orderPhone) {
+        this.orderPhone = orderPhone;
+    }
+
+    public int getOrderAddress() {
+        return orderAddress;
+    }
+
+    public void setOrderAddress(int orderAddress) {
+        this.orderAddress = orderAddress;
+    }
+
     @Override
     public String toString() {
         return "Order [orderItemsList=" + orderItemsList + "]"

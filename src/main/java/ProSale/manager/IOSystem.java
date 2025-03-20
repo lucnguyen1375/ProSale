@@ -2,6 +2,7 @@ package ProSale.manager;
 
 import ProSale.AppLaunch;
 import ProSale.AppServer;
+import ProSale.model.order.Order;
 import ProSale.model.person.Person;
 import ProSale.model.person.User;
 import ProSale.model.product.Product;
@@ -52,6 +53,11 @@ public class IOSystem {
         fis = new FileInputStream("src/main/resources/ProSale/data/id.txt");
         ois = new ObjectInputStream(fis);
         server.setIdManager((IDManager) ois.readObject());
+
+        fis = new FileInputStream("src/main/resources/ProSale/data/order.txt");
+        ois = new ObjectInputStream(fis);
+        server.setOrderList((ArrayList<Order>) ois.readObject());
+
         ois.close();
         fis.close();
     }

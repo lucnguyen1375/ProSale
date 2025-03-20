@@ -5,6 +5,7 @@ import java.util.List;
 
 import ProSale.manager.IDManager;
 import ProSale.manager.IOSystem;
+import ProSale.model.order.Order;
 import ProSale.model.person.Admin;
 import ProSale.model.person.Person;
 import ProSale.model.person.User;
@@ -39,6 +40,10 @@ public class WriteProduct {
         Admin admin = new Admin("admin", "admin", "Luc Nguyen", "Nam", "Ha Noi", "0369041397", "admin");
         personList.add(admin);
         IDManager idManager = new IDManager();
+
+        Order order = new Order();
+        List<Order> orderList = new ArrayList<>();
+
         FileOutputStream fos = new FileOutputStream("src/main/resources/ProSale/data/person.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(personList);

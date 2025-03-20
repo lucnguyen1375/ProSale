@@ -32,11 +32,6 @@ public class ProductPreviewHorizontalController {
     @FXML
     private Stage stage;
 
-
-    public void paneOnAction(ActionEvent event) {
-        System.out.println("lucdz");
-    }
-
     private MyListener myListener;
     private Product product;
 
