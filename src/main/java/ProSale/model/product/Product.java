@@ -141,4 +141,22 @@ public class Product implements Serializable {
                 ", saleQuantity=" + saleQuantity +
                 '}';
     }
+
+    public void in()
+    {
+        System.out.println(
+
+            "id=" + id + "\n" +
+                    ", name='" + name + '\'' +"\n" +
+                    ", srcImg='" + srcImg + '\'' +"\n" +
+                    ", price=" + price +"\n" +
+                    ", type='" + type + '\'' +"\n" +
+                    ", material='" + material + '\'' +"\n" +
+                    ", size='" + size + '\'' +"\n" +
+                    ", description='" + description + '\'' +"\n" +
+                    ", quantity=" + quantity +"\n" +
+                    ", saleQuantity=" + saleQuantity +"\n" +
+                    '}'
+        );
+    }
 }

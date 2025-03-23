@@ -6,6 +6,7 @@ public class IDManager implements Serializable {
     private int CURRENT_USER_ID;
     private int CURRENT_PRODUCT_ID;
     private int CURRENT_ORDER_ID;
+    private int CURRENT_IMAGE_ID;
 
     public int getCURRENT_PRODUCT_ID() throws Exception{
         CURRENT_PRODUCT_ID++;
@@ -24,10 +25,17 @@ public class IDManager implements Serializable {
         return CURRENT_ORDER_ID;
     }
 
+    public int getCURRENT_IMAGE_ID() throws Exception{
+        CURRENT_IMAGE_ID++;
+        IOSystem.saveIDData();
+        return CURRENT_IMAGE_ID;
+    }
+
     public IDManager() {
         CURRENT_USER_ID = 0;
-        CURRENT_PRODUCT_ID = 0;
+        CURRENT_PRODUCT_ID = 5;
         CURRENT_ORDER_ID = 0;
+        CURRENT_IMAGE_ID = 0;
     }
 
     @Override

@@ -258,7 +258,7 @@ public class MainViewController implements Initializable {
 
     public void btnAddOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/AddProduct.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/AddNewProduct.fxml"));
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
         stage.setScene(scene);
