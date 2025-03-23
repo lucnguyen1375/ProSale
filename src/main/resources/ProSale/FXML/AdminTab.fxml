@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProSale.controller.AdminTabController">
    <children>
       <VBox layoutX="128.0" layoutY="30.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -30,7 +29,7 @@
             </HBox>
             <HBox prefHeight="50.0" prefWidth="1280.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" text="Kho hàng">
+                  <Button fx:id="btnDonHang" mnemonicParsing="false" onAction="#btnDonHangOnAction" prefHeight="40.0" prefWidth="125.0" text="Đơn hàng">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -38,15 +37,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" text="Đơn hàng">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" text="Khách hàng">
+                  <Button fx:id="btnTThongKe" mnemonicParsing="false" onAction="#btnThongKeOnAction" prefHeight="40.0" prefWidth="125.0" text="Thống kê">
                      <font>
                         <Font size="16.0" />
                      </font>

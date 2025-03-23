@@ -113,6 +113,20 @@
                               </VBox>
                            </content>
                         </ScrollPane>
+                        <AnchorPane prefHeight="109.0" prefWidth="1280.0">
+                           <children>
+                              <Label fx:id="labelTotalPrice" alignment="CENTER_RIGHT" layoutX="998.0" layoutY="3.0" prefHeight="37.0" prefWidth="203.0" text="Label">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="829.0" layoutY="3.0" prefHeight="37.0" prefWidth="109.0" text="Tổng tiền hàng">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
                      </children>
                   </VBox>
                </children>

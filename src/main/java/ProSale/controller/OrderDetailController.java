@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 
@@ -58,7 +59,11 @@ public class OrderDetailController implements Initializable {
     public void setData(Order order) throws Exception {
         this.order = order;
         labelOrderID.setText(String.valueOf(order.getOrderID()));
-        labelOrderDate.setText(String.valueOf(order.getOrderDate()));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String formattedDateTime = order.getOrderDate().format(formatter);
+        labelOrderDate.setText(formattedDateTime);
+
         labelOrderAddress.setText(order.getOrderAddress());
         labelPhone.setText(order.getOrderPhone());
         labelTenNguoiNhan.setText(order.getOrderTenNguoiNhan());

@@ -96,12 +96,6 @@
                               <Font name="Cambria Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Separator orientation="VERTICAL" prefHeight="15.0" />
-                        <Button fx:id="btnLienHe" mnemonicParsing="false" onAction="#changeToLienHe" prefHeight="40.0" prefWidth="150.0" styleClass="menu-button" stylesheets="@../css/MainView.css" text="Liên hệ">
-                           <font>
-                              <Font name="Cambria Bold" size="14.0" />
-                           </font>
-                        </Button>
                      </children>
                   </HBox>
                   <Separator prefWidth="200.0">
@@ -235,12 +229,6 @@
                                                 <Insets left="10.0" />
                                              </HBox.margin>
                                           </ComboBox>
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="28.0" prefWidth="1053.0">
-                                       <children>
-                                          <Label alignment="CENTER" prefHeight="42.0" prefWidth="98.0" text="Phân loại" />
-                                          <ComboBox fx:id="comboBoxChatLieu" prefWidth="150.0" promptText="Chất liệu" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" prefHeight="532.0" prefWidth="1053.0">

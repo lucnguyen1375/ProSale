@@ -22,8 +22,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -52,6 +54,9 @@ public class MuaHangController implements Initializable {
 
     @FXML
     private Scene preScene;
+
+    @FXML
+    private Label labelTotalPrice;
     private Parent preRoot;
 
     private List<OrderItem> list;
@@ -75,8 +80,11 @@ public class MuaHangController implements Initializable {
         tfUserPhone.setText(AppLaunch.server.getPersonUsing().getPhone());
         this.list = list;
         System.out.println(this.list);
+        int total = 0;
         for(OrderItem oi : list)
         {
+            Product product = AppLaunch.server.getProductMap().get(oi.getProductID());
+            total += product.getPrice() * oi.getQuantity();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(DonHangController.class.getResource("/ProSale/FXML/MuaHangItem.fxml"));
             AnchorPane pane = loader.load();
@@ -84,6 +92,7 @@ public class MuaHangController implements Initializable {
             controller.setData(productVBox, oi);
             productVBox.getChildren().add(pane);
         }
+        labelTotalPrice.setText(new DecimalFormat("#,###").format(total) + " VND");
     }
 
     @Override

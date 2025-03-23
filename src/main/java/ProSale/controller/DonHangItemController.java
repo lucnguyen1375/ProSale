@@ -1,5 +1,6 @@
 package ProSale.controller;
 
+import ProSale.AppLaunch;
 import ProSale.model.order.Order;
 import ProSale.model.order.OrderItem;
 import ProSale.model.product.Product;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class DonHangItemController implements Initializable {
@@ -25,6 +27,8 @@ public class DonHangItemController implements Initializable {
     private VBox vboxItem;
     @FXML
     private Label labelOrderStatus, labelThanhToan;
+    @FXML
+    private Label labelTotalPrice;
 
     private Order order;
     private MyListener myListener;
@@ -35,9 +39,28 @@ public class DonHangItemController implements Initializable {
     }
     public void setVboxItem(Order order) throws IOException {
         labelOrderStatus.setText(order.getOrderStatus());
+        if (order.getOrderStatus().equals("Chờ xác nhận")){
+            labelOrderStatus.setStyle("-fx-text-fill: red;");
+
+        }else if (order.getOrderStatus().equals("Đang chuẩn bị") ){
+            labelOrderStatus.setStyle("-fx-text-fill: orange;");
+        }
+        else if (order.getOrderStatus().equals("Đang vận chuyển") ){
+            labelOrderStatus.setStyle("-fx-text-fill: yellow;");
+        }else if (order.getOrderStatus().equals("Đã vận chuyển") ){
+            labelOrderStatus.setStyle("-fx-text-fill: green;");
+        }
+
         labelThanhToan.setText(order.getOrderThanhToan());
+        if (order.getOrderThanhToan().equals("Đã thanh toán")){
+            labelThanhToan.setStyle("-fx-text-fill: green;");
+        }
+        else labelThanhToan.setStyle("-fx-text-fill: red;");
         this.order = order;
+        int total = 0;
         for(OrderItem orderItem : order.getOrderItemsList()) {
+            Product product = AppLaunch.server.getProductMap().get(orderItem.getProductID());
+            total += product.getPrice() * orderItem.getQuantity();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/ProSale/FXML/OrderItem.fxml"));
             AnchorPane anchorPane = loader.load();
@@ -45,6 +68,7 @@ public class DonHangItemController implements Initializable {
             controller.setOrderItemData(orderItem);
             vboxItem.getChildren().add(anchorPane);
         }
+        labelTotalPrice.setText(new DecimalFormat("#,###").format(total) + " VND");
     }
 
     public void setMyListener(MyListener myListener) {

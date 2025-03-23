@@ -1,8 +1,10 @@
 package ProSale.model.order;
 
 import ProSale.AppLaunch;
+import ProSale.model.product.Product;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,7 +13,7 @@ public class Order implements Serializable {
     private List<OrderItem> orderItemsList;
     private String orderTenNguoiNhan;
     private int orderID;
-    private Date orderDate;
+    private LocalDateTime orderDate;
     private String orderStatus;
     private int customerID;
     private String orderPhone;
@@ -31,7 +33,7 @@ public class Order implements Serializable {
         orderStatus = "Chờ xác nhận";
         orderThanhToan = "Chưa thanh toán";
         customerID = AppLaunch.server.getPersonUsing().getId();
-        orderDate = new Date();
+        orderDate =  LocalDateTime.now();
 
     }
     public Order() {
@@ -54,11 +56,11 @@ public class Order implements Serializable {
         this.orderItemsList = orderItemsList;
     }
 
-    public Date getOrderDate() {
+    public LocalDateTime getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
     }
 
@@ -96,6 +98,15 @@ public class Order implements Serializable {
 
     public void setOrderThanhToan(String orderThanhToan) {
         this.orderThanhToan = orderThanhToan;
+    }
+
+    public int getTotalPrice(){
+        int total = 0;
+        for(OrderItem orderItem : orderItemsList){
+            Product product = AppLaunch.server.getProductMap().get(orderItem.getProductID());
+            total += product.getPrice() * orderItem.getQuantity();
+        }
+        return total;
     }
 
     @Override
