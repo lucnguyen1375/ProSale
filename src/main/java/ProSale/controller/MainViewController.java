@@ -1,6 +1,7 @@
 package ProSale.controller;
 
 import ProSale.AppLaunch;
+import ProSale.model.order.Order;
 import ProSale.model.person.Admin;
 import ProSale.model.product.*;
 import javafx.event.ActionEvent;
@@ -126,7 +127,9 @@ public class MainViewController implements Initializable {
         }
         myListener = new MyListener() {
             @Override
-            public void onClickListener(Product product) {
+            public void onClickListenerOrder(Order order){}
+            @Override
+            public void onClickListenerProduct(Product product) {
                 System.out.println(product);
 
                 try {

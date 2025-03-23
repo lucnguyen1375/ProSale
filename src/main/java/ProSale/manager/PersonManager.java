@@ -42,6 +42,7 @@ public class PersonManager {
 
     public void savePerson(Person person) {
         AppLaunch.server.getPersonList().add(person);
+        AppLaunch.server.getPersonMap().put(person.getId(), person);
         try {
             FileOutputStream fis = new FileOutputStream("src/main/resources/ProSale/data/person.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fis);

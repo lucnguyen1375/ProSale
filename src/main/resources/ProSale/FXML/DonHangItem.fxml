@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ap" minWidth="950.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProSale.controller.DonHangItemController">
+<AnchorPane fx:id="ap" minWidth="950.0" onMousePressed="#click" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProSale.controller.DonHangItemController">
    <children>
       <VBox prefHeight="46.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox prefHeight="43.0" prefWidth="950.0">
+            <HBox prefHeight="43.0" prefWidth="908.0">
                <children>
                   <Label prefHeight="50.0" prefWidth="130.0" text="ProSale" textFill="#bc2020">
                      <padding>
@@ -22,6 +22,14 @@
                      </font>
                   </Label>
                   <Label fx:id="labelOrderStatus" alignment="CENTER_RIGHT" prefHeight="42.0" text="Trạng thái đơn hàng">
+                     <padding>
+                        <Insets right="20.0" />
+                     </padding>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelThanhToan" alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="621.0" text="Thanh toán">
                      <padding>
                         <Insets right="20.0" />
                      </padding>

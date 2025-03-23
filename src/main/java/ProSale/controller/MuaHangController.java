@@ -2,6 +2,7 @@ package ProSale.controller;
 
 import ProSale.AppLaunch;
 import ProSale.manager.IOSystem;
+import ProSale.model.order.GioHang;
 import ProSale.model.order.Order;
 import ProSale.model.order.OrderItem;
 import ProSale.model.person.User;
@@ -24,6 +25,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class MuaHangController implements Initializable {
     @FXML
@@ -46,14 +48,15 @@ public class MuaHangController implements Initializable {
     private TextField tfUserPhone;
 
     @FXML
-    private TextField tfUserName;
+    private TextField tfTenNguoiNhan;
 
     @FXML
     private Scene preScene;
+    private Parent preRoot;
 
-    List<OrderItem> list;
+    private List<OrderItem> list;
 
-    String prevScene;
+    private String prevScene;
     public void setPreScene(Scene preScene) {
         this.preScene = preScene;
     }
@@ -62,8 +65,12 @@ public class MuaHangController implements Initializable {
         this.prevScene = prevScene;
     }
 
+    public void setPreRoot(Parent preRoot) {
+        this.preRoot = preRoot;
+    }
+
     public void setData(List<OrderItem> list) throws Exception {
-        tfUserName.setText(AppLaunch.server.getPersonUsing().getName());
+        tfTenNguoiNhan.setText(AppLaunch.server.getPersonUsing().getName());
         tfUserAddress.setText(AppLaunch.server.getPersonUsing().getAddress());
         tfUserPhone.setText(AppLaunch.server.getPersonUsing().getPhone());
         this.list = list;
@@ -86,24 +93,25 @@ public class MuaHangController implements Initializable {
 
     public void btnBackOnAction(ActionEvent actionEvent) throws Exception {
         Stage stage = (Stage) btnBack.getScene().getWindow();
+//        Scene scene = new Scene(preRoot);
+//        DonHangController donHangController =  (DonHangController) preRoot.getUserData();
+//        donHangController.setVboxGioHang(((User)AppLaunch.server.getPersonUsing()).getGioHang());
         stage.setScene(preScene);
         stage.show();
 
-//        Stage stage = (Stage) btnBack.getScene().getWindow();
-//        if (prevScene.equals("DonHang")){
-//            changeToDonHang();
-//        }
-//        else if (prevScene.equals("ProductDetail")){
-//            changeToProductDetail();
-//        }
     }
 
     public void changeToDonHang() throws Exception {
         Stage stage = (Stage) btnBack.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProSale/FXML/MainView.fxml"));
-        Parent parent = loader.load();
-        Scene scene = new Scene(parent);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/ProSale/FXML/DonHang.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        System.out.println(root.toString());
+        DonHangController controller = loader.getController();
+        controller.setVboxGioHang(((User)AppLaunch.server.getPersonUsing()).getGioHang());
         stage.setScene(scene);
+        stage.show();
     }
 
     public void changeToProductDetail() throws Exception {
@@ -116,7 +124,7 @@ public class MuaHangController implements Initializable {
         stage.setScene(scene);
     }
     public void btnBuyOnAction(ActionEvent actionEvent) throws Exception {
-        if (tfUserName.getText().equals("") || tfUserAddress.getText().equals("") || tfUserPhone.getText().equals("")) {
+        if (tfTenNguoiNhan.getText().equals("") || tfUserAddress.getText().equals("") || tfUserPhone.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -140,9 +148,13 @@ public class MuaHangController implements Initializable {
             for(OrderItem orderItem : list) {
                 Product product = AppLaunch.server.getProductMap().get(orderItem.getProductID());
                 product.setQuantity(product.getQuantity() - orderItem.getQuantity());
+                ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList().remove(orderItem);
             }
 
             Order order = new Order(list);
+            order.setOrderTenNguoiNhan(tfTenNguoiNhan.getText());
+            order.setOrderAddress(tfUserAddress.getText());
+            order.setOrderPhone(tfUserPhone.getText());
             ((User)AppLaunch.server.getPersonUsing()).getOrderList().add(order.getOrderID());
             AppLaunch.server.getOrderMap().put(order.getOrderID(), order);
             AppLaunch.server.getOrderList().add(order);

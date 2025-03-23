@@ -9,19 +9,32 @@ import java.util.List;
 
 public class Order implements Serializable {
     private List<OrderItem> orderItemsList;
+    private String orderTenNguoiNhan;
+
+    public String getOrderTenNguoiNhan() {
+        return orderTenNguoiNhan;
+    }
+
+    public void setOrderTenNguoiNhan(String orderTenNguoiNhan) {
+        this.orderTenNguoiNhan = orderTenNguoiNhan;
+    }
+
     private int orderID;
     private Date orderDate;
     private String orderStatus;
     private int customerID;
-    private int orderPhone;
-    private int orderAddress;
+    private String orderPhone;
+    private String orderAddress;
+    private String orderThanhToan;
 
     public Order(List<OrderItem> orderItemsList) throws Exception{
         this.orderItemsList = orderItemsList;
         orderID = AppLaunch.server.getIdManager().getCURRENT_ORDER_ID();
         orderStatus = "Chờ xác nhận";
+        orderThanhToan = "Chưa thanh toán";
         customerID = AppLaunch.server.getPersonUsing().getId();
         orderDate = new Date();
+
     }
     public Order() {
         orderItemsList = new ArrayList<OrderItem>();
@@ -63,32 +76,42 @@ public class Order implements Serializable {
         return customerID;
     }
 
-    public int getOrderPhone() {
+    public String getOrderPhone() {
         return orderPhone;
     }
 
-    public void setOrderPhone(int orderPhone) {
+    public void setOrderPhone(String orderPhone) {
         this.orderPhone = orderPhone;
     }
 
-    public int getOrderAddress() {
+    public String getOrderAddress() {
         return orderAddress;
     }
 
-    public void setOrderAddress(int orderAddress) {
+    public void setOrderAddress(String orderAddress) {
         this.orderAddress = orderAddress;
+    }
+
+    public String getOrderThanhToan() {
+        return orderThanhToan;
+    }
+
+    public void setOrderThanhToan(String orderThanhToan) {
+        this.orderThanhToan = orderThanhToan;
     }
 
     @Override
     public String toString() {
         return "Order{" +
                 "orderItemsList=" + orderItemsList +
+                ", orderTenNguoiNhan='" + orderTenNguoiNhan + '\'' +
                 ", orderID=" + orderID +
                 ", orderDate=" + orderDate +
                 ", orderStatus='" + orderStatus + '\'' +
                 ", customerID=" + customerID +
-                ", orderPhone=" + orderPhone +
-                ", orderAddress=" + orderAddress +
+                ", orderPhone='" + orderPhone + '\'' +
+                ", orderAddress='" + orderAddress + '\'' +
+                ", orderThanhToan='" + orderThanhToan + '\'' +
                 '}';
     }
 

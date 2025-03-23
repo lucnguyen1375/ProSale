@@ -37,7 +37,7 @@ public class ProductPreviewHorizontalController {
 
     @FXML
     private void click(MouseEvent event) {
-        myListener.onClickListener(product);
+        myListener.onClickListenerProduct(product);
     }
 
     public void setData(Product product, MyListener myListener) {

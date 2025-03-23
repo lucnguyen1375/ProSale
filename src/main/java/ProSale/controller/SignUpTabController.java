@@ -1,5 +1,6 @@
 package ProSale.controller;
 
+import ProSale.AppLaunch;
 import ProSale.manager.IOSystem;
 import ProSale.manager.PersonManager;
 import ProSale.model.person.User;
@@ -54,6 +55,7 @@ public class SignUpTabController{
             // Điền đúng mật khẩu
             else if (pfPassword.getText().trim().equals(pfConfirmPassword.getText().trim())) {
                 User user = new User(tfUsername.getText().trim(), pfPassword.getText().trim(), tfName.getText().trim(), tfGender.getText().trim(), tfAddress.getText().trim(), tfPhone.getText().trim(), tfEmail.getText().trim());
+//                AppLaunch.server.get
                 personManager.savePerson(user);
                 alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setContentText("Đăng ký tài khoản thành công");

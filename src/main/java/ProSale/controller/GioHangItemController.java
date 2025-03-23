@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GioHangItemController {
@@ -75,6 +76,7 @@ public class GioHangItemController {
         labelTotalPrice.setText(new DecimalFormat("#,###").format(product.getPrice() * orderItem.getQuantity()) + " VND");
     }
 
+
     public void setCheckBox() {
         if (checkBox.isSelected()) {
             list.add(orderItem);
@@ -84,8 +86,11 @@ public class GioHangItemController {
         }
         int total = 0;
         for(OrderItem orderItem : list){
-            total += product.getPrice() * orderItem.getQuantity();
+            System.out.println("Da tick " + product.getName() + " " + orderItem.getQuantity());
+            total += AppLaunch.server.getProductMap().get(orderItem.getProductID()).getPrice() * orderItem.getQuantity();
         }
+        System.out.println(total);
+        System.out.println("-----------");
         labelTienHang.setText(new DecimalFormat("#,###").format(total) + " VND");
     }
 

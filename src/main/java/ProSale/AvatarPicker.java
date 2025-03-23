@@ -15,7 +15,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 
 public class AvatarPicker extends Application {
-    private static final String RESOURCE_PATH = "src/main/resources/images/"; // Đường dẫn thư mục lưu ảnh
+    private static final String RESOURCE_PATH = "src/main/resources/ProSale/images/product/"; // Đường dẫn thư mục lưu ảnh
     private ImageView imageView;
 
     @Override
@@ -60,7 +60,7 @@ public class AvatarPicker extends Application {
             directory.mkdirs(); // Tạo thư mục nếu chưa tồn tại
         }
 
-        String newFileName = "avatar.png"; // Đặt tên file mới
+        String newFileName = "1.png"; // Đặt tên file mới
         File destinationFile = new File(RESOURCE_PATH + newFileName);
 
         try (FileInputStream fis = new FileInputStream(sourceFile);

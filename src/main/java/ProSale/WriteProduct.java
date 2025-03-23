@@ -4,17 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ProSale.manager.IDManager;
-import ProSale.manager.IOSystem;
 import ProSale.model.order.Order;
 import ProSale.model.person.Admin;
 import ProSale.model.person.Person;
-import ProSale.model.person.User;
 import ProSale.model.product.*;
 
 public class WriteProduct {
 
     public static void main(String[] args) throws Exception{
-        List<Product> list = new ArrayList<>();
+        List<Product> productList = new ArrayList<>();
         BanPhan banphan = new BanPhan("Bàn phấn 80 1 tầng Xám", 1400000, "80 1 tầng", "Gỗ Hương Xám", "0.8 m", "Hàng đẹp, chất lượng", 12);
         banphan.setSrcImg("/ProSale/images/product/banPhan/banPhan_80_1T_Xam.jpg");
         banphan.setId(1);
@@ -30,11 +28,11 @@ public class WriteProduct {
         Guong guong = new Guong("Gương Thiên nga Xám", 400000, "Gương", "Gỗ Hương Xám", "0.6m", "Hàng đẹp, chất lượng", 12);
         guong.setSrcImg("/ProSale/images/product/guong/guong_thienNga_xam.jpg");
         guong.setId(5);
-        list.add(banphan);
-        list.add(ghe);
-        list.add(tuGiay);
-        list.add(tuDauGiuong);
-        list.add(guong);
+        productList.add(banphan);
+        productList.add(ghe);
+        productList.add(tuGiay);
+        productList.add(tuDauGiuong);
+        productList.add(guong);
 
         List<Person> personList = new ArrayList<>();
         Admin admin = new Admin("admin", "admin", "Luc Nguyen", "Nam", "Ha Noi", "0369041397", "admin");
@@ -47,7 +45,19 @@ public class WriteProduct {
         FileOutputStream fos = new FileOutputStream("src/main/resources/ProSale/data/person.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(personList);
-//        oos.writeObject(list);
+
+        fos = new FileOutputStream("src/main/resources/ProSale/data/product.txt");
+        oos = new ObjectOutputStream(fos);
+        oos.writeObject(productList);
+
+        fos = new FileOutputStream("src/main/resources/ProSale/data/order.txt");
+        oos = new ObjectOutputStream(fos);
+        oos.writeObject(orderList);
+
+        fos = new FileOutputStream("src/main/resources/ProSale/data/id.txt");
+        oos = new ObjectOutputStream(fos);
+        oos.writeObject(idManager);
+
         oos.close();
         fos.close();
     }

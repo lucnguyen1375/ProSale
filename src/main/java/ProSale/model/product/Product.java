@@ -21,7 +21,7 @@ public class Product implements Serializable {
     public Product() {}
 
     public Product(String name, int price, String type, String material, String size, String description, int quantity) throws Exception{
-//        this.id = AppLaunch.server.getIdManager().getCURRENT_PRODUCT_ID();
+        this.id = AppLaunch.server.getIdManager().getCURRENT_PRODUCT_ID();
         this.name = name;
         this.price = price;
         this.type = type;

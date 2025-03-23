@@ -4,6 +4,7 @@ import ProSale.controller.DonHangItemController;
 import ProSale.manager.IOSystem;
 import ProSale.model.order.Order;
 import ProSale.model.order.OrderItem;
+import ProSale.model.person.Person;
 import ProSale.model.person.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,9 @@ public class AppLaunch extends Application {
         IOSystem.loadData(server);
         server.setMap();
         System.out.println(server.getPersonList());
+        for(Person person : server.getPersonMap().values()) {
+            System.out.println(person);
+        }
 
         Parent root = FXMLLoader.load(getClass().getResource("FXML/LoginTab.fxml"));
         Scene scene = new Scene(root);

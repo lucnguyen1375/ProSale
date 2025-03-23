@@ -27,7 +27,7 @@ public class Person implements Serializable {
                   String address, String phone, String email)
                                                                 throws Exception
     {
-//        id = AppLaunch.server.getIdManager().getCURRENT_USER_ID();
+        id = AppLaunch.server.getIdManager().getCURRENT_USER_ID();
         this.username = username;
         this.password = password;
         this.name = name;

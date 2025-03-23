@@ -214,11 +214,6 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="btnPhoBien" mnemonicParsing="false" text="Phổ biến">
-                                             <HBox.margin>
-                                                <Insets left="10.0" />
-                                             </HBox.margin>
-                                          </Button>
                                           <Button fx:id="btnMoiNhat" mnemonicParsing="false" text="Mới nhất">
                                              <HBox.margin>
                                                 <Insets left="10.0" />

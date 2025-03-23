@@ -60,6 +60,8 @@ public class DonHangController implements Initializable {
 
     Integer tienHang;
     private List<OrderItem> list = new ArrayList<>();
+    @FXML
+    private AnchorPane rootPane;
 
     public void setVboxGioHang(GioHang gioHang) throws Exception{
         for(OrderItem orderItem : gioHang.getOrderItemsList()){
@@ -85,10 +87,9 @@ public class DonHangController implements Initializable {
         }
     }
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        rootPane.setUserData(this);
         paneGioHang.setVisible(true);
         paneDonHang.setVisible(false);
         tienHang = 0;
@@ -129,6 +130,7 @@ public class DonHangController implements Initializable {
             controller.setPreScene(((Node)event.getSource()).getScene());
             controller.setPrevScene("DonHang");
             controller.setData(list);
+            controller.setPreRoot(stage.getScene().getRoot());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
