@@ -4,7 +4,7 @@ import ProSale.AppLaunch;
 
 import java.io.*;
 
-public class SaveImageToReSource {
+public class SaveImageToResource {
     public String saveImageToResources(File sourceFile, String resourcePath) throws Exception {
         File directory = new File(resourcePath);
         if (!directory.exists()) {

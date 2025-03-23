@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.File;
 import java.text.DecimalFormat;
 
 public class OrderItemController {
@@ -26,7 +27,8 @@ public class OrderItemController {
     public void setOrderItemData(OrderItem orderItem) {
         this.orderItem = orderItem;
         product = AppLaunch.server.getProductMap().get(orderItem.getProductID());
-        Image image = new Image(getClass().getResourceAsStream(product.getSrcImg()));
+        File file = new File(product.getSrcImg());
+        Image image = new Image(file.toURI().toString());
         imageView.setImage(image);
         labelName.setText(product.getName());
         labelType.setText(product.getType());

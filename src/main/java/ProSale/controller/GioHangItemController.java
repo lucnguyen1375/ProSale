@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -68,7 +69,8 @@ public class GioHangItemController {
     public void setOrderItem(OrderItem orderItem) {
         this.orderItem = orderItem;
         this.product = AppLaunch.server.getProductMap().get(orderItem.getProductID());
-        Image image = new Image(getClass().getResourceAsStream(product.getSrcImg()));
+        File file = new File(product.getSrcImg());
+        Image image = new Image(file.toURI().toString());
         imageView.setImage(image);
         labelName.setText(product.getName());
         labelPrice.setText(new DecimalFormat("#,###").format(product.getPrice()) + " VND");

@@ -21,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -92,7 +93,10 @@ public class ProductDetailTabController implements Initializable {
         labelQuantity.setText(String.valueOf(product.getQuantity()));
         labelSize.setText(product.getSize());
         labelPrice.setText(df.format(product.getPrice()) + " VND");
-        image = new Image(getClass().getResourceAsStream(product.getSrcImg()));
+        File file = new File(product.getSrcImg());
+        image = new Image(file.toURI().toString());
+//        File file = new File(product.set)
+//        image = new Image(getClass().getResourceAsStream(product.getSrcImg()));
         imageProduct.setImage(image);
     }
 

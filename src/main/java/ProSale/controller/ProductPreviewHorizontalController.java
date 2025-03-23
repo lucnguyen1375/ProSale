@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.util.Objects;
 
@@ -48,8 +49,11 @@ public class ProductPreviewHorizontalController {
         labelQuantity.setText(String.valueOf(product.getQuantity()));
         labelProductPrice.setText(new DecimalFormat("#,###").format(product.getPrice()) + " VND");
         System.out.println(product.getSrcImg());
-        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(product.getSrcImg())));
+        File file = new File(product.getSrcImg());
+        Image image = new Image(file.toURI().toString());
         imgProduct.setImage(image);
+//        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(product.getSrcImg())));
+//        imgProduct.setImage(image);
     }
 
     public void setStage(Stage stage) {

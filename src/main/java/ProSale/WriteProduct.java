@@ -14,19 +14,19 @@ public class WriteProduct {
     public static void main(String[] args) throws Exception{
         List<Product> productList = new ArrayList<>();
         BanPhan banphan = new BanPhan("Bàn phấn 80 1 tầng Xám", 1400000, "80 1 tầng", "Gỗ Hương Xám", "0.8 m", "Hàng đẹp, chất lượng", 12);
-        banphan.setSrcImg("/ProSale/images/product/banPhan/banPhan_80_1T_Xam.jpg");
+        banphan.setSrcImg("src/main/java/ProSale/images/product/banPhan/banPhan_80_1T_Xam.jpg");
         banphan.setId(1);
         Ghe ghe = new Ghe("Ghế Hương Xám", 100000, "Ghế", "Gỗ Hương Xám", "0.4 m", "Hàng đẹp, chất lượng", 12);
-        ghe.setSrcImg("/ProSale/images/product/ghe/ghe_xam.jpg");
+        ghe.setSrcImg("src/main/java/ProSale/images/product/ghe/ghe_xam.jpg");
         ghe.setId(2);
         TuGiay tuGiay = new TuGiay("Tủ giày 80 Lửng Nan Xám", 1600000, "Bo Lửng Nan", "Gỗ Hương Xám", "0.8m", "Hàng đẹp, chất lượng", 12);
-        tuGiay.setSrcImg("/ProSale/images/product/tuGiay/80_huongxam_lung_nan.png");
+        tuGiay.setSrcImg("src/main/java/ProSale/images/product/tuGiay/80_huongxam_lung_nan.png");
         tuGiay.setId(3);
         TuDauGiuong tuDauGiuong = new TuDauGiuong("Táp Bo Giữa Xám", 800000, "Táp Bo Giữa", "Gỗ Hương Xám", "0.8m", "Hàng đẹp, chất lượng", 12);
-        tuDauGiuong.setSrcImg("/ProSale/images/product/tuDauGiuong/tap_BoGiua_Xam.jpg");
+        tuDauGiuong.setSrcImg("src/main/java/ProSale/images/product/tuDauGiuong/tap_BoGiua_Xam.jpg");
         tuDauGiuong.setId(4);
         Guong guong = new Guong("Gương Thiên nga Xám", 400000, "Gương", "Gỗ Hương Xám", "0.6m", "Hàng đẹp, chất lượng", 12);
-        guong.setSrcImg("/ProSale/images/product/guong/guong_thienNga_xam.jpg");
+        guong.setSrcImg("src/main/java/ProSale/images/product/guong/guong_thienNga_xam.jpg");
         guong.setId(5);
         productList.add(banphan);
         productList.add(ghe);

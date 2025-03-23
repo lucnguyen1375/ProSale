@@ -2,7 +2,7 @@ package ProSale.controller;
 
 import ProSale.AppLaunch;
 import ProSale.manager.IOSystem;
-import ProSale.manager.SaveImageToReSource;
+import ProSale.manager.SaveImageToResource;
 import ProSale.model.product.*;
 import ProSale.utilz.ImagePath;
 import javafx.event.ActionEvent;
@@ -22,9 +22,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 public class AddNewProductController {
 
@@ -61,7 +59,7 @@ public class AddNewProductController {
     @FXML
     private ComboBox comboBoxType;
 
-    SaveImageToReSource saveImage = new SaveImageToReSource();
+    SaveImageToResource saveImage = new SaveImageToResource();
     String resourcePath, calledPath, tempPath;
 
 
@@ -156,7 +154,7 @@ public class AddNewProductController {
                         tfMaterial.getText(), tfSize.getText(), tfDescription.getText(), Integer.parseInt(tfQuantity.getText()));
             }
 
-            calledPath = tempPath + saveImage.saveImageToResources(selectedFile, resourcePath);
+            calledPath = resourcePath + saveImage.saveImageToResources(selectedFile, resourcePath);
 
             product.setSrcImg(calledPath);
             product.in();

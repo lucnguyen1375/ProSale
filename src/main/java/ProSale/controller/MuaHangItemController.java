@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
+import java.io.File;
 import java.text.DecimalFormat;
 
 public class MuaHangItemController {
@@ -36,7 +37,8 @@ public class MuaHangItemController {
         labelPrice.setText(df.format(product.getPrice()));
         labelQuantity.setText(String.valueOf(orderItem.getQuantity()));
         labelTotal.setText(df.format(product.getPrice() * orderItem.getQuantity()));
-        Image image = new Image(getClass().getResourceAsStream(product.getSrcImg()));
+        File file = new File(product.getSrcImg());
+        Image image = new Image(file.toURI().toString());
         imageView.setImage(image);
     }
 

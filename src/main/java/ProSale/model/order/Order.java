@@ -10,15 +10,6 @@ import java.util.List;
 public class Order implements Serializable {
     private List<OrderItem> orderItemsList;
     private String orderTenNguoiNhan;
-
-    public String getOrderTenNguoiNhan() {
-        return orderTenNguoiNhan;
-    }
-
-    public void setOrderTenNguoiNhan(String orderTenNguoiNhan) {
-        this.orderTenNguoiNhan = orderTenNguoiNhan;
-    }
-
     private int orderID;
     private Date orderDate;
     private String orderStatus;
@@ -27,6 +18,13 @@ public class Order implements Serializable {
     private String orderAddress;
     private String orderThanhToan;
 
+    public String getOrderTenNguoiNhan() {
+        return orderTenNguoiNhan;
+    }
+
+    public void setOrderTenNguoiNhan(String orderTenNguoiNhan) {
+        this.orderTenNguoiNhan = orderTenNguoiNhan;
+    }
     public Order(List<OrderItem> orderItemsList) throws Exception{
         this.orderItemsList = orderItemsList;
         orderID = AppLaunch.server.getIdManager().getCURRENT_ORDER_ID();
