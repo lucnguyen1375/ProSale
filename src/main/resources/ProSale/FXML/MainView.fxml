@@ -214,17 +214,17 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="btnMoiNhat" mnemonicParsing="false" text="Mới nhất">
+                                          <Button fx:id="btnMoiNhat" mnemonicParsing="false" onAction="#btnMoiNhatOnAction" text="Mới nhất">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <Button fx:id="btnBanChay" mnemonicParsing="false" text="Bán chạy">
+                                          <Button fx:id="btnBanChay" mnemonicParsing="false" onAction="#btnBanChayOnAction" text="Bán chạy">
                                              <HBox.margin>
                                                 <Insets left="10.0" />
                                              </HBox.margin>
                                           </Button>
-                                          <ComboBox fx:id="comboGia" editable="true" prefWidth="150.0" promptText="Giá">
+                                          <ComboBox fx:id="comboGia" editable="true" onAction="#comboBoxGiaOnAction" prefWidth="150.0" promptText="Giá">
                                              <items>
                                                 <FXCollections fx:factory="observableArrayList">
                                                    <String fx:value="Từ thấp tới cao" />
@@ -241,12 +241,11 @@
                                        <children>
                                           <Label alignment="CENTER" prefHeight="42.0" prefWidth="98.0" text="Phân loại" />
                                           <ComboBox fx:id="comboBoxChatLieu" prefWidth="150.0" promptText="Chất liệu" />
-                                          <ComboBox fx:id="comboBoxKichThuoc" prefWidth="150.0" promptText="Kích thước" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" prefHeight="532.0" prefWidth="1053.0">
                                        <children>
-                                          <ScrollPane fx:id="scrollPane" prefHeight="532.0" prefWidth="1013.0" vbarPolicy="ALWAYS">
+                                          <ScrollPane fx:id="scrollPane" prefHeight="532.0" prefWidth="1013.0" stylesheets="@../css/ScrollPane.css" vbarPolicy="ALWAYS">
                                              <content>
                                                 <GridPane fx:id="gridProduct">
                                                    <rowConstraints>

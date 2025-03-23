@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 
 public class ProductPreviewHorizontalController {
@@ -46,7 +47,8 @@ public class ProductPreviewHorizontalController {
         labelProductName.setText(product.getName());
         labelQuantity.setText(String.valueOf(product.getQuantity()));
         labelProductPrice.setText(new DecimalFormat("#,###").format(product.getPrice()) + " VND");
-        Image image = new Image(getClass().getResourceAsStream(product.getSrcImg()));
+        System.out.println(product.getSrcImg());
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(product.getSrcImg())));
         imgProduct.setImage(image);
     }
 

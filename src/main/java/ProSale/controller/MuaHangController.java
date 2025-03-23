@@ -148,6 +148,7 @@ public class MuaHangController implements Initializable {
             for(OrderItem orderItem : list) {
                 Product product = AppLaunch.server.getProductMap().get(orderItem.getProductID());
                 product.setQuantity(product.getQuantity() - orderItem.getQuantity());
+                product.setSaleQuantity(product.getSaleQuantity() + orderItem.getQuantity());
                 ((User)AppLaunch.server.getPersonUsing()).getGioHang().getOrderItemsList().remove(orderItem);
             }
 

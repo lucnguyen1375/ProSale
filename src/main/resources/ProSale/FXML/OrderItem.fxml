@@ -10,12 +10,15 @@
 
 <AnchorPane fx:id="ap" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProSale.controller.OrderItemController">
    <children>
-      <HBox prefHeight="100.0" prefWidth="950.0">
+      <HBox prefHeight="100.0">
          <children>
             <ImageView fx:id="imageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/proptitLogo.png" />
                </image>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
             </ImageView>
             <VBox prefHeight="100.0" prefWidth="716.0">
                <children>

@@ -44,6 +44,7 @@ public class IDManager implements Serializable {
                 "CURRENT_USER_ID=" + CURRENT_USER_ID +
                 ", CURRENT_PRODUCT_ID=" + CURRENT_PRODUCT_ID +
                 ", CURRENT_ORDER_ID=" + CURRENT_ORDER_ID +
+                ", CURRENT_IMAGE_ID=" + CURRENT_IMAGE_ID +
                 '}';
     }
 

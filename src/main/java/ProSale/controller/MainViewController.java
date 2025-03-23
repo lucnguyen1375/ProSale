@@ -1,6 +1,10 @@
 package ProSale.controller;
 
 import ProSale.AppLaunch;
+import ProSale.manager.comparator.productComparator.ProductDecreasePriceComparator;
+import ProSale.manager.comparator.productComparator.ProductIncreasePriceComparator;
+import ProSale.manager.comparator.productComparator.ProductNewComparator;
+import ProSale.manager.comparator.productComparator.ProductSaleComparator;
 import ProSale.model.order.Order;
 import ProSale.model.person.Admin;
 import ProSale.model.product.*;
@@ -21,6 +25,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
@@ -44,7 +50,7 @@ public class MainViewController implements Initializable {
     @FXML
     private StackPane paneProduct;
     @FXML
-    private ComboBox<String> comboBoxGia, comboBoxChatLieu, comboBoxKichThuoc;
+    private ComboBox<String> comboGia, comboBoxChatLieu, comboBoxKichThuoc;
     @FXML
     private Button btnPhoBien, btnMoiNhat, btnBanChay;
     @FXML
@@ -54,6 +60,7 @@ public class MainViewController implements Initializable {
     @FXML
     private ScrollPane scrollPane;
 
+    private List<Product> productList;
     @FXML
     private Stage stage;
 
@@ -99,7 +106,7 @@ public class MainViewController implements Initializable {
 
     int column = 0, row = 0;
 
-    public void setGridProduct(Product product) throws IOException {
+    public void setGridProductItem(Product product) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/ProSale/FXML/ProductPreviewHorizontal.fxml"));
         AnchorPane anchorPane = loader.load();
@@ -114,8 +121,15 @@ public class MainViewController implements Initializable {
         GridPane.setMargin(anchorPane, new Insets(10));
     }
 
+    public void setGridProduct(List<Product> products) throws Exception {
+        column = 0; row = 0;
+        gridProduct.getChildren().clear();
+        for(Product product : products) {
+            setGridProductItem(product);
+        }
+    }
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle){
         paneHome.setVisible(true);
         paneProduct.setVisible(false);
         paneLienHe.setVisible(false);
@@ -151,11 +165,12 @@ public class MainViewController implements Initializable {
         };
 
         try {
-            for(Product product : AppLaunch.server.getProductList()) {
-                setGridProduct(product);
-            }
+            productList = new ArrayList<>(AppLaunch.server.getProductList());
+            setGridProduct(productList);
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -179,81 +194,61 @@ public class MainViewController implements Initializable {
         }
         else changeToDonHang(event);
     }
-    public void btnALlProductsOnAction(ActionEvent event) {
+    public void btnALlProductsOnAction(ActionEvent event) throws Exception{
         column = 0; row = 0;
         gridProduct.getChildren().clear();
-        try {
-            for(Product product : AppLaunch.server.getProductList()) {
-                setGridProduct(product);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        productList = new ArrayList<>(AppLaunch.server.getProductList());
+        setGridProduct(productList);
     }
 
-    public void btnBanPhanOnAction(ActionEvent event) {
+    public void btnBanPhanOnAction(ActionEvent event) throws Exception {
         column = 0; row = 0;
-        gridProduct.getChildren().clear();
-        try {
-            for(Product product : AppLaunch.server.getProductList()) {
-                if (product instanceof BanPhan == false) continue;
-                setGridProduct(product);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        productList.clear();
+        for(Product product : AppLaunch.server.getProductList()) {
+            if (product instanceof BanPhan == true)
+                productList.add(product);
         }
+        setGridProduct(productList);
     }
 
-    public void btnGuongOnAction(ActionEvent event) {
+    public void btnGuongOnAction(ActionEvent event) throws Exception {
         column = 0; row = 0;
-        gridProduct.getChildren().clear();
-        try {
-            for(Product product : AppLaunch.server.getProductList()) {
-                if (product instanceof Guong == false) continue;
-                setGridProduct(product);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        productList.clear();
+        for(Product product : AppLaunch.server.getProductList()) {
+            if (product instanceof Guong == true)
+                productList.add(product);
         }
+        setGridProduct(productList);
     }
 
-    public void btnGheOnAction(ActionEvent event) {
+    public void btnGheOnAction(ActionEvent event) throws Exception {
         column = 0; row = 0;
-        gridProduct.getChildren().clear();
-        try {
-            for(Product product : AppLaunch.server.getProductList()) {
-                if (product instanceof Ghe == false) continue;
-                setGridProduct(product);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        productList.clear();
+        for(Product product : AppLaunch.server.getProductList()) {
+            if (product instanceof Ghe == true)
+                productList.add(product);
         }
+        setGridProduct(productList);
     }
 
-    public void btnTuGiayOnAction(ActionEvent event) {
+    public void btnTuGiayOnAction(ActionEvent event) throws Exception {
         column = 0; row = 0;
-        gridProduct.getChildren().clear();
-        try {
-            for(Product product : AppLaunch.server.getProductList()) {
-                if (product instanceof TuGiay == false) continue;
-                setGridProduct(product);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        productList.clear();
+        for(Product product : AppLaunch.server.getProductList()) {
+            if (product instanceof TuGiay == true)
+                productList.add(product);
         }
+        setGridProduct(productList);
     }
 
-    public void btnTuDauGiuongOnAction(ActionEvent event) {
+    public void btnTuDauGiuongOnAction(ActionEvent event) throws Exception{
         column = 0; row = 0;
-        gridProduct.getChildren().clear();
-        try {
-            for(Product product : AppLaunch.server.getProductList()) {
-                if (product instanceof TuDauGiuong == false) continue;
-                setGridProduct(product);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        productList.clear();
+        for(Product product : AppLaunch.server.getProductList()) {
+            if (product instanceof TuDauGiuong == true)
+                productList.add(product);
         }
+        setGridProduct(productList);
     }
 
     public void btnAddOnAction(ActionEvent event) throws IOException {
@@ -267,4 +262,24 @@ public class MainViewController implements Initializable {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
+    public void btnMoiNhatOnAction(ActionEvent event) throws Exception {
+        productList.sort(new ProductNewComparator());
+        setGridProduct(productList);
+    }
+
+    public void btnBanChayOnAction(ActionEvent event) throws Exception {
+        productList.sort(new ProductSaleComparator());
+        setGridProduct(productList);
+    }
+    @FXML
+    private void comboBoxGiaOnAction(ActionEvent event) throws Exception {
+        String selected = comboGia.getValue();
+        System.out.println(selected);
+        if (selected.equals("Từ cao tới thấp")){
+            productList.sort(new ProductDecreasePriceComparator());
+        } else productList.sort(new ProductIncreasePriceComparator());
+        setGridProduct(productList);
+    }
+
 }

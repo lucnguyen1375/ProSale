@@ -57,13 +57,19 @@ public class DonHangController implements Initializable {
     private Button btnBuy;
     @FXML
     private Scene preScene;
+    @FXML
+    private Button btnTatCa, btnChoXacNhan, btnDangChuanBi,btnDangVanChuyen,btnDaVanChuyen,btnChuaThanhToan,btnDaThanhToan,btnDaHoanThanh;
+
 
     Integer tienHang;
     private List<OrderItem> list = new ArrayList<>();
     @FXML
     private AnchorPane rootPane;
 
+    private List<Integer> listVboxDonHang =  new ArrayList<>();
+
     public void setVboxGioHang(GioHang gioHang) throws Exception{
+        vboxGioHang.getChildren().clear();
         for(OrderItem orderItem : gioHang.getOrderItemsList()){
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(DonHangController.class.getResource("/ProSale/FXML/GioHangItem.fxml"));
@@ -75,7 +81,9 @@ public class DonHangController implements Initializable {
         }
     }
 
+
     public void setVboxDonHang(List<Integer> listOrder) throws Exception{
+        vboxDonHang.getChildren().clear();
         for(Integer integer : listOrder){
             Order order = AppLaunch.server.getOrderMap().get(integer);
             FXMLLoader loader = new FXMLLoader();
@@ -85,6 +93,43 @@ public class DonHangController implements Initializable {
             controller.setVboxItem(order);
             vboxDonHang.getChildren().add(pane);
         }
+    }
+
+    public void btnTatCaOnAction(ActionEvent actionEvent) throws Exception {
+        setVboxDonHang(((User)AppLaunch.server.getPersonUsing()).getOrderList());
+    }
+
+    public void btnXacNhanOnAction(ActionEvent actionEvent) throws Exception {
+        listVboxDonHang.clear();
+        for(Integer integer : ((User)AppLaunch.server.getPersonUsing()).getOrderList()){
+            Order order = AppLaunch.server.getOrderMap().get(integer);
+            if (order.getOrderStatus().equals(((Button)actionEvent.getSource()).getText())){
+                listVboxDonHang.add(integer);
+            }
+        }
+        setVboxDonHang(listVboxDonHang);
+    }
+
+    public void btnThanhToanOnAction(ActionEvent actionEvent) throws Exception {
+        vboxDonHang.getChildren().clear();
+        for(Integer integer : ((User)AppLaunch.server.getPersonUsing()).getOrderList()){
+            Order order = AppLaunch.server.getOrderMap().get(integer);
+            if (order.getOrderThanhToan().equals(((Button)actionEvent.getSource()).getText())){
+                listVboxDonHang.add(integer);
+            }
+        }
+        setVboxDonHang(listVboxDonHang);
+    }
+
+    public void btnHoanThanhOnAction(ActionEvent actionEvent) throws Exception {
+        vboxDonHang.getChildren().clear();
+        for(Integer integer : ((User)AppLaunch.server.getPersonUsing()).getOrderList()){
+            Order order = AppLaunch.server.getOrderMap().get(integer);
+            if (order.getOrderStatus().equals("Đã vận chuyển") && order.getOrderThanhToan().equals("Đã thanh toán")){
+                listVboxDonHang.add(integer);
+            }
+        }
+        setVboxDonHang(listVboxDonHang);
     }
 
     @Override
@@ -101,8 +146,6 @@ public class DonHangController implements Initializable {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     public void btnBackOnAction(ActionEvent event) throws IOException {
@@ -137,12 +180,14 @@ public class DonHangController implements Initializable {
         stage.setScene(scene);
     }
 
-    public void btnGioHangOnAction(ActionEvent event) throws IOException {
+    public void btnGioHangOnAction(ActionEvent event) throws Exception {
+        setVboxGioHang(((User)AppLaunch.server.getPersonUsing()).getGioHang());
         paneGioHang.setVisible(true);
         paneDonHang.setVisible(false);
     }
 
-    public void btnDonHangOnAction(ActionEvent event) throws IOException {
+    public void btnDonHangOnAction(ActionEvent event) throws Exception {
+        setVboxDonHang(((User)AppLaunch.server.getPersonUsing()).getOrderList());
         paneDonHang.setVisible(true);
         paneGioHang.setVisible(false);
     }

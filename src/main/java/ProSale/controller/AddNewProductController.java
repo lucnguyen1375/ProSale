@@ -3,7 +3,7 @@ package ProSale.controller;
 import ProSale.AppLaunch;
 import ProSale.manager.IOSystem;
 import ProSale.manager.SaveImageToReSource;
-import ProSale.model.product.Product;
+import ProSale.model.product.*;
 import ProSale.utilz.ImagePath;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -72,7 +72,7 @@ public class AddNewProductController {
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
         MainViewController controller = loader.getController();
-       controller.setProductViewFirst();
+        controller.setProductViewFirst();
         stage.setScene(scene);
     }
 
@@ -85,11 +85,6 @@ public class AddNewProductController {
 
         if (selectedFile != null) {
             try {
-                // Đọc ảnh và lưu vào thư mục resources
-//                File savedFile = saveImage.saveImageToResources(selectedFile, resourcePath);
-
-                // Hiển thị ảnh trong ImageView
-//                InputStream imageStream = new FileInputStream(savedFile);
                 Image image = new Image(selectedFile.toURI().toString());
                 imageProduct.setImage(image);
             } catch (Exception ex) {
@@ -127,45 +122,52 @@ public class AddNewProductController {
         }
         else{
             Product product = null;
-            if (comboBoxType.getSelectionModel().getSelectedItem().equals("Bàn phấn"))
-            {
+            if (comboBoxType.getSelectionModel().getSelectedItem().equals("Bàn phấn")) {
                 resourcePath = ImagePath.BAN_PHAN_PATH;
                 tempPath = "/ProSale/images/product/banPhan/";
+                product = new BanPhan(tfName.getText(), Integer.parseInt(tfPrice.getText()),"",
+                        tfMaterial.getText(), tfSize.getText(), tfDescription.getText(), Integer.parseInt(tfQuantity.getText()));
             }
             else if (comboBoxType.getSelectionModel().getSelectedItem().equals("Ghế")) {
                 resourcePath = ImagePath.GHE_PATH;
                 tempPath = "/ProSale/images/product/ghe/";
+                product = new Ghe(tfName.getText(), Integer.parseInt(tfPrice.getText()),"",
+                        tfMaterial.getText(), tfSize.getText(), tfDescription.getText(), Integer.parseInt(tfQuantity.getText()));
 
             }
             else if (comboBoxType.getSelectionModel().getSelectedItem().equals("Gương")) {
                 resourcePath = ImagePath.GUONG_PATH;
                 tempPath = "/ProSale/images/product/guong/";
+                product = new Guong(tfName.getText(), Integer.parseInt(tfPrice.getText()),"",
+                        tfMaterial.getText(), tfSize.getText(), tfDescription.getText(), Integer.parseInt(tfQuantity.getText()));
 
             }
             else if (comboBoxType.getSelectionModel().getSelectedItem().equals("Tủ giày")) {
                 resourcePath = ImagePath.TU_GIAY_PATH;
                 tempPath = "/ProSale/images/product/tuGiay/";
+                product = new TuGiay(tfName.getText(), Integer.parseInt(tfPrice.getText()),"",
+                        tfMaterial.getText(), tfSize.getText(), tfDescription.getText(), Integer.parseInt(tfQuantity.getText()));
 
             }
             else if (comboBoxType.getSelectionModel().getSelectedItem().equals("Tủ đầu giường")) {
                 resourcePath = ImagePath.TU_DAU_GIUONG_PATH;
                 tempPath = "/ProSale/images/product/tuDauGiuong/";
-
+                product = new TuDauGiuong(tfName.getText(), Integer.parseInt(tfPrice.getText()),"",
+                        tfMaterial.getText(), tfSize.getText(), tfDescription.getText(), Integer.parseInt(tfQuantity.getText()));
             }
 
             calledPath = tempPath + saveImage.saveImageToResources(selectedFile, resourcePath);
-            System.out.println(calledPath);
 
-
-            product = new Product(tfName.getText(), Integer.parseInt(tfPrice.getText()),"",
-            tfMaterial.getText(), tfSize.getText(), tfDescription.getText(), Integer.parseInt(tfQuantity.getText()));
             product.setSrcImg(calledPath);
             product.in();
             AppLaunch.server.getProductList().add(product);
             AppLaunch.server.getProductMap().put(product.getId(), product);
             IOSystem.saveData();
-
-//
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("ProSale");
+            alert.setHeaderText("Xác nhận");
+            alert.setContentText("Đã thêm sản phẩm thành công");
+            alert.showAndWait();
         }
     }
 

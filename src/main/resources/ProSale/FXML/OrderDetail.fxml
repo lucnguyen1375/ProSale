@@ -156,7 +156,10 @@
                                  </children>
                               </AnchorPane>
                               <Separator prefWidth="200.0" />
-                              <VBox fx:id="vboxOrderItem" />
+                              <VBox fx:id="vboxOrderItem" spacing="10.0">
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding></VBox>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                            </children>
                         </VBox>
@@ -166,20 +169,17 @@
             </ScrollPane>
             <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="1260.0">
                <children>
-                  <Label prefHeight="17.0" prefWidth="816.0" text="Tổng tiền hàng: ">
+                  <Label prefHeight="26.0" prefWidth="796.0" text="Tổng tiền hàng: ">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <AnchorPane prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label fx:id="labelOrderTotal" alignment="CENTER_RIGHT" layoutX="50.0" layoutY="5.0" prefHeight="17.0" prefWidth="41.0" text="Label">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
+                  <Label fx:id="labelOrderTotal" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="166.0" text="Label">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="1260.0">

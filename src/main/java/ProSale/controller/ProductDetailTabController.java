@@ -150,6 +150,7 @@ public class ProductDetailTabController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Vui lòng nhập số lượng sản phẩm");
             alert.showAndWait();
+            return;
         }
 
         Boolean productInGioHang = false;

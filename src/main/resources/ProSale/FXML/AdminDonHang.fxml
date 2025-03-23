@@ -12,36 +12,46 @@
    <children>
       <HBox layoutX="54.0" layoutY="66.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox prefHeight="600.0" prefWidth="200.0">
+            <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="299.0">
                <children>
-                  <Button fx:id="btnTatCa" mnemonicParsing="false" onAction="#btnTatCaOnAction" prefHeight="50.0" prefWidth="200.0" text="Tất cả">
+                  <Button fx:id="btnTatCa" mnemonicParsing="false" onAction="#btnTatCaOnAction" prefHeight="45.0" prefWidth="200.0" text="Tất cả">
                      <VBox.margin>
-                        <Insets top="40.0" />
+                        <Insets top="25.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Chờ xác nhận">
+                  <Button fx:id="btnChoXacNhan" mnemonicParsing="false" onAction="#btnXacNhanOnAction" prefHeight="45.0" prefWidth="200.0" text="Chờ xác nhận">
                      <VBox.margin>
-                        <Insets top="40.0" />
+                        <Insets top="25.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Đang vận chuyển">
+                  <Button fx:id="btnDangChuanBi" mnemonicParsing="false" onAction="#btnXacNhanOnAction" prefHeight="45.0" prefWidth="200.0" text="Đang chuẩn bị">
                      <VBox.margin>
-                        <Insets top="40.0" />
+                        <Insets top="25.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Đã vận chuyển">
+                  <Button fx:id="btDangVanChuyen" mnemonicParsing="false" onAction="#btnXacNhanOnAction" prefHeight="45.0" prefWidth="200.0" text="Đang vận chuyển">
                      <VBox.margin>
-                        <Insets top="40.0" />
+                        <Insets top="25.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Chưa thanh toán">
+                  <Button fx:id="btnDaVanChuyen" mnemonicParsing="false" onAction="#btnXacNhanOnAction" prefHeight="45.0" prefWidth="200.0" text="Đã vận chuyển">
                      <VBox.margin>
-                        <Insets top="40.0" />
+                        <Insets top="25.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Đã thanh toán">
+                  <Button fx:id="btnChuaThanhToan" mnemonicParsing="false" onAction="#btnThanhToanOnAction" prefHeight="45.0" prefWidth="200.0" text="Chưa thanh toán">
                      <VBox.margin>
-                        <Insets top="40.0" />
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnDaThanhToan" mnemonicParsing="false" onAction="#btnThanhToanOnAction" prefHeight="45.0" prefWidth="200.0" text="Đã thanh toán">
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnBack" mnemonicParsing="false" onAction="#btnBackOnAction" text="Trở về">
+                     <VBox.margin>
+                        <Insets top="50.0" />
                      </VBox.margin>
                   </Button>
                </children>
@@ -54,11 +64,11 @@
                   <Insets />
                </HBox.margin>
             </Separator>
-            <ScrollPane prefHeight="600.0" prefWidth="1051.0">
+            <ScrollPane fx:id="scrollpane" prefHeight="600.0" prefWidth="1051.0" stylesheets="@../css/ScrollPane.css">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0">
                      <children>
-                        <VBox fx:id="vboxAdminDonHang" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <VBox fx:id="vboxAdminDonHang" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
               </content>
