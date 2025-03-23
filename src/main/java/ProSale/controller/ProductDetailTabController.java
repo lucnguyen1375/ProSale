@@ -65,6 +65,7 @@ public class ProductDetailTabController implements Initializable {
         if (AppLaunch.server.getPersonUsing() instanceof Admin) {
             paneAdmin.setVisible(true);
             paneUser.setVisible(false);
+            btnGioHang.setVisible(false);
             System.out.println("Admin");
         }
         else {

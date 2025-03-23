@@ -34,14 +34,6 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="btnDonHang" mnemonicParsing="false" onAction="#btnDonHangOnAction" prefHeight="100.0" prefWidth="250.0" text="Lịch sử mua hàng">
-                     <font>
-                        <Font name="Cambria" size="22.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </Button>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btnTroVe" mnemonicParsing="false" onAction="#changeToMainViewTab" prefHeight="25.0" prefWidth="125.0" text="Trở về">
@@ -174,11 +166,6 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="114.0" text="Chỉnh sửa">
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </Button>
                      </children>
                   </VBox>
                   <AnchorPane fx:id="paneDonHang" layoutX="-33.0" prefHeight="720.0" prefWidth="1057.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

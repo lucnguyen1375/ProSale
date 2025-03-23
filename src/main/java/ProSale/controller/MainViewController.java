@@ -130,6 +130,7 @@ public class MainViewController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
+        searchHbox.setVisible(false);
         paneHome.setVisible(true);
         paneProduct.setVisible(false);
         paneLienHe.setVisible(false);
