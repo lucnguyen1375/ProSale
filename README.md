@@ -167,7 +167,7 @@ ProSale/
 **Activity Diagram**
 
 **Class Diagram**
-
+![](images/ClassDiagram.drawio.png)
 ## Hướng dẫn cài đặt
 
 - Clone repository:
